@@ -1,0 +1,13 @@
+" VIMPERATORRC
+
+let mapleader = ","
+nmap <C-o> gt
+nmap <C-i> gT
+nmap <C-n> :back<CR>
+nmap <C-p> :forward<CR>
+nmap $ :tablast<CR>
+nmap 0 :tabrewind<CR>
+nmap # :b 3<CR>
+nmap <leader><leader> :noh<CR>
+
+" vim: set ft=vim sw=2 sts=2 et:

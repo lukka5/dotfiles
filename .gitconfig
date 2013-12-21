@@ -1,0 +1,30 @@
+[user]
+    name = Lucas Godoy
+    email = 2lucasg (at) gmail.com
+
+[alias]
+    co = checkout
+    ci = commit
+    st = status
+    br = branch
+    sl = stash list
+    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    type = cat-file -t
+    dump = cat-file -p
+    unstage = reset HEAD --
+    last = log -1 -p HEAD
+    visual = !gitg
+    conflicts = diff --name-only --diff-filter=U
+    top = hist -5
+
+[core]
+    editor = vim
+
+[color]
+    ui = true
+
+[credential]
+    helper = cache
+
+[merge]
+    tool = vimdiff
