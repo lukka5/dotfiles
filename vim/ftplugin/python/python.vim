@@ -4,12 +4,16 @@ if exists("b:did_ftplugin")
 endif
 let b:did_ftplugin = 1
 
-map <buffer> <S-e> :w<CR>:!/usr/bin/env python % <CR>
-map <buffer> gd /def <C-R><C-W><CR>
+" Toggle syntax fold
+if g:python_fold
+    set foldmethod=expr
+    set foldexpr=PythonFoldExpr(v:lnum)
+    set foldtext=PythonFoldText()
+endif
 
-set foldmethod=expr
-set foldexpr=PythonFoldExpr(v:lnum)
-set foldtext=PythonFoldText()
+" Run python on the current buffer
+nmap <silent><leader>P :w<CR>:!python %<CR>
+
 
 function! PythonFoldText()
 
