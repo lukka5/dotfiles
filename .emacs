@@ -35,20 +35,20 @@
             (cons '("\\.m$" . octave-mode) auto-mode-alist))
 
 ;; line numbers
-(global-linum-mode 1)
-(setq linum-format
-      (lambda (line)
-        (propertize
-         (format
-          (let ((w (length
-                    (number-to-string
-                     (count-lines (point-min) (point-max))))))
-            (concat " %"
-                    (number-to-string w) "d ")) line) 'face 'linum)))
+;(global-linum-mode 1)
+;(setq linum-format
+      ;(lambda (line)
+        ;(propertize
+         ;(format
+          ;(let ((w (length
+                    ;(number-to-string
+                     ;(count-lines (point-min) (point-max))))))
+            ;(concat " %"
+                    ;(number-to-string w) "d ")) line) 'face 'linum)))
 
 ;; solarized-dark color theme
-(require 'color-theme-solarized)
-(color-theme-solarized-dark)
+;(require 'color-theme-solarized)
+;(color-theme-solarized-dark)
 
 ;; highlight trailing whitespaces, tabs, and beyond 80 column lines ;;;;;;;;;;;
 (custom-set-faces
