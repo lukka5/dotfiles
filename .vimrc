@@ -47,6 +47,8 @@ Bundle 'sjl/badwolf'
 Bundle 'tomasr/molokai'
 Bundle 'vim-scripts/Mustang2'
 
+Bundle '~/.vim/bundle/localcolors/.git'
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Indent                                   "
@@ -93,7 +95,7 @@ endif
 
 
 if has("gui_running")
-  set guioptions=agimtT     " Don't show the left and right scrollbars
+  set guioptions=agi     " Don't show the left and right scrollbars
   set guicursor=a:blinkon0  " Stop cursor blinking
   set lines=50 columns=175  " Maximize gvim at start
 
@@ -111,8 +113,8 @@ set ignorecase             " Case insensitive searching
 set noshowmode             " Don't show mode in status bar
 set noswapfile             " Don't create swap files
 set cursorline             " Highlight current cursor line
-set showmatch              " Show matching bracket
-set matchtime=2            " Reduces show matching blink time
+"set showmatch              " Show matching bracket
+"set matchtime=2            " Reduces show matching blink time
 set history=100            " Amount of commands and searches to remember
 set scrolloff=1            " 1 line above/below when scrolling
 set laststatus=2           " Always show the status line
@@ -120,7 +122,7 @@ set ttimeoutlen=50         " Milliseconds waited for sequence to complete
 set pastetoggle=<F2>       " Key to use for toggling paste mode
 set wildmode=list:longest  " Bash like command line completion
 set textwidth=78           " Useful for reformatting text
-set formatoptions=roqnj  " See :h formatoptions
+set formatoptions=roqnj    " See :h formatoptions
 
 set clipboard=unnamedplus,unnamed      " Use X11 default clipboard :D
 set spf=$HOME/.vim/spell/en.utf-8.add  " Spell file to use
@@ -165,6 +167,9 @@ let g:airline#extensions#tabline#enabled = 1
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
 nmap <leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" Python file type plugin
+let g:python_fold = 0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -215,6 +220,9 @@ nmap <leader>d :bp<bar>sp<bar>bn<bar>bd<CR>
 
 " Toggle highlight of list chars (tab, trail, eol, ...)
 nmap <leader>l :set list!<CR>
+
+" Toggle OverLength highlight group
+nmap <silent><leader>h :call ToogleOverLength()<CR>
 
 " Toggle line number gutter
 nmap <leader>n :set number!<CR>
@@ -310,6 +318,24 @@ augroup color
       \ hi SyntasticWarningSign ctermbg=black guibg=black
 
 augroup END
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               Functions                                 "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+" Toggle OverLenght highlight group
+let g:overlengthon = 1
+function! ToogleOverLength()
+  if g:overlengthon
+    hi OverLength ctermbg=black guibg=black
+    let g:overlengthon = 0
+  else
+    hi OverLength ctermbg=233 guibg=#2d2d2d
+    let g:overlengthon = 1
+  endif
+endfunction
 
 
 " vim: set sw=2 sts=2 et:
