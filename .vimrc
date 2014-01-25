@@ -33,6 +33,8 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/noerrmsg.vim'
 Bundle 'vim-scripts/TaskList.vim'
+Bundle 'xolox/vim-misc'
+Bundle 'xolox/vim-shell'
 
 " Color schemes
 Bundle 'Pychimp/vim-luna'
@@ -46,8 +48,7 @@ Bundle 'nanotech/jellybeans.vim'
 Bundle 'sjl/badwolf'
 Bundle 'tomasr/molokai'
 Bundle 'vim-scripts/Mustang2'
-
-Bundle '~/.vim/bundle/localcolors/.git'
+Bundle '~/.vim/bundle/local_colors/.git'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -106,7 +107,7 @@ endif
 set number                 " Enable line number gutter
 set ruler                  " Show current cursor position in status bar
 set hidden                 " Allow hidden buffers (even modified ones)
-set hlsearch               " Highlight searched phrases
+"set hlsearch               " Highlight searched phrases
 set incsearch              " Highlight as I am searching
 set smartcase              " But make it sensitive when it matters
 set ignorecase             " Case insensitive searching
@@ -170,6 +171,9 @@ nmap <leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Python file type plugin
 let g:python_fold = 0
+
+" Vim Shell
+let g:shell_fullscreen_items = 'mT'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
