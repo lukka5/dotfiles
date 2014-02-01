@@ -65,7 +65,8 @@ match OverLength /\%80v.\+/
 
 " Indentation
 set autoindent
-set copyindent  " Copy the previous indentation on auto indent
+set copyindent
+set smartindent
 set expandtab
 set shiftwidth=4
 set softtabstop=4
