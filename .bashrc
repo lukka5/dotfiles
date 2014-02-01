@@ -60,6 +60,7 @@ function dth { printf "0x%x\n" "$1"; }
 # make easy some common search commands
 function findd   { find . -iname "*$1*";                           }
 function list    { dpkg -l | grep "$1";                            }
+function pss     { ps aux | grep "$1";                             }
 function install { sudo apt-get install "$1";                      }
 function update  { sudo apt-get update;                            }
 function upgrade { sudo apt-get upgrade;                           }
