@@ -249,6 +249,7 @@ cnoremap <c-f> <right>
 cnoremap <c-b> <left>
 cnoremap <c-e> <end>
 cnoremap <c-a> <home>
+cnoremap <c-d> <del>
 
 " Use space key to toggle folds
 nnoremap <space> za
