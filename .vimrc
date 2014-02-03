@@ -189,6 +189,10 @@ let mapleader=","
 nmap <silent><C-o> :bnext<CR>
 nmap <silent><C-i> :bprevious<CR>
 
+" Recover the jumplist command losed above
+nnoremap <C-[> <C-o>
+nnoremap <C-]> <C-i>
+
 " Use space key to toggle folds
 nmap <Space> za
 
