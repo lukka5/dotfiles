@@ -151,14 +151,15 @@ let g:tagbar_sort = 0
 let g:tagbar_autoclose = 1
 let g:tagbar_autofocus = 1
 let g:tagbar_map_help = "?"
-nmap <silent><C-t> :TagbarToggle<CR>
+nmap <silent><c-t> :TagbarToggle<cr>
 
 " NERDTree
 let NERDTreeWinSize = 24
 let NERDTreeQuitOnOpen = 1
 let NERDTreeShowBookmarks = 1
-nmap <silent><C-n> :NERDTreeToggle<CR>
-nmap <silent><C-y> :NERDTree<CR><C-w>p:NERDTreeFind<CR>
+let NERDTreeIgnore = ['\.pyc$', '\~$', '\.o$']
+nmap <silent><c-n> :NERDTreeToggle<cr>
+nmap <silent><c-y> :NERDTree<cr><c-w>p:NERDTreeFind<cr>
 
 " Vim-airline
 let g:airline_powerline_fonts = 1
@@ -168,7 +169,7 @@ let g:airline#extensions#tabline#enabled = 1
 " YouCompleteMe
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
-nmap <leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nmap <silent><leader>j :YcmCompleter GoToDefinitionElseDeclaration<cr>
 
 " Python file type plugin
 let g:python_fold = 0
@@ -185,73 +186,80 @@ let g:shell_fullscreen_items = 'mT'
 " Use comma as our <leader> key
 let mapleader=","
 
-" Easily switch tabs in vim-airline's tabline plugin
-nmap <silent><C-o> :bnext<CR>
-nmap <silent><C-i> :bprevious<CR>
+" Stop highlighted search
+nmap <silent><leader>` :nohlsearch<cr>
 
-" Recover the jumplist command losed above
-nnoremap <C-[> <C-o>
-nnoremap <C-]> <C-i>
+" Select all
+nmap <silent><leader>a ggVG
+
+" Delete current buffer keeping window layout intact
+
+nmap <silent><leader>d :bp<bar>sp<bar>bn<bar>bd<cr>
+
+" Close current window
+nmap <silent><leader>e :hid<cr>
+
+" Handy shortcut for toggling the foldcolumn (only 1/0 deep)
+nmap <silent><leader>F
+      \ :if &fdc==0 \| set fdc=1 \| else \| set fdc=0 \| endif<cr>
+
+" Toggle OverLength highlight group
+nmap <silent><leader>h :call ToogleOverLength()<cr>
+
+" Toggle highlight of list chars (tab, trail, eol, ...)
+nmap <silent><leader>l :set list!<cr>
+
+" Toggle line number gutter
+nmap <silent><leader>n :set number!<cr>
+
+" Make current window the only one
+nmap <silent><leader>o :on<cr>
+
+" Close preview window
+nmap <silent><leader>r :pclose<cr>
+
+" Sort selected lines (visual mode)
+vmap <silent><leader>s :sort<cr>
+
+" Toggle spell checking
+nmap <silent><leader>S :setlocal spell!<cr>
+
+" Edit/load VIM RC file
+nmap <silent><leader>v :e $HOME/.vimrc<cr>
+nmap <silent><leader>V :w<cr>:so $HOME/.vimrc<cr>:echo "vimrc reloaded!"<cr>
+
+" Make new vertical split and focus cursor on it
+nmap <silent><leader>w :vsplit<cr><c-w><c-l>
+
+" Delete all trailing white spaces in current buffer
+nmap <silent><leader>W :%s/\s\+$//<cr>:let @/=''<cr>
+
+" Easily switch tabs in vim-airline's tabline plugin
+nmap <silent><c-o> :bnext<cr>
+nmap <silent><c-i> :bprevious<cr>
+
+" Easily move around windows
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+
+" Easily move through the command line (bash-like shortcuts)
+cnoremap <c-f> <right>
+cnoremap <c-b> <left>
+cnoremap <c-e> <end>
+cnoremap <c-a> <home>
 
 " Use space key to toggle folds
-nmap <Space> za
+nnoremap <space> za
 
 " Format the current paragraph or visual selection
 vnoremap Q gq
 nnoremap Q gqap
 
-" Toggle spell checking
-nmap <silent><leader>S :setlocal spell!<CR>
-
-" Easily move around windows
-nmap <C-h> <C-w>h
-nmap <C-l> <C-w>l
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-
-" Stop highlighting the searched phrases
-nmap <silent><leader>` :nohlsearch<CR>
-
-" Close preview window if open
-nmap <leader>r :pclose<cr>
-
-" Select everything in the file
-nmap <leader>a ggVG
-
-" Hide current buffer
-nmap <leader>e :hid<CR>
-
-" Make the current window the only one on the screen
-nmap <leader>o :on<CR>
-
-" Delete buffer keeping the current window setup intact
-nmap <leader>d :bp<bar>sp<bar>bn<bar>bd<CR>
-
-" Toggle highlight of list chars (tab, trail, eol, ...)
-nmap <leader>l :set list!<CR>
-
-" Toggle OverLength highlight group
-nmap <silent><leader>h :call ToogleOverLength()<CR>
-
-" Toggle line number gutter
-nmap <leader>n :set number!<CR>
-
-" Sort selected lines (visual mode)
-vmap <leader>s :sort<CR>
-
-" Edit/load VIM RC file
-nmap <leader>v :e $HOME/.vimrc<CR>
-nmap <silent><leader>V :so $HOME/.vimrc<CR>:echo "vimrc reloaded!"<CR>
-
-" Make new vertical split and focus cursor on it
-nmap <leader>w :vsplit<CR><C-l>
-
-" Delete all trailing white spaces in the current buffer
-nmap <leader>W :%s/\s\+$//<CR>:let @/=''<CR>
-
 " Easily indent selected block of code in visual mode
-vmap < <gv
-vmap > >gv
+vnoremap < <gv
+vnoremap > >gv
 
 " Case insensitive :quit and :write command shortcuts
 command! Q q
@@ -262,24 +270,14 @@ command! W w
 nnoremap j gj
 nnoremap k gk
 
-" Center the searched phrases when cycling through them
+" Center searched phrases when cycling through them
 nnoremap <silent>n nzz
 nnoremap <silent>N Nzz
 nnoremap <silent> * *zz
 
-" Easily move through the command line (bash like shortcuts)
-cnoremap <C-f> <right>
-cnoremap <C-b> <left>
-cnoremap <C-e> <End>
-cnoremap <C-a> <Home>
-
 " Create new lines up/down without moving the cursor
-nmap T O<ESC>j
-nmap t o<ESC>k
-
-" Handy shortcut for toggling the foldcolumn (only 1/0 deep)
-nmap <silent><leader>F
-    \ :if &fdc==0 \| set fdc=1 \| else \| set fdc=0 \| endif<CR>
+nmap T O<esc>j
+nmap t o<esc>k
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
