@@ -61,7 +61,6 @@ filetype plugin indent on
 
 " Highlight characters beyond the 79 column
 hi OverLength ctermbg=233 guibg=#2d2d2d
-match OverLength /\%80v.\+/
 
 " Indentation
 set autoindent
@@ -215,6 +214,10 @@ nmap <silent><leader>n :set number!<cr>
 " Make current window the only one
 nmap <silent><leader>o :on<cr>
 
+" Toggle Quicklist and Locationlist
+nmap <silent><leader>Q :call ToggleList("Location List", 'l')<cr>
+nmap <silent><leader>q :call ToggleList("Quickfix List", 'c')<cr>
+
 " Close preview window
 nmap <silent><leader>r :pclose<cr>
 
@@ -299,8 +302,7 @@ augroup vimrc
       \ endif
 
   " Refresh beyond 79 column highlighting
-  au BufWinEnter,BufRead *
-      \ match OverLength /\%80v.*/
+  au BufWinEnter,WinEnter * match OverLength '\%>79v.\+'
 
 augroup END
 
@@ -342,6 +344,34 @@ function! ToogleOverLength()
   else
     hi OverLength ctermbg=233 guibg=#2d2d2d
     let g:overlengthon = 1
+  endif
+endfunction
+
+" Toggle Quickfix or Location list windows
+function! GetBufferList()
+  redir =>buflist
+  silent! ls
+  redir END
+  return buflist
+endfunction
+
+function! ToggleList(bufname, pfx)
+  let buflist = GetBufferList()
+  for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
+    if bufwinnr(bufnum) != -1
+      exec(a:pfx.'close')
+      return
+    endif
+  endfor
+  if a:pfx == 'l' && len(getloclist(0)) == 0
+      echohl ErrorMsg
+      echo "Location List is Empty."
+      return
+  endif
+  let winnr = winnr()
+  exec(a:pfx.'open')
+  if winnr() != winnr
+    wincmd p
   endif
 endfunction
 
