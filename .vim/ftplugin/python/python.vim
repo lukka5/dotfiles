@@ -12,7 +12,7 @@ if g:python_fold
 endif
 
 " Run python on the current buffer
-nmap <silent><leader>P :w<CR>:!python %<CR>
+nmap <silent><leader>p :w<cr>:!python %<cr>
 
 
 function! PythonFoldText()
