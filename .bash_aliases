@@ -44,5 +44,5 @@ alias clearq='rhythmbox-client --clear-queue'
 
 alias sub='unzip -q ~/Downloads/*.zip -d .; rm ~/Downloads/*.zip; ls'
 
-alias touchon='xinput set-prop 13 "Device Enabled" 1'
-alias touchoff='xinput set-prop 13 "Device Enabled" 0'
+alias ton='xinput --enable `xinput --list --id-only "SynPS/2 Synaptics TouchPad"`'
+alias toff='xinput --disable `xinput --list --id-only "SynPS/2 Synaptics TouchPad"`'
