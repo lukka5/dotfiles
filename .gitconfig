@@ -15,7 +15,6 @@
     last = log -1 -p HEAD
     visual = !gitg
     conflicts = diff --name-only --diff-filter=U
-    top = hist -5
 
 [core]
     editor = vim
