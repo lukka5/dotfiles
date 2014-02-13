@@ -42,7 +42,7 @@ alias famaf='ssh ldg0112@mail.famaf.unc.edu.ar'
 alias enq='rhythmbox-client --enqueue'
 alias clearq='rhythmbox-client --clear-queue'
 
-alias sub='unzip -q ~/Downloads/*.zip -d .; rm ~/Downloads/*.zip; ls'
+alias sub='unzip -q ~/Downloads/*.zip -d .; rm ~/Downloads/*.zip; ll'
 
 alias ton='xinput --enable `xinput --list --id-only "SynPS/2 Synaptics TouchPad"`'
 alias toff='xinput --disable `xinput --list --id-only "SynPS/2 Synaptics TouchPad"`'
