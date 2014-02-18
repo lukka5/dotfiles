@@ -15,6 +15,7 @@ alias emacs='emacs -nw'
 alias vimrc='vim ~/.vimrc'
 alias gvimrc='gvim ~/.vimrc'
 alias gvir='gvim --remote'
+alias gvims='gvim --servername'
 alias mars='java -jar /usr/local/bin/Mars4_3.jar'
 
 alias so='source ~/.bashrc'
