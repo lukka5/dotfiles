@@ -37,9 +37,9 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-
-# Custom prompt (fedora like)
-PS1='${debian_chroot:+($debian_chroot)}\u@\h (\w): '
+# Custom prompt
+PS1='[\u@\h \W]\$ '
+#PS1='${debian_chroot:+($debian_chroot)}\u@\h (\w): '
 
 # enable color support of ls
 if [ -x /usr/bin/dircolors ]; then
