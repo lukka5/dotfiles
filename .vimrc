@@ -35,6 +35,7 @@ Bundle 'vim-scripts/noerrmsg.vim'
 Bundle 'vim-scripts/TaskList.vim'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-shell'
+Bundle 'xolox/vim-session'
 
 " Color schemes
 Bundle 'Pychimp/vim-luna'
@@ -175,6 +176,10 @@ let g:python_fold = 0
 
 " Vim Shell
 let g:shell_fullscreen_items = 'mT'
+
+" Vim Session
+let g:session_autoload = 0
+let g:session_autosave = 0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
