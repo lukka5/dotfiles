@@ -1,6 +1,4 @@
 alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
 
 alias ls='ls --color=auto'
 alias la='ls -A'
@@ -11,7 +9,10 @@ alias lla='ls -la'
 alias llh='ls -lh'
 alias llx='ls -lAhX'
 
+alias ..='cd ..'
+
 alias emacs='emacs -nw'
+alias tmuxconf='vim ~/.tmux.conf'
 alias vimrc='vim ~/.vimrc'
 alias gvimrc='gvim ~/.vimrc'
 alias gvir='gvim --remote'
@@ -47,3 +48,6 @@ alias sub='unzip -q ~/Downloads/*.zip -d .; rm ~/Downloads/*.zip; ll'
 
 alias ton='xinput --enable `xinput --list --id-only "SynPS/2 Synaptics TouchPad"`'
 alias toff='xinput --disable `xinput --list --id-only "SynPS/2 Synaptics TouchPad"`'
+
+
+# vim: set ft=sh:
