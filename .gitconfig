@@ -9,10 +9,9 @@
     br = branch
     sl = stash list
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-    type = cat-file -t
-    dump = cat-file -p
-    unstage = reset HEAD --
+    top = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short -5
     last = log -1 -p HEAD
+    unstage = reset HEAD --
     visual = !gitg
     conflicts = diff --name-only --diff-filter=U
 
