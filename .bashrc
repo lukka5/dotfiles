@@ -1,74 +1,106 @@
-### ~/.bashrc
-
-
 # If not running interactively, don't do anything
 case $- in
-    *i*) ;;
-      *) return;;
+  *i*) ;;
+    *) return;;
 esac
 
-# Decide wich terminal to use
+############################### Settings ##################################
+
+# Decide wich terminal to use and launch tmux
 if [ -e /usr/share/terminfo/g/gnome-256color ]; then
-        export TERM='gnome-256color'
+  export TERM='gnome-256color'
 else
-        export TERM='xterm-16color'
+  export TERM='xterm-16color'
+fi
+
+# If we have tmux start replacing bash with it
+if which tmux 2>&1 >/dev/null && test -z "$TMUX"; then
+  tmux new -d -s default
+  exec tmux attach -t default
 fi
 
 # Disable annoying gnome-keyring
 unset GNOME_KEYRING_CONTROL
 
 # Don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
 HISTCONTROL=ignoreboth
-
-# Append to the history file, don't overwrite it
-shopt -s histappend
 
 # For setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
 
+# Append to the history file, don't overwrite it
+shopt -s histappend
+
 # Check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# Set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
-
-# Custom prompt
-PS1='[\u@\h \W]\$ '
-#PS1='${debian_chroot:+($debian_chroot)}\u@\h (\w): '
-
-# enable color support of ls
+# Enable color support for ls
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" \
-                         || eval "$(dircolors -b)"
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" \
+                       || eval "$(dircolors -b)"
+fi
+
+# Colored man pages (http://en.wikipedia.org/wiki/ANSI_escape_code)
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;38;5;74m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[38;5;246m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[04;38;5;146m'
+
+
+# Identifying the chroot you work in (used in the prompt below)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+  debian_chroot=$(cat /etc/debian_chroot)
 fi
 
 
-### Functions
+################################# Prompt ##################################
+
+if [[ -f ~/.bash_prompt ]]; then
+  source ~/.bash_prompt
+else
+  PS1='${debian_chroot:+(debian_chroot)}[\u@\h \w]\$ '
+fi
+
+
+############################### Functions #################################
 
 # cd into dir of located file :D
 function ct { cd `locate "$1" | head -n 1 | xargs dirname`; }
 
-# convert hex to decimal
+# calculate an expresion (i.e. calc 1+1)
+function calc { echo "$@"|bc -l; }
+
+# Convert hex to decimal
 function htd { printf "%d\n" "$1";   }
 function dth { printf "0x%x\n" "$1"; }
 
-# make easy some common search commands
+# Make easy some common search commands
 function findd   { find . -iname "*$1*";                           }
 function list    { dpkg -l | grep "$1";                            }
 function pss     { ps aux | grep "$1";                             }
-function install { sudo apt-get install "$1";                      }
+function install { sudo apt-get install "$@";                      }
 function update  { sudo apt-get update;                            }
 function upgrade { sudo apt-get upgrade;                           }
-function search  { apt-cache search "$1" | grep --color=auto "$1"; }
-function policy  { apt-cache policy "$1";                          }
+function search  { apt-cache search "$@" | grep --color=auto "$1"; }
+function policy  { apt-cache policy "$@";                          }
+
+# Make a directory and change to it
+function mkcd {
+  if [ $# -ne 1 ]; then
+    echo "Usage: mkcd <dir>"
+    return 1
+  else
+    mkdir -p $1 && cd $1
+  fi
+}
 
 
-### Alias definitions
+################################ Aliases ##################################
 
 # Use a separate file for all the aliases
 if [ -f ~/.bash_aliases ]; then
@@ -76,7 +108,7 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 
-### Completion
+############################### Completion ################################
 
 # Enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
