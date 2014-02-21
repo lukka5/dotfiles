@@ -36,6 +36,7 @@ Bundle 'vim-scripts/TaskList.vim'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-shell'
 Bundle 'xolox/vim-session'
+"Bundle 'edkolev/tmuxline.vim'
 
 " Color schemes
 Bundle 'Pychimp/vim-luna'
@@ -287,6 +288,9 @@ nnoremap <silent> * *zz
 " Create new lines up/down without moving the cursor
 nmap T O<esc>j
 nmap t o<esc>k
+
+" Write protected files
+command! WP execute "w !sudo tee %"
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
