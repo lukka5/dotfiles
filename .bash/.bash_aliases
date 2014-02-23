@@ -13,9 +13,11 @@ alias ..='cd ..'
 
 alias emacs='emacs -nw'
 alias tmuxconf='vim ~/.tmux.conf'
+alias vim='vim --servername VIM'
+alias vimr='vim --remote'
 alias vimrc='vim ~/.vimrc'
-alias gvimrc='gvim ~/.vimrc'
 alias gvir='gvim --remote'
+alias gvimrc='gvim ~/.vimrc'
 alias gvims='gvim --servername'
 alias mars='java -jar /usr/local/bin/Mars4_3.jar'
 
