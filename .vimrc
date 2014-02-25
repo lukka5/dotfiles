@@ -83,6 +83,7 @@ set list listchars=tab:»·,trail:·
 " Enable syntax and color scheme
 syntax enable
 set background=dark
+set t_Co=256
 
 " We want different colorshemes for gui
 if has("gui_running")
@@ -121,6 +122,7 @@ set cursorline             " Highlight current cursor line
 set history=100            " Amount of commands and searches to remember
 set scrolloff=1            " 1 line above/below when scrolling
 set laststatus=2           " Always show the status line
+set timeout                " Timeout on maps and key codes
 set ttimeoutlen=50         " Milliseconds waited for sequence to complete
 set pastetoggle=<F2>       " Key to use for toggling paste mode
 set wildmode=list:longest  " Bash like command line completion
@@ -181,6 +183,10 @@ let g:shell_fullscreen_items = 'mT'
 " Vim Session
 let g:session_autoload = 0
 let g:session_autosave = 0
+
+" Vim move (we want recursive mapping so it also work in terminal)
+map j <a-j>
+map k <a-k>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
