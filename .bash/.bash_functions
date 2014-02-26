@@ -9,9 +9,9 @@ htd() { printf "%d\n" "$1";   }
 dth() { printf "0x%x\n" "$1"; }
 
 # Make easy some common search and apt commands
-findd()   { find . -iname "*$1*" | grep "*$1*"; }
-list()    { dpkg -l | grep "$1"; }
-pss()     { ps aux | grep "$1"; }
+findd()   { find . -iname "*$1*" | --color=auto grep "*$1*"; }
+list()    { dpkg -l | grep --color=auto "$1"; }
+pss()     { ps aux | --color=auto grep "$1"; }
 install() { sudo apt-get install "$@"; }
 remove()  { sudo apt-get remove "$@"; }
 update()  { sudo apt-get update; }
