@@ -184,10 +184,6 @@ let g:shell_fullscreen_items = 'mT'
 let g:session_autoload = 0
 let g:session_autosave = 0
 
-" Vim move (we want recursive mapping so it also work in terminal)
-map j <a-j>
-map k <a-k>
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                 Binds                                   "
@@ -343,6 +339,10 @@ augroup color
       \ hi SyntasticWarningSign ctermbg=black guibg=black
 
 augroup END
+
+" For some reason, that I don't want to investigate, it's not working if
+" I put it before the previous autogroup. So I place it here for now.
+colorscheme valloric
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
