@@ -22,7 +22,7 @@
     ui = true
 
 [credential]
-	helper = cache
+    helper = cache --timeout=7200
 
 [merge]
     tool = vimdiff
