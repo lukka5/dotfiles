@@ -229,6 +229,9 @@ nmap <silent><leader>q :call ToggleList("Quickfix List", 'c')<cr>
 " Close preview window
 nmap <silent><leader>r :pclose<cr>
 
+" Search and replace current word
+nmap <leader>R :%s/\<<C-r><C-w>\>//gc<left><left><left>
+
 " Sort selected lines (visual mode)
 vmap <silent><leader>s :sort<cr>
 
