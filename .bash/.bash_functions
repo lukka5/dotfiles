@@ -1,5 +1,5 @@
 # cd into dir of located file
-cdl() { cd "$*" && ls --color=auto; }
+cdl() { cd "$*" && ls --color=auto -l; }
 ct() { cd `locate "$1" | head -n 1 | xargs dirname`; }
 
 # Calculate an expresion (i.e. calc 1+1)
