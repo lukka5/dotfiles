@@ -10,7 +10,7 @@
 (setq make-backup-files nil)
 
 ;; minibuffer color
-(set-face-foreground 'minibuffer-prompt "white")
+;(set-face-foreground 'minibuffer-prompt "white")
 
 ;; php mode
 ;;(add-to-list 'load-path "~/.elisp/")
@@ -66,4 +66,12 @@
                              ("[ \t]+$"    (0 'my-trailing-space-face t))))))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; cursor color
+(set-cursor-color "#aaaaaa")
 
+;; get font face under cursor pos
+(defun what-face (pos)
+  (interactive "d")
+  (let ((face (or (get-char-property (point) 'read-face-name)
+                  (get-char-property (point) 'face))))
+    (if face (message "Face: %s" face) (message "No face at %d" pos))))
