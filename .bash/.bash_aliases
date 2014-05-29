@@ -1,14 +1,17 @@
 alias grep='grep --color=auto'
+alias cdiff='colordiff'
 
 alias ls='ls --color=auto'
 alias la='ls -A'
 alias lsx='ls -AX'
 
+alias l='ls -l'
 alias ll='ls -l'
 alias lla='ls -la'
 alias llh='ls -lh'
 alias llx='ls -lAhX'
 
+alias t='tree'
 alias ..='cd ..'
 
 alias emacs='emacs -nw'
