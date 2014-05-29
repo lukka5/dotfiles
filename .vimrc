@@ -37,6 +37,7 @@ Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-shell'
 Bundle 'xolox/vim-session'
 "Bundle 'edkolev/tmuxline.vim'
+Bundle 'jdonaldson/vaxe'
 
 " Color schemes
 Bundle 'Pychimp/vim-luna'
@@ -97,6 +98,8 @@ endif
 "                                Extras                                   "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Testing dvorak insert mode layout.
+"set langmap='q,\\,w,.e,pr,yt,fy,gu,ci,ro,lp,/[,=],aa,os,ed,uf,ig,dh,hj,tk,nl,s\\;,-',\\;z,qx,jc,kv,xb,bn,mm,w\\,,v.,z/,[-,]=,\"Q,<W,>E,PR,YT,FY,GU,CI,RO,LP,?{,+},AA,OS,ED,UF,IG,DH,HJ,TK,NL,S:,_\",:Z,QX,JC,KV,XB,BN,MM,W<,V>,Z?
 
 if has("gui_running")
   set guioptions=agi     " Don't show the left and right scrollbars
@@ -130,7 +133,8 @@ set textwidth=78           " Useful for reformatting text
 set formatoptions=roqnj    " See :h formatoptions
 
 set clipboard=unnamedplus,unnamed      " Use X11 default clipboard :D
-set spf=$HOME/.vim/spell/en.utf-8.add  " Spell file to use
+set spelllang=en
+set spellfile=$HOME/.vim/spell/en.utf-8.add  " Spell file to use
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -143,10 +147,12 @@ let g:ctrlp_match_window = 'top,order:ttb'
 let g:ctrlp_max_files = 1000  " Speed up ctrlp execution
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|mp3)$|[\/]\.(git)|__init__\.py'
+let g:ctrlp_prompt_mappings = { 'PrtClearCache()': ['<F9>'] }
 
 " Syntastic
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
+let g:syntastic_stl_format = 's[%F](%t)'
 
 " Tagbar
 let g:tagbar_width = 24
@@ -166,8 +172,31 @@ nmap <silent><c-y> :NERDTree<cr><c-w>p:NERDTreeFind<cr>
 
 " Vim-airline
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#tagbar#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#whitespace#trailing_format = 't[%s]'
+let g:airline#extensions#whitespace#mixed_indent_format = 'mx[%s]'
+let g:airline_mode_map = {
+    \ '__' : '-',
+    \ 'n'  : 'N',
+    \ 'i'  : 'I',
+    \ 'R'  : 'R',
+    \ 'c'  : 'C',
+    \ 'v'  : 'V',
+    \ 'V'  : 'V',
+    \ '' : 'V',
+    \ 's'  : 'S',
+    \ 'S'  : 'S',
+    \ '' : 'S',
+    \ }
+" use old separator symbols
+let g:airline#extensions#tabline#left_sep = '⮀'
+let g:airline#extensions#tabline#right_sep = '⮂'
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_left_sep = '⮀'
+let g:airline_right_sep = '⮂'
 
 " YouCompleteMe
 let g:ycm_confirm_extra_conf = 0
@@ -183,6 +212,10 @@ let g:shell_fullscreen_items = 'mT'
 " Vim Session
 let g:session_autoload = 0
 let g:session_autosave = 0
+
+" Vaxe
+set autowrite
+let g:vaxe_enable_acp_defaults = 0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -339,7 +372,9 @@ augroup color
       \ hi SyntasticError ctermbg=236 guibg=#2d2d2d |
       \ hi SyntasticWarning ctermbg=236 guibg=#2d2d2d |
       \ hi SyntasticErrorSign ctermfg=245 guifg=#6F6F6C |
-      \ hi SyntasticWarningSign ctermbg=black guibg=black
+      \ hi SyntasticWarningSign ctermbg=black guibg=black |
+      \ hi SpellBad ctermbg=black ctermfg=9 |
+      \ hi SpellCap ctermbg=black ctermfg=12
 
 augroup END
 
