@@ -32,7 +32,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/noerrmsg.vim'
-Bundle 'vim-scripts/TaskList.vim'
+"Bundle 'vim-scripts/TaskList.vim'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-shell'
 Bundle 'xolox/vim-session'
@@ -55,7 +55,7 @@ Bundle '~/.vim/bundle/local_colors/.git'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                Indent                                   "
+"                                 Indent                                  "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -95,17 +95,14 @@ endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                Extras                                   "
+"                                Extras                                 {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Testing dvorak insert mode layout.
-"set langmap='q,\\,w,.e,pr,yt,fy,gu,ci,ro,lp,/[,=],aa,os,ed,uf,ig,dh,hj,tk,nl,s\\;,-',\\;z,qx,jc,kv,xb,bn,mm,w\\,,v.,z/,[-,]=,\"Q,<W,>E,PR,YT,FY,GU,CI,RO,LP,?{,+},AA,OS,ED,UF,IG,DH,HJ,TK,NL,S:,_\",:Z,QX,JC,KV,XB,BN,MM,W<,V>,Z?
 
 if has("gui_running")
-  set guioptions=agi     " Don't show the left and right scrollbars
+  set guioptions=agi        " Don't show the left and right scrollbars
   set guicursor=a:blinkon0  " Stop cursor blinking
   set lines=50 columns=175  " Maximize gvim at start
-
   " Use specially patched font for vim-airline
   set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
 endif
@@ -217,6 +214,12 @@ let g:session_autosave = 0
 set autowrite
 let g:vaxe_enable_acp_defaults = 0
 
+" Easymotion
+let g:EasyMotion_mapping_W = ''
+let g:EasyMotion_mapping_e = ''
+let g:EasyMotion_mapping_n = ''
+let g:EasyMotion_leader_key = '<Leader>'
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                 Binds                                   "
@@ -240,7 +243,7 @@ nmap <silent><leader>d :bp<bar>sp<bar>bn<bar>bd<cr>
 nmap <silent><leader>e :hid<cr>
 
 " Handy shortcut for toggling the foldcolumn (only 1/0 deep)
-nmap <silent><leader>F
+nmap <silent><leader><leader>F
       \ :if &fdc==0 \| set fdc=1 \| else \| set fdc=0 \| endif<cr>
 
 " Toggle OverLength highlight group
@@ -276,7 +279,7 @@ nmap <silent><leader>v :e $HOME/.vimrc<cr>
 nmap <silent><leader>V :w<cr>:so $HOME/.vimrc<cr>:echo "vimrc reloaded!"<cr>
 
 " Make new vertical split and focus cursor on it
-nmap <silent><leader>w :vsplit<cr><c-w><c-l>
+nmap <silent><leader><leader>w :vsplit<cr><c-w><c-l>
 
 " Delete all trailing white spaces in current buffer
 nmap <silent><leader>W :%s/\s\+$//<cr>:let @/=''<cr>
