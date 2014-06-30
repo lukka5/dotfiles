@@ -37,6 +37,7 @@ alias rmbk='rm *~'
 alias al='alsamixer'
 alias pst='ps -aux | tail'
 alias ev='ebook-viewer'
+alias ice='iceweasel'
 
 alias valgrind='valgrind --leak-check=full --show-reachable=yes'
 alias gitfamaf='ssh gitmaster@git.famaf.unc.edu.ar'
