@@ -2,7 +2,6 @@
 "                                 Start                                   "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
 " Use Vim features
 set nocompatible
 
@@ -15,7 +14,6 @@ call vundle#rc()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Bundles                                  "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 
 " Utilities
 Bundle 'Lokaltog/vim-easymotion'
@@ -58,7 +56,6 @@ Bundle '~/.vim/bundle/local_colors/.git'
 "                                 Indent                                  "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
 " Enable plugin and indent detection (needs to be after Bundle commands)
 filetype plugin indent on
 
@@ -80,7 +77,6 @@ set list listchars=tab:»·,trail:·
 "                                 Color                                   "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
 " Enable syntax and color scheme
 syntax enable
 set background=dark
@@ -97,7 +93,6 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Extras                                 {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 
 if has("gui_running")
   set guioptions=agi        " Don't show the left and right scrollbars
@@ -138,13 +133,12 @@ set spellfile=$HOME/.vim/spell/en.utf-8.add  " Spell file to use
 "                                Plugins                                  "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
 " Ctrlp
+let g:ctrlp_max_files = 1000  " speed up execution
 let g:ctrlp_match_window = 'top,order:ttb'
-let g:ctrlp_max_files = 1000  " Speed up ctrlp execution
-let g:ctrlp_working_path_mode = 0
+let g:ctrlp_prompt_mappings = { 'PrtClearCache()': ['<F9>'] }  " update cache
 let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|mp3)$|[\/]\.(git)|__init__\.py'
-let g:ctrlp_prompt_mappings = { 'PrtClearCache()': ['<F9>'] }
+let g:ctrlp_working_path_mode = 0
 
 " Syntastic
 let g:syntastic_error_symbol='✗'
@@ -186,15 +180,18 @@ let g:airline_mode_map = {
     \ 'S'  : 'S',
     \ '' : 'S',
     \ }
-" use old separator symbols
-let g:airline#extensions#tabline#left_sep = '⮀'
-let g:airline#extensions#tabline#right_sep = '⮂'
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_symbols.branch = '⎇ '
 let g:airline_symbols.linenr = '⭡'
-let g:airline_left_sep = '⮀'
-let g:airline_right_sep = '⮂'
+let g:airline_symbols.paste = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.whitespace = '!'
 
 " YouCompleteMe
 let g:ycm_confirm_extra_conf = 0
@@ -226,7 +223,6 @@ let g:EasyMotion_leader_key = '<Leader>'
 "                                 Binds                                   "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
 " Use comma as our <leader> key
 let mapleader=","
 
@@ -237,7 +233,6 @@ nmap <silent><leader>` :nohlsearch<cr>
 nmap <silent><leader>a ggVG
 
 " Delete current buffer keeping window layout intact
-
 nmap <silent><leader>d :bp<bar>sp<bar>bn<bar>bd<cr>
 
 " Close current window
@@ -339,7 +334,6 @@ command! WP execute "w !sudo tee %"
 "                                Autocmd                                  "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
 augroup vimrc
 
   " Clear all autocmd in the group. So autocmds don't appear twice when
@@ -391,7 +385,6 @@ colorscheme valloric
 "                               Functions                                 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
 " Toggle OverLenght highlight group
 let g:overlengthon = 1
 function! ToogleOverLength()
@@ -414,7 +407,8 @@ endfunction
 
 function! ToggleList(bufname, pfx)
   let buflist = GetBufferList()
-  for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
+  for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'),
+        \ 'str2nr(matchstr(v:val, "\\d\\+"))')
     if bufwinnr(bufnum) != -1
       exec(a:pfx.'close')
       return
