@@ -106,7 +106,8 @@ if &t_Co > 255
     hi Boolean         ctermfg=226  ctermbg=NONE cterm=NONE
     hi Character       ctermfg=186  ctermbg=NONE cterm=NONE
     hi Number          ctermfg=226  ctermbg=NONE cterm=NONE
-    hi String          ctermfg=186  ctermbg=NONE cterm=NONE
+    hi String          ctermfg=34  ctermbg=NONE cterm=NONE
+    "hi String          ctermfg=186  ctermbg=NONE cterm=NONE
     hi Conditional     ctermfg=63   ctermbg=NONE cterm=NONE
     hi Constant        ctermfg=226  ctermbg=NONE cterm=NONE
     hi Cursor          ctermfg=16   ctermbg=255  cterm=NONE
@@ -153,7 +154,6 @@ if &t_Co > 255
     hi Repeat          ctermfg=63   ctermbg=NONE cterm=NONE
     hi Search          ctermfg=231  ctermbg=239  cterm=NONE
 
-    " marks column
     hi SignColumn      ctermfg=148  ctermbg=235  cterm=NONE
     hi SpecialChar     ctermfg=63   ctermbg=NONE cterm=bold
     hi SpecialComment  ctermfg=34   ctermbg=NONE cterm=bold
@@ -180,7 +180,8 @@ if &t_Co > 255
     hi WildMenu        ctermfg=81   ctermbg=16   cterm=NONE
 
     hi Normal          ctermfg=255  ctermbg=16   cterm=NONE
-    hi Comment         ctermfg=34   ctermbg=NONE cterm=NONE
+    hi Comment         ctermfg=244   ctermbg=NONE cterm=NONE
+    "hi Comment         ctermfg=34   ctermbg=NONE cterm=NONE
     hi CursorLine      ctermfg=NONE ctermbg=234  cterm=NONE
     hi CursorColumn    ctermfg=NONE ctermbg=236  cterm=NONE
     hi LineNr          ctermfg=237  ctermbg=234  cterm=NONE
