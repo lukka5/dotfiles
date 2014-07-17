@@ -36,6 +36,9 @@ Bundle 'xolox/vim-shell'
 Bundle 'xolox/vim-session'
 "Bundle 'edkolev/tmuxline.vim'
 Bundle 'jdonaldson/vaxe'
+Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'junegunn/goyo.vim'
+Bundle 'junegunn/limelight.vim'
 
 " Color schemes
 Bundle 'Pychimp/vim-luna'
@@ -376,6 +379,11 @@ augroup color
       \ hi SyntasticWarningSign ctermbg=black guibg=black |
       \ hi SpellBad ctermbg=black ctermfg=9 |
       \ hi SpellCap ctermbg=black ctermfg=12
+
+  au VimEnter * RainbowParenthesesToggle
+  au Syntax * RainbowParenthesesLoadRound
+  au Syntax * RainbowParenthesesLoadSquare
+  au Syntax * RainbowParenthesesLoadBraces
 
 augroup END
 
