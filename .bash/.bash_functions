@@ -10,7 +10,7 @@ htd() { printf "%d\n" "$1";   }
 dth() { printf "0x%x\n" "$1"; }
 
 # Make easy some common search and apt commands
-findd()   { find . -iname "*$1*" | grep --color=auto "*$1*"; }
+findd()   { find . -iname "*$1*" | grep -i --color=auto "$1"; }
 list()    { dpkg -l | grep --color=auto "$1"; }
 pss()     { ps aux | grep --color=auto "$1"; }
 install() { sudo apt-get install "$@"; }
