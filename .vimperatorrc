@@ -13,6 +13,10 @@ nmap 0 :tabrewind<cr>
 nmap <c-o> gt
 nmap <c-i> gT
 
+" Easily move tabs
+nmap <c-s-o> :tabmove +1<cr>
+nmap <c-s-i> :tabmove -1<cr>
+
 " Bash-like shortcuts
 cmap <c-f> <Right>
 cmap <c-b> <Left>
