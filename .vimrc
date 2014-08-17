@@ -251,6 +251,13 @@ nmap <silent><leader><leader>F
 " Toggle OverLength highlight group
 nmap <silent><leader>h :call ToogleOverLength()<cr>
 
+" Get highlight group under cursor.
+nmap <silent><leader>H :echo "hi<" .
+      \ synIDattr(synID(line("."),col("."),1),"name") . '> trans<' .
+      \ synIDattr(synID(line("."),col("."),0),"name") . "> lo<" .
+      \ synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"
+      \ <cr>
+
 " Toggle highlight of list chars (tab, trail, eol, ...)
 nmap <silent><leader>l :set list!<cr>
 
