@@ -358,7 +358,8 @@ augroup vimrc
 augroup END
 
 
-augroup color
+let g:html_file = 0
+augroup mycolor
 
   " Clear all autocmd in the group. So autocmds don't appear twice when
   " VIM RC is sourced twice
@@ -383,9 +384,12 @@ augroup color
   au VimEnter * RainbowParenthesesToggle
   au Syntax * RainbowParenthesesLoadRound
   au Syntax * RainbowParenthesesLoadSquare
-  au Syntax * RainbowParenthesesLoadBraces
+  " Set Rainbow braces only on no html files
+  au Syntax html call SetHtml()
+  au Syntax * call RainbowBraces()
 
 augroup END
+
 
 " For some reason, that I don't want to investigate, it's not working if
 " I put it before the previous autogroup. So I place it here for now.
@@ -395,6 +399,18 @@ colorscheme valloric
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               Functions                                 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+function! SetHtml()
+  let g:html_file = 1
+  set filetype=htmldjango
+endfunction
+
+" Set Rainbow braces only on no html files
+function! RainbowBraces()
+  if g:html_file == 0
+    RainbowParenthesesLoadBraces
+  endif
+endfunction
 
 " Toggle OverLenght highlight group
 let g:overlengthon = 1
