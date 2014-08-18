@@ -202,7 +202,10 @@ let g:airline_symbols.whitespace = '!'
 " YouCompleteMe
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
-nmap <silent><leader>j :YcmCompleter GoToDefinitionElseDeclaration<cr>
+nmap <silent><leader>y :YcmCompleter GoTo<cr>
+let g:ycm_seed_identifiers_with_syntax = 1  " Programming language's keyword
+let g:ycm_complete_in_comments = 1 " Completion in comments
+let g:ycm_complete_in_strings = 1 " Completion in string
 
 " Python file type plugin
 let g:python_fold = 0
