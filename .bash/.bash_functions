@@ -10,15 +10,15 @@ htd() { printf "%d\n" "$1";   }
 dth() { printf "0x%x\n" "$1"; }
 
 # Make easy some common search and apt commands
-findd()   { find . -iname "*$1*" | grep -i --color=auto "$1"; }
-list()    { dpkg -l | grep --color=auto "$1"; }
-pss()     { ps aux | grep --color=auto "$1"; }
+findd()   { find . -iname "*$1*" | grep --color=auto -i "$1"; }
+list()    { dpkg -l | grep --color=auto -i "$1"; }
+pss()     { ps aux | grep --color=auto -i "$1"; }
 install() { sudo apt-get install "$@"; }
 remove()  { sudo apt-get remove "$@"; }
 update()  { sudo apt-get update; }
 upgrade() { sudo apt-get upgrade; }
 policy()  { apt-cache policy "$@"; }
-search()  { apt-cache search "$@" | grep --color=auto "$1"; }
+search()  { apt-cache search "$@" | grep --color=auto -i "$1"; }
 
 # Make a directory and change to it
 mkcd() {
