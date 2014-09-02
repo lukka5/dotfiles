@@ -3,17 +3,21 @@
     email = 2lucasg@gmail.com
 
 [alias]
-    co = checkout
-    ci = commit
     st = status
+    ci = commit
     br = branch
+    co = checkout
     sl = stash list
-    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-    top = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short -5
+    ch = cherry -v
     last = log -1 -p HEAD
     unstage = reset HEAD --
     visual = !gitg
     conflicts = diff --name-only --diff-filter=U
+    who = shortlog -s --
+    hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)[%an]%Creset' --abbrev-commit --date=relative
+    ls = log --graph --pretty=format:'%Cred%h %Cgreen%ad%Creset -%C(yellow)%d %Creset%s%C(bold blue) [%cn]%Creset' --decorate --date=short
+    ll = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)[%an]%Creset' --decorate --numstat
+    la = "!git config -l | grep alias | cut -c 7-" # list aliases
 
 [core]
     editor = vim
