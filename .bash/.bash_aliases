@@ -23,7 +23,7 @@ alias gvir='gvim --remote'
 alias gvimrc='gvim ~/.vimrc'
 alias mars='java -jar /usr/local/bin/Mars4_3.jar'
 alias evince='evince 2>&-'
-alias eog='eog 2>&-'
+alias eog='eog 2>/dev/null'
 
 alias so='source ~/.bashrc'
 alias bashrc='vim ~/.bashrc'
