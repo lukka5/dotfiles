@@ -17,6 +17,9 @@ nmap <c-i> gT
 nmap <c-s-o> :tabmove +1<cr>
 nmap <c-s-i> :tabmove -1<cr>
 
+" Prev buffer
+nmap `` :b #<cr>
+
 " Bash-like shortcuts
 cmap <c-f> <Right>
 cmap <c-b> <Left>
