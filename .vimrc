@@ -39,6 +39,7 @@ Bundle 'jdonaldson/vaxe'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'junegunn/goyo.vim'
 Bundle 'junegunn/limelight.vim'
+Bundle 'xolox/vim-pyref'
 
 " Color schemes
 Bundle 'Pychimp/vim-luna'
@@ -227,6 +228,8 @@ let g:EasyMotion_mapping_e = ''
 let g:EasyMotion_mapping_n = ''
 let g:EasyMotion_leader_key = '<Leader>'
 
+" PyRef
+"let g:pyref_mapping = 'K'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                 Binds                                   "
@@ -253,6 +256,9 @@ nmap <silent><leader><leader>F
 
 " Toggle OverLength highlight group
 nmap <silent><leader>h :call ToogleOverLength()<cr>
+
+" Open current buffer on iceweasel
+nmap <silent><leader>i :!iceweasel %<cr>
 
 " Get highlight group under cursor.
 nmap <silent><leader>H :echo "hi<" .
@@ -345,6 +351,9 @@ nmap t o<esc>k
 " Write protected files
 command! WP execute "w !sudo tee %"
 
+" Use normal `.' in visual mode.
+vnoremap . :normal .<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Autocmd                                  "
@@ -357,13 +366,19 @@ augroup vimrc
   au!
 
   " When editing a file, always jump to the last known cursor position
-  au BufReadPost *
-      \ if line("'\"") > 1 && line("'\"") <= line("$") |
-      \   exe "normal! g`\"" |
-      \ endif
+  "au BufReadPost *
+      "\ if line("'\"") > 1 && line("'\"") <= line("$") |
+      "\   exe "normal! g`\"" |
+      "\ endif
 
   " Refresh beyond 79 column highlighting
   au BufWinEnter,WinEnter * match OverLength '\%>79v.\+'
+
+  " Don't move windows when buffer switching
+  if v:version >= 700
+    au BufLeave * let b:winview = winsaveview()
+    au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
+  endif
 
 augroup END
 
