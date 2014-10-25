@@ -1,11 +1,11 @@
 if tput setaf 1 &> /dev/null; then
   tput sgr0
   if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
-    MAGENTA=$(tput setaf 9)
-    ORANGE=$(tput setaf 172)
-    GREEN=$(tput setaf 190)
-    PURPLE=$(tput setaf 141)
-    WHITE=$(tput setaf 0)
+    BLUE=$(tput setaf 25)
+    GREEN1=$(tput setaf 70)
+    PURPLE=$(tput setaf 105)
+    GREEN2=$(tput setaf 106)
+    WHITE=$(tput setaf 242)
   else
     MAGENTA=$(tput setaf 5)
     ORANGE=$(tput setaf 4)
@@ -46,7 +46,7 @@ prompt_sign() {
     echo \$
 }
 
-export PS1="\[${BOLD}${MAGENTA}\]\u \[$WHITE\]at \[$ORANGE\]\h \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$RESET\]\n\[${BOLD}${WHITE}\]\$(prompt_sign) \[$RESET\]"
+export PS1="\[${BOLD}${BLUE}\]\u \[$WHITE\]at \[$GREEN1\]\h \[$WHITE\]in \[$PURPLE\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$GREEN2\]\$(parse_git_branch)\[$RESET\]\n\[${BOLD}${WHITE}\]\$(prompt_sign) \[$RESET\]"
 export PS2="\[$ORANGE\]→ \[$RESET\]"
 
 
