@@ -7,14 +7,16 @@ esac
 ############################### Settings ##################################
 
 # Decide wich terminal to use and launch tmux
-if [ -e /usr/share/terminfo/g/gnome-256color ]; then
+if [ -e /usr/share/terminfo/s/screen-256color-s ]; then
+  export TERM='screen-256color'
+elif [ -e /usr/share/terminfo/g/gnome-256color ]; then
   export TERM='gnome-256color'
 else
   export TERM='xterm-256color'
 fi
 
 # If we have tmux, start it replacing the shell with it
-if which tmux 2>&1 >/dev/null && test -z "$TMUX"; then
+if which tmux > /dev/null && test -z "$TMUX"; then
   tmux new -d -s default
   exec tmux attach -t default
 fi
