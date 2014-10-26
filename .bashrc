@@ -7,7 +7,8 @@ esac
 ############################### Settings ##################################
 
 # Decide wich terminal to use and launch tmux
-if [ -e /usr/share/terminfo/s/screen-256color-s ]; then
+if [ -e /usr/share/terminfo/s/screen-256color-s ]
+   [ -e /lib/terminfo/s/screen-256color ]; then
   export TERM='screen-256color'
 elif [ -e /usr/share/terminfo/g/gnome-256color ]; then
   export TERM='gnome-256color'
