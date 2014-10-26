@@ -126,7 +126,7 @@ let g:python_fold = 0
 let g:shell_fullscreen_items = 'mT'
 
 " Vim-move
-let g:move_key_modifier = 'C'
+let g:move_key_modifier = 'S'
 
 " Ctrlp
 let g:ctrlp_max_files = 1000  " Speed up execution
@@ -278,6 +278,9 @@ cnoremap <c-e> <end>
 cnoremap <c-a> <home>
 cnoremap <c-d> <del>
 
+" Kill command line except for the command plus a space
+cnoremap <c-k> <c-\>esplit(getcmdline(), " ")[0]<cr><space>
+
 " Use space key to toggle folds
 nnoremap <space> za
 
@@ -301,7 +304,7 @@ nnoremap k gk
 " Center searched phrases when cycling through them
 nnoremap <silent>n nzz
 nnoremap <silent>N Nzz
-nnoremap <silent> * *zz
+nnoremap <silent>* *zz
 
 " Create new lines up/down without moving the cursor
 nnoremap T O<esc>j
@@ -315,6 +318,19 @@ vnoremap . :normal .<cr>
 
 " (Shift + 0) `)` == `^` (First column of line)
 noremap ) ^
+
+" Lists lines containing the word under the cursor. Type the line number
+" followed by <CR> to jump to the corresponding line.
+nnoremap [I [I:
+xnoremap [I "vy:<C-u>ilist /<C-r>v<CR>:
+
+" Same as above but for 'defines'
+nnoremap [D [D:
+xnoremap [D "vy:<C-u>dlist /<C-r>v<CR>:
+
+" Populates the command-line with this stub
+nnoremap ,I :ilist /
+nnoremap ,D :dlist /
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
