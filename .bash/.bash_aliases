@@ -43,12 +43,13 @@ alias ice='iceweasel'
 
 alias valgrind='valgrind --leak-check=full --show-reachable=yes'
 alias gitfamaf='ssh gitmaster@git.famaf.unc.edu.ar'
+alias famaf='ssh ldg0112@mail.famaf.unc.edu.ar'
+alias mini='ssh adc201441@mini.famaf.unc.edu.ar'
 
-alias howto='vim ~/Dropbox/how-to'
+alias howto='vim ~/Dropbox/howto'
 alias links='vim ~/Dropbox/links'
 alias notes='vim ~/Dropbox/notes'
 alias shots='eog ~/Pictures/shots/'
-alias famaf='ssh ldg0112@mail.famaf.unc.edu.ar'
 alias maps='eog ~/Dropbox/img/gameofthrones/maps/*'
 
 alias enq='rhythmbox-client --enqueue'
