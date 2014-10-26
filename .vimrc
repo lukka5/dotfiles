@@ -30,30 +30,17 @@ Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/noerrmsg.vim'
-"Bundle 'vim-scripts/TaskList.vim'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-shell'
-Bundle 'xolox/vim-session'
-"Bundle 'edkolev/tmuxline.vim'
-Bundle 'jdonaldson/vaxe'
 Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'junegunn/goyo.vim'
-Bundle 'junegunn/limelight.vim'
-Bundle 'xolox/vim-pyref'
 
 " Color schemes
 Bundle 'Pychimp/vim-luna'
 Bundle 'Valloric/vim-valloric-colorscheme'
-Bundle 'altercation/vim-colors-solarized.git'
 Bundle 'baskerville/bubblegum'
-Bundle 'cschlueter/vim-wombat'
 Bundle 'gilsondev/tomorrow-theme-vim'
-Bundle 'morhetz/gruvbox'
 Bundle 'nanotech/jellybeans.vim'
-Bundle 'sjl/badwolf'
 Bundle 'tomasr/molokai'
-Bundle 'vim-scripts/Mustang2'
-Bundle '~/.vim/bundle/local_colors/.git'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -63,14 +50,11 @@ Bundle '~/.vim/bundle/local_colors/.git'
 " Enable plugin and indent detection (needs to be after Bundle commands)
 filetype plugin indent on
 
-" Highlight characters beyond the 79 column
-hi OverLength ctermbg=233 guibg=#2d2d2d
-
-" Indentation
 set autoindent
 set copyindent
 set smartindent
 set expandtab
+set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set backspace=indent,eol,start
@@ -81,20 +65,46 @@ set list listchars=tab:»·,trail:·
 "                                 Color                                   "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Enable syntax and color scheme
 syntax enable
+set t_Co=256  " Support for 256 color terminals
 set background=dark
-set t_Co=256
+colorscheme valloric
 
-" We want different colorshemes for gui
+" Highlight characters beyond the 79 column
+hi OverLength ctermbg=236
+
+" We want a different colorsheme for the gui
 if has("gui_running")
-  colorscheme luna-term
+  colorscheme luna
 endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                Extras                                 {{{
+"                                Extras                                   "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set number                 " Enable line number gutter
+set ruler                  " Show current cursor position in status bar
+set hidden                 " Allow hidden buffers (even modified ones)
+set incsearch              " Highlight as I am searching
+set smartcase              " But make it sensitive when it matters
+set ignorecase             " Case insensitive searching
+set noshowmode             " Don't show mode in status bar
+set noswapfile             " Don't create swap files
+set cursorline             " Highlight current cursor line
+set history=100            " Amount of commands and searches to remember
+set scrolloff=1            " 1 line above/below when scrolling
+set laststatus=2           " Always show the status line
+set timeout                " Timeout on maps and key codes
+set ttimeoutlen=50         " Milliseconds waited for sequence to complete
+set pastetoggle=<F2>       " Key to use for toggling paste mode
+set wildmode=list:longest  " Bash like command line completion
+set textwidth=72           " Useful for reformatting text/comments
+set formatoptions=roqnj    " See :h formatoptions
+set clipboard=unnamedplus,unnamed  " Use X11 default clipboard :D
+
+set spelllang=en
+set spellfile=$HOME/.vim/spell/en.utf-8.add  " Spell file to use
 
 if has("gui_running")
   set guioptions=agi        " Don't show the left and right scrollbars
@@ -104,52 +114,35 @@ if has("gui_running")
   set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
 endif
 
-set number                 " Enable line number gutter
-set ruler                  " Show current cursor position in status bar
-set hidden                 " Allow hidden buffers (even modified ones)
-"set hlsearch               " Highlight searched phrases
-set incsearch              " Highlight as I am searching
-set smartcase              " But make it sensitive when it matters
-set ignorecase             " Case insensitive searching
-set noshowmode             " Don't show mode in status bar
-set noswapfile             " Don't create swap files
-set cursorline             " Highlight current cursor line
-"set showmatch              " Show matching bracket
-"set matchtime=2            " Reduces show matching blink time
-set history=100            " Amount of commands and searches to remember
-set scrolloff=1            " 1 line above/below when scrolling
-set laststatus=2           " Always show the status line
-set timeout                " Timeout on maps and key codes
-set ttimeoutlen=50         " Milliseconds waited for sequence to complete
-set pastetoggle=<F2>       " Key to use for toggling paste mode
-set wildmode=list:longest  " Bash like command line completion
-set textwidth=78           " Useful for reformatting text
-set formatoptions=roqnj    " See :h formatoptions
-
-set clipboard=unnamedplus,unnamed      " Use X11 default clipboard :D
-set spelllang=en
-set spellfile=$HOME/.vim/spell/en.utf-8.add  " Spell file to use
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Plugins                                  "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Python file type plugin
+let g:python_fold = 0
+
+" Vim Shell
+let g:shell_fullscreen_items = 'mT'
+
+" Vim-move
+let g:move_key_modifier = 'C'
+
 " Ctrlp
-let g:ctrlp_max_files = 1000  " speed up execution
-let g:ctrlp_match_window = 'top,order:ttb'
-let g:ctrlp_prompt_mappings = { 'PrtClearCache()': ['<F9>'] }  " update cache
+let g:ctrlp_max_files = 1000  " Speed up execution
+let g:ctrlp_match_window = 'top,order:ttb'  " Show in top
+let g:ctrlp_prompt_mappings = { 'PrtClearCache()': ['<F9>'] }  " Update cache
 let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|mp3)$|[\/]\.(git)|__init__\.py'
-let g:ctrlp_working_path_mode = 0
+let g:ctrlp_working_path_mode = 0  " Path's root where vim was opened
 
 " Syntastic
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
-let g:syntastic_stl_format = 's[%F](%t)'
+let g:syntastic_stl_format = 's[%F](%t)'  " Abbrev msg on statusline
 
 " Tagbar
 let g:tagbar_width = 24
-let g:tagbar_sort = 0
+let g:tagbar_sort = 1
 let g:tagbar_autoclose = 1
 let g:tagbar_autofocus = 1
 let g:tagbar_map_help = "?"
@@ -164,9 +157,9 @@ nmap <silent><c-n> :NERDTreeToggle<cr>
 nmap <silent><c-y> :NERDTree<cr><c-w>p:NERDTreeFind<cr>
 
 " Vim-airline
-let g:airline_powerline_fonts = 1
 let g:airline_theme = 'murmur'
-let g:airline#extensions#tagbar#enabled = 0
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#trailing_format = 't[%s]'
 let g:airline#extensions#whitespace#mixed_indent_format = 'mx[%s]'
@@ -201,35 +194,22 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.whitespace = '!'
 
 " YouCompleteMe
-let g:ycm_confirm_extra_conf = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_complete_in_comments = 1
+let g:ycm_complete_in_strings = 1
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_seed_identifiers_with_syntax = 1
 nmap <silent><leader>y :YcmCompleter GoTo<cr>
-let g:ycm_seed_identifiers_with_syntax = 1  " Programming language's keyword
-let g:ycm_complete_in_comments = 1 " Completion in comments
-let g:ycm_complete_in_strings = 1 " Completion in string
-
-" Python file type plugin
-let g:python_fold = 0
-
-" Vim Shell
-let g:shell_fullscreen_items = 'mT'
-
-" Vim Session
-let g:session_autoload = 0
-let g:session_autosave = 0
-
-" Vaxe
-set autowrite
-let g:vaxe_enable_acp_defaults = 0
 
 " Easymotion
-let g:EasyMotion_mapping_W = ''
-let g:EasyMotion_mapping_e = ''
+let g:EasyMotion_mapping_t = ''
+let g:EasyMotion_mapping_T = ''
 let g:EasyMotion_mapping_n = ''
-let g:EasyMotion_leader_key = '<Leader>'
+let g:EasyMotion_mapping_N = ''
+let g:EasyMotion_leader_key = ''
 
-" PyRef
-"let g:pyref_mapping = 'K'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                 Binds                                   "
@@ -240,69 +220,48 @@ let mapleader=","
 
 " Stop highlighted search
 nmap <silent><leader>` :nohlsearch<cr>
-
 " Select all
 nmap <silent><leader>a ggVG
-
 " Delete current buffer keeping window layout intact
 nmap <silent><leader>d :bp<bar>sp<bar>bn<bar>bd<cr>
-
 " Close current window
 nmap <silent><leader>e :hid<cr>
-
-" Handy shortcut for toggling the foldcolumn (only 1/0 deep)
-nmap <silent><leader><leader>F
-      \ :if &fdc==0 \| set fdc=1 \| else \| set fdc=0 \| endif<cr>
-
 " Toggle OverLength highlight group
 nmap <silent><leader>h :call ToogleOverLength()<cr>
-
-" Open current buffer on iceweasel
-nmap <silent><leader>i :!iceweasel %<cr>
-
 " Get highlight group under cursor.
 nmap <silent><leader>H :echo "hi<" .
       \ synIDattr(synID(line("."),col("."),1),"name") . '> trans<' .
       \ synIDattr(synID(line("."),col("."),0),"name") . "> lo<" .
       \ synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"
       \ <cr>
-
+" Open current buffer on iceweasel
+nmap <silent><leader>i :!iceweasel %<cr>
 " Toggle highlight of list chars (tab, trail, eol, ...)
 nmap <silent><leader>l :set list!<cr>
-
 " Toggle line number gutter
 nmap <silent><leader>n :set number!<cr>
-
 " Make current window the only one
 nmap <silent><leader>o :on<cr>
-
 " Toggle Quicklist and Locationlist
-nmap <silent><leader>Q :call ToggleList("Location List", 'l')<cr>
 nmap <silent><leader>q :call ToggleList("Quickfix List", 'c')<cr>
-
+nmap <silent><leader>Q :call ToggleList("Location List", 'l')<cr>
 " Close preview window
 nmap <silent><leader>r :pclose<cr>
-
 " Search and replace current word
 nmap <leader>R :%s/\<<C-r><C-w>\>//gc<left><left><left>
-
 " Sort selected lines (visual mode)
 vmap <silent><leader>s :sort<cr>
-
 " Toggle spell checking
 nmap <silent><leader>S :setlocal spell!<cr>
-
 " Edit/load VIM RC file
 nmap <silent><leader>v :e $HOME/.vimrc<cr>
 nmap <silent><leader>V :w<cr>:so $HOME/.vimrc<cr>:echo "vimrc reloaded!"<cr>
-
 " Make new vertical split and focus cursor on it
 nmap <silent><leader><leader>w :vsplit<cr><c-w><c-l>
-
 " Delete all trailing white spaces in current buffer
 nmap <silent><leader>W :%s/\s\+$//<cr>:let @/=''<cr>
 
-" Easily switch tabs in vim-airline's tabline plugin
+" Switch buffers
 nmap <silent><c-o> :bnext<cr>
 nmap <silent><c-i> :bprevious<cr>
 
@@ -345,14 +304,17 @@ nnoremap <silent>N Nzz
 nnoremap <silent> * *zz
 
 " Create new lines up/down without moving the cursor
-nmap T O<esc>j
-nmap t o<esc>k
+nnoremap T O<esc>j
+nnoremap t o<esc>k
 
 " Write protected files
 command! WP execute "w !sudo tee %"
 
 " Use normal `.' in visual mode.
-vnoremap . :normal .<CR>
+vnoremap . :normal .<cr>
+
+" (Shift + 0) `)` == `^` (First column of line)
+noremap ) ^
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -360,75 +322,47 @@ vnoremap . :normal .<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 augroup vimrc
-
-  " Clear all autocmd in the group. So autocmds don't appear twice when
-  " VIM RC is sourced twice
   au!
-
-  " When editing a file, always jump to the last known cursor position
-  "au BufReadPost *
-      "\ if line("'\"") > 1 && line("'\"") <= line("$") |
-      "\   exe "normal! g`\"" |
-      "\ endif
-
   " Refresh beyond 79 column highlighting
   au BufWinEnter,WinEnter * match OverLength '\%>79v.\+'
-
-  " Don't move windows when buffer switching
+  " Don't move cursor when buffer switching
   if v:version >= 700
     au BufLeave * let b:winview = winsaveview()
     au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
   endif
-
 augroup END
 
 
 let g:html_file = 0
-augroup mycolor
-
-  " Clear all autocmd in the group. So autocmds don't appear twice when
-  " VIM RC is sourced twice
+augroup ft
   au!
-
-  " I like dark background regardless of the current color scheme
-  " (236,#2d2d2d == greyish color)
-  au VimEnter,ColorScheme *
-      \ hi Normal ctermbg=black guibg=black |
-      \ hi LineNr ctermbg=black guibg=black |
-      \ hi Folded ctermbg=233 guibg=#111111 |
-      \ hi FoldColumn ctermbg=black guibg=black |
-      \ hi SignColumn ctermbg=black guibg=black |
-      \ hi OverLength ctermbg=233 guibg=#2d2d2d |
-      \ hi SyntasticError ctermbg=236 guibg=#2d2d2d |
-      \ hi SyntasticWarning ctermbg=236 guibg=#2d2d2d |
-      \ hi SyntasticErrorSign ctermfg=245 guifg=#6F6F6C |
-      \ hi SyntasticWarningSign ctermbg=black guibg=black |
-      \ hi SpellBad ctermbg=black ctermfg=9 |
-      \ hi SpellCap ctermbg=black ctermfg=12
-
-  au VimEnter * RainbowParenthesesToggle
-  au Syntax * RainbowParenthesesLoadRound
-  au Syntax * RainbowParenthesesLoadSquare
-  " Set Rainbow braces only on no html files
-  au Syntax html call SetHtml()
-  au Syntax * call RainbowBraces()
-
+  au FileType * let g:html_file = 0
+  au FileType html
+        \ setlocal sts=2 sw=2 ts=2 |
+        \ let g:html_file = 1 |
+        \ set filetype=htmldjango
+  au FileType vim setlocal sts=2 sw=2 ts=2
 augroup END
 
 
-" For some reason, that I don't want to investigate, it's not working if
-" I put it before the previous autogroup. So I place it here for now.
-colorscheme valloric
+augroup mycolor
+  au!
+  au VimEnter,ColorScheme *
+        \ hi OverLength ctermbg=236 |
+        \ hi SyntasticError ctermbg=236 |
+        \ hi SyntasticWarning ctermbg=236 |
+        \ hi SyntasticErrorSign ctermfg=245 |
+        \ hi SyntasticWarningSign ctermfg=245
+  au VimEnter * RainbowParenthesesToggle
+  au Syntax * RainbowParenthesesLoadRound
+  au Syntax * RainbowParenthesesLoadSquare
+  au Syntax * call RainbowBraces()  " Color braces only on no-html files
+augroup END
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               Functions                                 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-function! SetHtml()
-  let g:html_file = 1
-  set filetype=htmldjango
-endfunction
 
 " Set Rainbow braces only on no html files
 function! RainbowBraces()
@@ -441,10 +375,10 @@ endfunction
 let g:overlengthon = 1
 function! ToogleOverLength()
   if g:overlengthon
-    hi OverLength ctermbg=black guibg=black
+    hi OverLength ctermbg=None
     let g:overlengthon = 0
   else
-    hi OverLength ctermbg=233 guibg=#2d2d2d
+    hi OverLength ctermbg=236
     let g:overlengthon = 1
   endif
 endfunction
@@ -467,9 +401,9 @@ function! ToggleList(bufname, pfx)
     endif
   endfor
   if a:pfx == 'l' && len(getloclist(0)) == 0
-      echohl ErrorMsg
-      echo "Location List is Empty."
-      return
+    echohl ErrorMsg
+    echo "Location List is Empty."
+    return
   endif
   let winnr = winnr()
   exec(a:pfx.'open')
