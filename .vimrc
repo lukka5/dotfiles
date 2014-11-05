@@ -33,6 +33,7 @@ Bundle 'vim-scripts/noerrmsg.vim'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-shell'
 Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'terryma/vim-multiple-cursors'
 
 " Color schemes
 Bundle 'Pychimp/vim-luna'
@@ -41,6 +42,7 @@ Bundle 'baskerville/bubblegum'
 Bundle 'gilsondev/tomorrow-theme-vim'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'tomasr/molokai'
+Bundle 'w0ng/vim-hybrid'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
