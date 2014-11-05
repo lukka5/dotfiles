@@ -204,6 +204,8 @@ let g:ycm_seed_identifiers_with_syntax = 1
 nmap <silent><leader>y :YcmCompleter GoTo<cr>
 
 " Easymotion
+let g:EasyMotion_mapping_j = ''
+let g:EasyMotion_mapping_k = ''
 let g:EasyMotion_mapping_t = ''
 let g:EasyMotion_mapping_T = ''
 let g:EasyMotion_mapping_n = ''
