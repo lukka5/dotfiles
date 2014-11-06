@@ -34,6 +34,7 @@ Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-shell'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'fisadev/FixedTaskList.vim'
 
 " Color schemes
 Bundle 'Pychimp/vim-luna'
