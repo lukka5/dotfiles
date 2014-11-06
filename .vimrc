@@ -143,19 +143,15 @@ let g:syntastic_warning_symbol='⚠'
 let g:syntastic_stl_format = 's[%F](%t)'  " Abbrev msg on statusline
 
 " Tagbar
-let g:tagbar_width = 24
-let g:tagbar_sort = 1
-let g:tagbar_autoclose = 1
+let g:tagbar_show_linenumbers = 1
 let g:tagbar_autofocus = 1
 let g:tagbar_map_help = "?"
 nmap <silent><c-t> :TagbarToggle<cr>
 
 " NERDTree
-let NERDTreeWinSize = 24
-let NERDTreeQuitOnOpen = 1
 let NERDTreeShowBookmarks = 1
 let NERDTreeIgnore = ['\.pyc$', '\~$', '\.o$']
-nmap <silent><c-n> :NERDTreeToggle<cr>
+nmap <silent><c-f> :NERDTreeToggle<cr>
 nmap <silent><c-y> :NERDTree<cr><c-w>p:NERDTreeFind<cr>
 
 " Vim-airline
