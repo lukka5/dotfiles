@@ -37,13 +37,14 @@ Bundle 'terryma/vim-multiple-cursors'
 Bundle 'fisadev/FixedTaskList.vim'
 
 " Color schemes
-Bundle 'Pychimp/vim-luna'
+Bundle 'lukka5/vim-luna'
 Bundle 'lukka5/vim-valloric-colorscheme'
 Bundle 'baskerville/bubblegum'
 Bundle 'gilsondev/tomorrow-theme-vim'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'tomasr/molokai'
 Bundle 'w0ng/vim-hybrid'
+Bundle 'junegunn/seoul256.vim'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -210,6 +211,9 @@ let g:EasyMotion_mapping_T = ''
 let g:EasyMotion_mapping_n = ''
 let g:EasyMotion_mapping_N = ''
 let g:EasyMotion_leader_key = ''
+
+" Seoul color
+let g:seoul256_background = 234
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
