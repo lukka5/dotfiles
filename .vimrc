@@ -348,8 +348,8 @@ augroup vimrc
   au BufWinEnter,WinEnter * match OverLength '\%>79v.\+'
   " Don't move cursor when buffer switching
   if v:version >= 700
-    au BufLeave * let b:winview = winsaveview()
-    au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
+    au BufWinLeave * let b:winview = winsaveview()
+    au BufWinEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
   endif
 augroup END
 
