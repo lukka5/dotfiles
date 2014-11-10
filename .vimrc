@@ -38,7 +38,7 @@ Bundle 'fisadev/FixedTaskList.vim'
 
 " Color schemes
 Bundle 'Pychimp/vim-luna'
-Bundle 'Valloric/vim-valloric-colorscheme'
+Bundle 'lukka5/vim-valloric-colorscheme'
 Bundle 'baskerville/bubblegum'
 Bundle 'gilsondev/tomorrow-theme-vim'
 Bundle 'nanotech/jellybeans.vim'
