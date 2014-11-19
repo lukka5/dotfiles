@@ -1,5 +1,5 @@
 alias grep='grep --color=auto'
-alias cdiff='colordiff'
+alias diff='colordiff'
 
 alias ls='ls --color=auto'
 alias la='ls -A'
