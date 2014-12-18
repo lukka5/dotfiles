@@ -2,6 +2,9 @@
 cdl() { cd "$*" && ls --color=auto -l; }
 ct() { cd `locate "$1" | head -n 1 | xargs dirname`; }
 
+# mini img
+coverimg() { convert "$1" -resize 200x200 small.jpg; }
+
 # ls full path
 lsp() { ls -d -1 $PWD/*; }
 
@@ -31,6 +34,21 @@ mkcd() {
   else
     mkdir -p $1 && cd $1
   fi
+}
+
+# Extrac pages from a pdf file
+pdfpextr()
+{
+  # this function uses 3 arguments:
+  #     $1 is the first page of the range to extract
+  #     $2 is the last page of the range to extract
+  #     $3 is the input file
+  #     output file will be named "inputfile_pXX-pYY.pdf"
+  gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
+     -dFirstPage=${1} \
+     -dLastPage=${2} \
+     -sOutputFile=${3%.pdf}_p${1}-p${2}.pdf \
+     ${3}
 }
 
 
