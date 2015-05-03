@@ -60,5 +60,7 @@ alias sub='unzip -q ~/Downloads/*.zip -d .; rm ~/Downloads/*.zip; ll'
 alias ton='xinput --enable `xinput --list --id-only "SynPS/2 Synaptics TouchPad"`'
 alias toff='xinput --disable `xinput --list --id-only "SynPS/2 Synaptics TouchPad"`'
 
+alias record='wodim -v -pad -eject speed=1 dev=/dev/sg1 -dao -swab *.wav'
+
 
 # vim: set ft=sh:
