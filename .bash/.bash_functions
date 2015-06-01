@@ -24,6 +24,7 @@ remove()  { sudo apt-get remove "$@"; }
 update()  { sudo apt-get update; }
 upgrade() { sudo apt-get upgrade; }
 policy()  { apt-cache policy "$@"; }
+show()    { apt-cache show "$@"; }
 search()  { apt-cache search "$@" | grep --color=auto -i "$1"; }
 
 # Make a directory and change to it
