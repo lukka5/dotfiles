@@ -5,54 +5,48 @@
 " Use Vim features
 set nocompatible
 
-" Initialize Vundle
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Bundles                                  "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Initialize Vundle
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
+
 " Utilities
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'bling/vim-airline'
-Bundle 'danro/rename.vim'
-Bundle 'gmarik/vundle'
-Bundle 'kien/ctrlp.vim'
-Bundle 'majutsushi/tagbar'
-Bundle 'matze/vim-move'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
-Bundle 'vim-scripts/noerrmsg.vim'
-Bundle 'xolox/vim-misc'
-Bundle 'xolox/vim-shell'
-Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'fisadev/FixedTaskList.vim'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'bling/vim-airline'
+Plugin 'danro/rename.vim'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'matze/vim-move'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'kien/rainbow_parentheses.vim'
 
 " Color schemes
-Bundle 'lukka5/vim-luna'
-Bundle 'lukka5/vim-valloric-colorscheme'
-Bundle 'baskerville/bubblegum'
-Bundle 'gilsondev/tomorrow-theme-vim'
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'tomasr/molokai'
-Bundle 'w0ng/vim-hybrid'
-Bundle 'junegunn/seoul256.vim'
+Plugin 'lukka5/vim-luna'
+Plugin 'lukka5/vim-valloric-colorscheme'
+Plugin 'baskerville/bubblegum'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'tomasr/molokai'
+Plugin 'w0ng/vim-hybrid'
+
+" Finalize Vundle
+call vundle#end()
+filetype plugin indent on  " Needs to be after vundle
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                 Indent                                  "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Enable plugin and indent detection (needs to be after Bundle commands)
-filetype plugin indent on
 
 set autoindent
 set copyindent
@@ -77,11 +71,6 @@ colorscheme valloric
 " Highlight characters beyond the 79 column
 hi OverLength ctermbg=236
 
-" We want a different colorsheme for the gui
-if has("gui_running")
-  colorscheme luna
-endif
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Extras                                   "
@@ -105,18 +94,11 @@ set pastetoggle=<F2>       " Key to use for toggling paste mode
 set wildmode=list:longest  " Bash like command line completion
 set textwidth=72           " Useful for reformatting text/comments
 set formatoptions=roqnj    " See :h formatoptions
+
 set clipboard=unnamedplus,unnamed  " Use X11 default clipboard :D
 
 set spelllang=en
 set spellfile=$HOME/.vim/spell/en.utf-8.add  " Spell file to use
-
-if has("gui_running")
-  set guioptions=agi        " Don't show the left and right scrollbars
-  set guicursor=a:blinkon0  " Stop cursor blinking
-  set lines=50 columns=175  " Maximize gvim at start
-  " Use specially patched font for vim-airline
-  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
-endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -125,9 +107,6 @@ endif
 
 " Python file type plugin
 let g:python_fold = 0
-
-" Vim Shell
-let g:shell_fullscreen_items = 'mT'
 
 " Vim-move
 let g:move_key_modifier = 'S'
@@ -145,15 +124,14 @@ let g:syntastic_warning_symbol='⚠'
 let g:syntastic_stl_format = 's[%F](%t)'  " Abbrev msg on statusline
 
 " Tagbar
-let g:tagbar_show_linenumbers = 1
-let g:tagbar_autofocus = 1
 let g:tagbar_map_help = "?"
+let g:tagbar_sort = 0
 nmap <silent><c-t> :TagbarToggle<cr>
 
 " NERDTree
 let NERDTreeShowBookmarks = 1
 let NERDTreeIgnore = ['\.pyc$', '\~$', '\.o$']
-nmap <silent><c-f> :NERDTreeToggle<cr>
+nmap <silent><c-n> :NERDTreeToggle<cr>
 nmap <silent><c-y> :NERDTree<cr><c-w>p:NERDTreeFind<cr>
 
 " Vim-airline
@@ -187,9 +165,9 @@ let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = '⎇ '
-let g:airline_symbols.linenr = '⭡'
-let g:airline_symbols.paste = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.linenr = ''
+let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.whitespace = '!'
 
@@ -204,16 +182,10 @@ let g:ycm_seed_identifiers_with_syntax = 1
 nmap <silent><leader>y :YcmCompleter GoTo<cr>
 
 " Easymotion
-let g:EasyMotion_mapping_j = ''
-let g:EasyMotion_mapping_k = ''
-let g:EasyMotion_mapping_t = ''
-let g:EasyMotion_mapping_T = ''
-let g:EasyMotion_mapping_n = ''
-let g:EasyMotion_mapping_N = ''
-let g:EasyMotion_leader_key = ''
-
-" Seoul color
-let g:seoul256_background = 234
+map f <Plug>(easymotion-f)
+map F <Plug>(easymotion-F)
+let g:EasyMotion_use_upper = 1
+let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -225,44 +197,61 @@ let mapleader=","
 
 " Stop highlighted search
 nmap <silent><leader>` :nohlsearch<cr>
+
 " Select all
 nmap <silent><leader>a ggVG
+
 " Delete current buffer keeping window layout intact
 nmap <silent><leader>d :bp<bar>sp<bar>bn<bar>bd<cr>
+
 " Close current window
 nmap <silent><leader>e :hid<cr>
+
 " Toggle OverLength highlight group
 nmap <silent><leader>h :call ToogleOverLength()<cr>
+
 " Get highlight group under cursor.
 nmap <silent><leader>H :echo "hi<" .
       \ synIDattr(synID(line("."),col("."),1),"name") . '> trans<' .
       \ synIDattr(synID(line("."),col("."),0),"name") . "> lo<" .
       \ synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"
       \ <cr>
+
 " Open current buffer on iceweasel
 nmap <silent><leader>i :!iceweasel %<cr>
+
 " Toggle highlight of list chars (tab, trail, eol, ...)
 nmap <silent><leader>l :set list!<cr>
+
 " Toggle line number gutter
 nmap <silent><leader>n :set number!<cr>
+
 " Make current window the only one
 nmap <silent><leader>o :on<cr>
+
 " Toggle Quicklist and Locationlist
 nmap <silent><leader>q :call ToggleList("Quickfix List", 'c')<cr>
 nmap <silent><leader>Q :call ToggleList("Location List", 'l')<cr>
+
 " Close preview window
 nmap <silent><leader>r :pclose<cr>
+
 " Search and replace current word
 nmap <leader>R :%s/\<<C-r><C-w>\>//gc<left><left><left>
+
 " Sort selected lines (visual mode)
 vmap <silent><leader>s :sort<cr>
+
 " Toggle spell checking
 nmap <silent><leader>S :setlocal spell!<cr>
+
 " Edit/load VIM RC file
 nmap <silent><leader>v :e $HOME/.vimrc<cr>
 nmap <silent><leader>V :w<cr>:so $HOME/.vimrc<cr>:echo "vimrc reloaded!"<cr>
+
 " Make new vertical split and focus cursor on it
 nmap <silent><leader><leader>w :vsplit<cr><c-w><c-l>
+
 " Delete all trailing white spaces in current buffer
 nmap <silent><leader>W :%s/\s\+$//<cr>:let @/=''<cr>
 
