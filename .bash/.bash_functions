@@ -26,6 +26,7 @@ upgrade() { sudo apt-get upgrade; }
 policy()  { apt-cache policy "$@"; }
 show()    { apt-cache show "$@"; }
 search()  { apt-cache search "$@" | grep --color=auto -i "$1"; }
+pips()    { pip search "*$1*" | grep --color=auto -i "$1"; }
 
 # Make a directory and change to it
 mkcd() {
