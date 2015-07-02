@@ -369,6 +369,11 @@ augroup mycolor
   au Syntax * call RainbowBraces()  " Color braces only on no-html files
 augroup END
 
+augroup clipboard
+  au!
+  autocmd VimLeave * call system("echo -n $'" . escape(getreg(), "'") . "' | xsel -ib")
+augroup END
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               Functions                                 "
