@@ -94,6 +94,8 @@ set pastetoggle=<F2>       " Key to use for toggling paste mode
 set wildmode=list:longest  " Bash like command line completion
 set textwidth=72           " Useful for reformatting text/comments
 set formatoptions=roqnj    " See :h formatoptions
+set updatetime=1000        " (default 4000) for quick tagbar update of tag
+                           " highlighting in tagbar window
 
 set clipboard=unnamedplus,unnamed  " Use X11 default clipboard :D
 
