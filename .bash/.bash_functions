@@ -53,5 +53,36 @@ pdfpextr()
      ${3}
 }
 
+# Re-Env: https://github.com/buchuki/re-env/blob/master/re-env.sh
+# Activate current project's virtualenv
+function v {
+  # activate a virtualenv
+  # usage: v
+  #   activate the virtualenv named venv
+  # usage: v venvname
+  #   activate the virtualenv named venvname
+  name=venv
+  if [ $1 ] ; then
+    name=$1
+  fi
+  olddir=$(pwd)
+  quit=0
+  deactivate &>/dev/null
+  cwd=$(pwd)
+  while [ $quit -eq 0 ]
+  do
+    cd $cwd
+    if [ $cwd == '/' ] ; then
+      quit=1
+    fi
+    if [ -e $name ]  ; then
+      source "$name/bin/activate"
+      quit=1
+    fi
+    cwd=$(readlink -f $(dirname $cwd))
+  done
+  cd $olddir
+}
+
 
 # vim: set ft=sh:

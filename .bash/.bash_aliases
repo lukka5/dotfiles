@@ -10,6 +10,7 @@ alias llx='ls -lAhX'
 
 alias t='tree'
 alias ..='cd ..'
+alias d='deactivate'
 
 alias tmuxconf='vim ~/.tmux.conf'
 alias vim='vim --servername VIM'
