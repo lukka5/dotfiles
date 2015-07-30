@@ -9,7 +9,7 @@ alias llh='ls -lh'
 alias llx='ls -lAhX'
 
 alias t='tree'
-alias ..='cd ..'
+alias ..='cd ..; ls -l'
 alias d='deactivate'
 
 alias tmuxconf='vim ~/.tmux.conf'
