@@ -37,6 +37,9 @@ export TCL_LIBRARY=/usr/share/tcltk/tcl8.5
 export PATH=$PATH:/home/lucas/code/omnetpp-4.4.1/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/lucas/code/omnetpp-4.4.1/lib
 
+# Default editor
+export EDITOR='vim'
+
 # Append to the history file, don't overwrite it
 shopt -s histappend
 
