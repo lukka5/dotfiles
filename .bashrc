@@ -106,7 +106,9 @@ if ! shopt -oq posix; then
 
   # Add extra completions.
   if [ -d ~/.bash/.bash_completion.d/ ]; then
-    . ~/.bash/.bash_completion.d/*
+    for file in ~/.bash/.bash_completion.d/*; do
+      source "$file"
+    done
   fi
 fi
 
