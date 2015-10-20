@@ -30,6 +30,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'terryma/vim-multiple-cursors'
 
 " Color schemes
 Plugin 'lukka5/vim-luna'
@@ -114,11 +115,13 @@ let g:python_fold = 0
 let g:move_key_modifier = 'S'
 
 " Ctrlp
-let g:ctrlp_max_files = 1000  " Speed up execution
+let g:ctrlp_max_depth = 400
+let g:ctrlp_max_files = 0  " Speed up execution
 let g:ctrlp_match_window = 'top,order:ttb'  " Show in top
 let g:ctrlp_prompt_mappings = { 'PrtClearCache()': ['<F9>'] }  " Update cache
 let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|mp3)$|[\/]\.(git)|__init__\.py'
 let g:ctrlp_working_path_mode = 0  " Path's root where vim was opened
+let g:ctrlp_open_multiple_files = 'i'
 
 " Syntastic
 let g:syntastic_error_symbol='✗'
@@ -133,7 +136,7 @@ nmap <silent><c-t> :TagbarToggle<cr>
 " NERDTree
 let NERDTreeShowBookmarks = 1
 let NERDTreeIgnore = ['\.pyc$', '\~$', '\.o$']
-nmap <silent><c-n> :NERDTreeToggle<cr>
+nmap <silent><c-f> :NERDTreeToggle<cr>
 nmap <silent><c-y> :NERDTree<cr><c-w>p:NERDTreeFind<cr>
 
 " Vim-airline
@@ -168,7 +171,7 @@ let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
-let g:airline_symbols.linenr = ''
+let g:airline_symbols.linenr = '␤'
 let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.whitespace = '!'
@@ -186,6 +189,8 @@ nmap <silent><leader>y :YcmCompleter GoTo<cr>
 " Easymotion
 map f <Plug>(easymotion-f)
 map F <Plug>(easymotion-F)
+map ,j <Plug>(easymotion-j)
+map ,k <Plug>(easymotion-k)
 let g:EasyMotion_use_upper = 1
 let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
@@ -241,6 +246,9 @@ nmap <silent><leader>r :pclose<cr>
 " Search and replace current word
 nmap <leader>R :%s/\<<C-r><C-w>\>//gc<left><left><left>
 
+" Make new horizontal split and focus cursor on it
+nmap <silent><leader>s :split<cr><c-w><c-k>
+
 " Sort selected lines (visual mode)
 vmap <silent><leader>s :sort<cr>
 
@@ -277,8 +285,8 @@ cnoremap <c-d> <del>
 " Kill command line except for the command plus a space
 cnoremap <c-k> <c-\>esplit(getcmdline(), " ")[0]<cr><space>
 
-" Use space key to toggle folds
-nnoremap <space> za
+" User space to insert space and exit insert mode
+nnoremap <space> i<space><esc>
 
 " Format the current paragraph or visual selection
 vnoremap Q gq
@@ -328,6 +336,10 @@ xnoremap [D "vy:<C-u>dlist /<C-r>v<CR>:
 nnoremap ,I :ilist /
 nnoremap ,D :dlist /
 
+" Don't save deleted word when pasting over a word.
+" Allowing multiple paste over word.
+xnoremap p pgvy
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Autocmd                                  "
@@ -345,15 +357,16 @@ augroup vimrc
 augroup END
 
 
-let g:html_file = 0
+let g:filetype = 0
 augroup ft
   au!
-  au FileType * let g:html_file = 0
-  au FileType html
-        \ setlocal sts=2 sw=2 ts=2 |
-        \ let g:html_file = 1 |
-        \ set filetype=htmldjango
+  au FileType *
+        \ let g:filetype = &filetype |
+        \ call RainbowBraces()
   au FileType vim setlocal sts=2 sw=2 ts=2
+  au FileType html setlocal sts=4 sw=4 ts=4
+  au FileType htmldjango setlocal sts=4 sw=4 ts=4
+  au BufRead,BufNewFile *.less setlocal ft=css
 augroup END
 
 
@@ -365,10 +378,10 @@ augroup mycolor
         \ hi SyntasticWarning ctermbg=236 |
         \ hi SyntasticErrorSign ctermfg=245 |
         \ hi SyntasticWarningSign ctermfg=245
+  au Syntax * hi CursorLine ctermbg=none
   au VimEnter * RainbowParenthesesToggle
   au Syntax * RainbowParenthesesLoadRound
   au Syntax * RainbowParenthesesLoadSquare
-  au Syntax * call RainbowBraces()  " Color braces only on no-html files
 augroup END
 
 augroup clipboard
@@ -397,8 +410,11 @@ EOF
 
 " Set Rainbow braces only on no html files
 function! RainbowBraces()
-  if g:html_file == 0
+  if g:filetype != 'htmldjango'
     RainbowParenthesesLoadBraces
+  endif
+  if g:filetype == 'html'
+    set ft=htmldjango
   endif
 endfunction
 
@@ -441,6 +457,17 @@ function! ToggleList(bufname, pfx)
   if winnr() != winnr
     wincmd p
   endif
+endfunction
+
+
+" Toogle different cursorline color on CtrlP buffer
+let g:ctrlp_buffer_func = { 'enter': 'BrightHighlightOn', 'exit':  'BrightHighlightOff', }
+function BrightHighlightOn()
+  hi CursorLine ctermbg=237
+endfunction
+
+function BrightHighlightOff()
+  hi CursorLine ctermbg=234
 endfunction
 
 
