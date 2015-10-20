@@ -17,7 +17,9 @@ else
 fi
 
 # If we have tmux, start it replacing the shell with it
-if which tmux > /dev/null && test -z "$TMUX"; then
+if which tmux > /dev/null && which tmuxinator > /dev/null && test -z "$TMUX"; then
+  exec tmuxinator start frank
+elif which tmux > /dev/null && test -z "$TMUX"; then
   tmux new -d -s default
   exec tmux attach -t default
 fi
