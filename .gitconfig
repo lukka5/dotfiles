@@ -7,7 +7,7 @@
     ci = commit
     br = branch
     co = checkout
-    sl = stash list
+    s = stash
     ch = cherry -v
     last = log -1 -p HEAD
     unstage = reset HEAD --
@@ -30,3 +30,7 @@
 
 [merge]
     tool = vimdiff
+[push]
+	default = matching
+[url "https://"]
+	insteadOf = git://
