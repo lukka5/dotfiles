@@ -143,7 +143,9 @@ nmap <silent><c-y> :NERDTree<cr><c-w>p:NERDTreeFind<cr>
 " Vim-airline
 let g:airline_theme = 'murmur'
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#branch#displayed_head_limit = 10
 let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#tagbar#flags = 'f'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#trailing_format = 't[%s]'
 let g:airline#extensions#whitespace#mixed_indent_format = 'mx[%s]'
