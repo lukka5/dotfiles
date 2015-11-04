@@ -14,7 +14,6 @@ alias d='deactivate'
 
 alias tmuxconf='vim ~/.tmux.conf'
 alias vim='vim --servername VIM'
-alias vimr='vim --remote'
 alias vimrc='vim ~/.vimrc'
 alias gvir='gvim --remote'
 alias gvimrc='gvim ~/.vimrc'

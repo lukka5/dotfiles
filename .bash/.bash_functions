@@ -28,6 +28,11 @@ show()    { apt-cache show "$@"; }
 search()  { apt-cache search "$@" | grep --color=auto -i "$1"; }
 pips()    { pip search "*$1*" | grep --color=auto -i "$1"; }
 
+# Open file in specific vim server
+function vimr() {
+    vim --servername "$1" --remote "${@:2}";
+}
+
 # Make a directory and change to it
 mkcd() {
   if [ $# -ne 1 ]; then
