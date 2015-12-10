@@ -56,4 +56,7 @@ alias toff='xinput --disable `xinput --list --id-only "SynPS/2 Synaptics TouchPa
 
 alias record='wodim -v -pad -eject speed=1 dev=/dev/sg1 -dao -swab *.wav'
 
+alias shell='v; ./manage.py shell_plus'
+
+
 # vim: set ft=sh:
