@@ -230,6 +230,9 @@ nmap <silent><leader>H :echo "hi<" .
 " Open current buffer on iceweasel
 nmap <silent><leader>i :!iceweasel %<cr>
 
+" Join next line to current one without spaces between.
+nnoremap <leader>J :call JoinSpaceless()<cr>
+
 " Toggle highlight of list chars (tab, trail, eol, ...)
 nmap <silent><leader>l :set list!<cr>
 
@@ -472,6 +475,17 @@ endfunction
 function BrightHighlightOff()
   hi CursorLine ctermbg=234
 endfunction
+
+
+" Like gJ, but always remove spaces
+fun! JoinSpaceless()
+    execute 'normal gJ'
+    " Character under cursor is whitespace?
+    if matchstr(getline('.'), '\%' . col('.') . 'c.') =~ '\s'
+        " Then remove it!
+        execute 'normal dw'
+    endif
+endfun
 
 
 " vim: set sw=2 sts=2 et:
