@@ -11,6 +11,7 @@ alias llx='ls -lAhX'
 alias t='tree'
 alias ..='cd ..; ls -l'
 alias d='deactivate'
+alias k='kill'
 
 alias tmuxconf='vim ~/.tmux.conf'
 alias vim='vim --servername VIM'
