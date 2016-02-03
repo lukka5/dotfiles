@@ -77,6 +77,7 @@ hi OverLength ctermbg=236
 "                                Extras                                   "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+set completeopt-=preview
 set number                 " Enable line number gutter
 set ruler                  " Show current cursor position in status bar
 set hidden                 " Allow hidden buffers (even modified ones)
@@ -180,6 +181,7 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.whitespace = '!'
 
 " YouCompleteMe
+let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
