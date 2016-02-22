@@ -27,6 +27,7 @@ policy()  { apt-cache policy "$@"; }
 show()    { apt-cache show "$@"; }
 search()  { apt-cache search "$@" | grep --color=auto -i "$1"; }
 pips()    { pip search "*$1*" | grep --color=auto -i "$1"; }
+freeze()  { pip freeze | grep --color=auto -i "$1"; }
 
 # Open file in specific vim server
 function vimr() {
@@ -56,6 +57,22 @@ pdfpextr()
      -dLastPage=${2} \
      -sOutputFile=${3%.pdf}_p${1}-p${2}.pdf \
      ${3}
+}
+
+# Make gif from ogv
+ogv2gif()
+{
+    echo "Sampling images... "
+    mplayer -ao null ${1} -vo jpeg:outdir=ogv2gif_tmp
+    echo "Done"
+    echo "Making gif... "
+    convert ogv2gif_tmp/* out.gif
+    echo "Done."
+    echo "Optimizing... "
+    convert out.gif -fuzz 10% -layers Optimize out-optimized.gif
+    rm -rf ogv2gif_tmp
+    echo "Done"
+    echo "All done!"
 }
 
 # Re-Env: https://github.com/buchuki/re-env/blob/master/re-env.sh
