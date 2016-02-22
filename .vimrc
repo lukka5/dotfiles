@@ -124,6 +124,7 @@ let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|mp3)$|[\/]\.(git)|__init__\.py'
 let g:ctrlp_working_path_mode = 0  " Path's root where vim was opened
 let g:ctrlp_open_multiple_files = 'i'
 nmap <silent><c-b> :CtrlPBuffer<cr>
+nmap <silent><c-m> :CtrlPMRUFiles<cr>
 
 " Syntastic
 let g:syntastic_error_symbol='✗'
