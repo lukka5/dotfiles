@@ -1,21 +1,13 @@
-# cd into dir of located file
-cdl() { cd "$*" && ls --color=auto -l; }
-ct() { cd `locate "$1" | head -n 1 | xargs dirname`; }
+# vim: set ft=sh:
 
-# mini img
-coverimg() { convert "$1" -resize 200x200 small.jpg; }
+# cd and list
+cdl() { cd "$*" && ls --color=auto -lh; }
 
-# ls full path
-lsp() { ls -d -1 $PWD/*; }
-
-# Calculate an expresion (i.e. calc 1+1)
-calc() { echo "$@" | bc -l; }
-
-# Convert hex to decimal
+# Convert hex to decimal and vice versa
 htd() { printf "%d\n" "$1";   }
 dth() { printf "0x%x\n" "$1"; }
 
-# Make easy some common search and apt commands
+# Make easy some common commands
 findd()   { find . -iname "*$1*" | grep --color=auto -i "$1"; }
 list()    { dpkg -l | grep --color=auto -i "$1"; }
 pss()     { ps aux | grep --color=auto -i "$1"; }
@@ -30,11 +22,9 @@ pips()    { pip search "*$1*" | grep --color=auto -i "$1"; }
 freeze()  { pip freeze | grep --color=auto -i "$1"; }
 
 # Open file in specific vim server
-function vimr() {
-    vim --servername "$1" --remote "${@:2}";
-}
+vimr() { vim --servername "$1" --remote "${@:2}"; }
 
-# Make a directory and change to it
+# Make a directory and cd to it
 mkcd() {
   if [ $# -ne 1 ]; then
     echo "Usage: mkcd <dir>"
@@ -44,9 +34,8 @@ mkcd() {
   fi
 }
 
-# Extrac pages from a pdf file
-pdfpextr()
-{
+# Extract pages from a pdf file
+pdfpextr() {
   # this function uses 3 arguments:
   #     $1 is the first page of the range to extract
   #     $2 is the last page of the range to extract
@@ -59,24 +48,8 @@ pdfpextr()
      ${3}
 }
 
-# Make gif from ogv
-ogv2gif()
-{
-    echo "Sampling images... "
-    mplayer -ao null ${1} -vo jpeg:outdir=ogv2gif_tmp
-    echo "Done"
-    echo "Making gif... "
-    convert ogv2gif_tmp/* out.gif
-    echo "Done."
-    echo "Optimizing... "
-    convert out.gif -fuzz 10% -layers Optimize out-optimized.gif
-    rm -rf ogv2gif_tmp
-    echo "Done"
-    echo "All done!"
-}
-
-# Re-Env: https://github.com/buchuki/re-env/blob/master/re-env.sh
-# Activate current project's virtualenv
+# [Re-Env] Activate current project's virtualenv
+# https://github.com/buchuki/re-env/blob/master/re-env.sh
 function v {
   # activate a virtualenv
   # usage: v
@@ -105,6 +78,3 @@ function v {
   done
   cd $olddir
 }
-
-
-# vim: set ft=sh:

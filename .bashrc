@@ -1,12 +1,5 @@
-# If not running interactively, don't do anything
-case $- in
-  *i*) ;;
-    *) return;;
-esac
+# vim: set sts=2 sw=2 et:
 
-############################### Settings ##################################
-
-# Decide wich terminal to use and launch tmux
 if [ -e /usr/share/terminfo/s/screen-256color-s ]
    [ -e /lib/terminfo/s/screen-256color ]; then
   export TERM='screen-256color'
@@ -17,7 +10,8 @@ else
 fi
 
 # If we have tmux, start it replacing the shell with it
-if which tmux > /dev/null && which tmuxinator > /dev/null && test -z "$TMUX"; then
+if which tmux > /dev/null && which tmuxinator > /dev/null \
+                          && test -z "$TMUX"; then
   exec tmuxinator start frank
 elif which tmux > /dev/null && test -z "$TMUX"; then
   tmux new -d -s default
@@ -27,27 +21,18 @@ fi
 # Disable annoying gnome-keyring
 unset GNOME_KEYRING_CONTROL
 
-# Don't put duplicate lines or lines starting with space in the history.
-HISTCONTROL=ignoreboth
+# No duplicates in command history
+export HISTCONTROL=ignoreboth:erasedups
 
 # For setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
-
-# Omnetpp
-export TCL_LIBRARY=/usr/share/tcltk/tcl8.5
-export PATH=$PATH:/home/lucas/code/omnetpp-4.4.1/bin
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/lucas/code/omnetpp-4.4.1/lib
 
 # Default editor
 export EDITOR='vim'
 
 # Append to the history file, don't overwrite it
 shopt -s histappend
-
-# Check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
 
 # Enable color support for ls
 if [ -x /usr/bin/dircolors ]; then
@@ -64,7 +49,6 @@ export LESS_TERMCAP_so=$'\E[38;5;246m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[04;38;5;146m'
 
-
 ################################# Prompt ##################################
 
 # Identifying the chroot you work in (used in the prompt below)
@@ -79,20 +63,17 @@ else
   PS1='${debian_chroot:+(debian_chroot)}[\u@\h \w]\$ '
 fi
 
-
 ############################### Functions #################################
 
 if [ -f ~/.bash/.bash_functions ]; then
   . ~/.bash/.bash_functions
 fi
 
-
 ################################ Aliases ##################################
 
 if [ -f ~/.bash/.bash_aliases ]; then
     . ~/.bash/.bash_aliases
 fi
-
 
 ############################### Completion ################################
 
@@ -113,6 +94,3 @@ if ! shopt -oq posix; then
     done
   fi
 fi
-
-
-# vim: set sts=2 sw=2 et:
