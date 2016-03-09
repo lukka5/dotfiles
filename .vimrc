@@ -18,7 +18,8 @@ call vundle#begin()
 " Utilities
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'danro/rename.vim'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
