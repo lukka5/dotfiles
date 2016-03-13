@@ -14,7 +14,6 @@ alias ..='cd ..; l'
 alias k='kill'
 alias d='deactivate'  # venv
 
-alias rm='rm -I'
 alias dfh='df -h'
 alias duh='du -sh'
 alias freeh='free -h'
