@@ -19,7 +19,11 @@ alias dfh='df -h'
 alias duh='du -sh'
 alias freeh='free -h'
 
-alias vim='vim --servername VIM'
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    alias vim='vim --servername VIM'
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    alias vim='vim'
+fi
 alias vimrc='vim ~/.vimrc'
 alias bashrc='vim ~/.bashrc'
 alias tmuxconf='vim ~/.tmux.conf'
