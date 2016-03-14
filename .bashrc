@@ -88,8 +88,8 @@ if ! shopt -oq posix; then
   fi
 
   # Add extra completions.
-  if [ -d ~/.bash/.bash_completion.d/ ]; then
-    for file in ~/.bash/.bash_completion.d/*; do
+  if [ -d /usr/local/etc/bash_completion.d/ ]; then
+    for file in /usr/local/etc/bash_completion.d/*; do
       source "$file"
     done
   fi
