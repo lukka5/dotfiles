@@ -1,12 +1,15 @@
 # vim: set sts=2 sw=2 et:
 
-if [ -e /usr/share/terminfo/s/screen-256color-s ]
-   [ -e /lib/terminfo/s/screen-256color ]; then
-  export TERM='screen-256color'
-elif [ -e /usr/share/terminfo/g/gnome-256color ]; then
-  export TERM='gnome-256color'
-else
-  export TERM='xterm-256color'
+# 256 color term on linux
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+  if [ -e /usr/share/terminfo/s/screen-256color-s ]
+     [ -e /lib/terminfo/s/screen-256color ]; then
+    export TERM='screen-256color'
+  elif [ -e /usr/share/terminfo/g/gnome-256color ]; then
+    export TERM='gnome-256color'
+  else
+    export TERM='xterm-256color'
+  fi
 fi
 
 # If we have tmux, start it replacing the shell with it
