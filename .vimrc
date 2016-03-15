@@ -24,6 +24,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-obsession'  " tmux-resurrect vim sessions
 Plug 'tpope/vim-surround'
 Plug 'Valloric/YouCompleteMe'
 Plug 'vim-airline/vim-airline'
@@ -123,11 +124,13 @@ let g:syntastic_warning_symbol='⚠'
 let g:syntastic_stl_format = 's[%F](%t)'  " Abbrev msg on statusline
 
 " Tagbar
-let g:tagbar_map_help = "?"
 let g:tagbar_sort = 0
+let g:tagbar_width = 28
+let g:tagbar_map_help = "?"
 nmap <silent><c-t> :TagbarToggle<cr>
 
 " NERDTree
+let NERDTreeWinSize = 28
 let NERDTreeShowBookmarks = 1
 let NERDTreeIgnore = ['\.pyc$', '\~$', '\.o$']
 nmap <silent><c-f> :NERDTreeToggle<cr>
@@ -181,7 +184,7 @@ let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_seed_identifiers_with_syntax = 1
-nmap <silent><leader>y :YcmCompleter GoTo<cr>
+nmap <silent><leader>G :YcmCompleter GoTo<cr>
 
 " Easymotion
 map f <Plug>(easymotion-f)
