@@ -33,7 +33,7 @@ alias functions='vim ~/.bash/.bash_functions'
 alias more='less'
 alias so='source ~/.bash_profile'
 alias grep='grep --color=auto'
-alias shell='v; python manage.py shell_plus'
+alias shell='python manage.py shell_plus'
 alias clean_pycs="find . -name '*.pyc' -exec rm '{}' ';'"
 
 if [[ $(which colordiff) ]]; then
