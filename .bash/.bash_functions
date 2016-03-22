@@ -1,7 +1,7 @@
 # vim: set ft=sh:
 
 # cd and list
-cdl() { cd "$*" && ls --color=auto -lh; }
+cdl() { cd "$*" && ls -lh; }
 
 # Convert hex to decimal and vice versa
 htd() { printf "%d\n" "$1";   }
