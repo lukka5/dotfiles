@@ -25,6 +25,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 alias vimrc='vim ~/.vimrc'
 alias bashrc='vim ~/.bashrc'
+alias profile='vim ~/.bash_profile'
 alias tmuxconf='vim ~/.tmux.conf'
 alias prompt='vim ~/.bash/.bash_prompt'
 alias aliases='vim ~/.bash/.bash_aliases'
