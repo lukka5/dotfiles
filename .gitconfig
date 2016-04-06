@@ -18,6 +18,8 @@
     ls = log --graph --pretty=format:'%Cred%h %Cgreen%ad%Creset -%C(yellow)%d %Creset%s%C(bold blue) [%cn]%Creset' --decorate --date=short
     ll = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)[%an]%Creset' --decorate --numstat
     la = "!git config -l | grep alias | cut -c 7-" # list aliases
+    lss = log --graph --pretty=format:'%Cred%h %Cgreen%ad%Creset -%C(yellow)%d %Creset%<(40,trunc)%s%C(bold blue) [%cn]%Creset' --decorate --date=short
+    hists = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %<(35,trunc)%s %Cgreen(%cr) %C(bold blue)[%an]%Creset' --abbrev-commit --date=relative
 
 [core]
     editor = vim
