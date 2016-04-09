@@ -29,7 +29,7 @@ Plug 'tpope/vim-obsession'  " tmux-resurrect vim sessions
 Plug 'tpope/vim-surround'
 Plug 'Valloric/YouCompleteMe'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'lukka5/vim-airline-themes'
 
 " Color schemes
 Plug 'lukka5/vim-valloric-colorscheme'
@@ -63,7 +63,7 @@ set background=dark
 colorscheme valloric
 
 " Highlight characters beyond the 79 column
-hi OverLength ctermbg=236
+hi OverLength ctermbg=239
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
