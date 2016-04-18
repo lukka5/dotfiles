@@ -243,6 +243,9 @@ nmap <silent><leader>n :set number!<cr>
 " Make current window the only one
 nmap <silent><leader>o :on<cr>
 
+" Add ipdb breackpoint
+nnoremap <leader>p oimport ipdb;ipdb.set_trace()
+
 " Toggle Quicklist and Locationlist
 nmap <silent><leader>q :call ToggleList("Quickfix List", 'c')<cr>
 nmap <silent><leader>Q :call ToggleList("Location List", 'l')<cr>
