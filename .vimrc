@@ -79,7 +79,7 @@ set smartcase              " But make it sensitive when it matters
 set ignorecase             " Case insensitive searching
 set noshowmode             " Don't show mode in status bar
 set noswapfile             " Don't create swap files
-set cursorline             " Highlight current cursor line
+set nocursorline             " Highlight current cursor line
 set history=100            " Amount of commands and searches to remember
 set scrolloff=1            " 1 line above/below when scrolling
 set laststatus=2           " Always show the status line
@@ -89,7 +89,7 @@ set pastetoggle=<F2>       " Key to use for toggling paste mode
 set wildmode=list:longest  " Bash like command line completion
 set textwidth=72           " Useful for reformatting text/comments
 set formatoptions=roqnj    " See :h formatoptions
-set updatetime=1000        " (default 4000) for quick tagbar update of tag
+set updatetime=500        " (default 4000) for quick tagbar update of tag
                            " highlighting in tagbar window
 
 set clipboard=unnamedplus,unnamed  " Use X11 default clipboard :D
