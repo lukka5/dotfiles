@@ -14,6 +14,7 @@ set nocompatible
 call plug#begin('~/.vim/plugged')
 
 " Utilities
+Plug 'airblade/vim-gitgutter'
 Plug 'danro/rename.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'kien/rainbow_parentheses.vim'
@@ -25,6 +26,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'  " tmux-resurrect vim sessions
 Plug 'tpope/vim-surround'
 Plug 'Valloric/YouCompleteMe'
