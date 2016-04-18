@@ -31,9 +31,9 @@ Plug 'tpope/vim-obsession'  " tmux-resurrect vim sessions
 Plug 'tpope/vim-surround'
 Plug 'Valloric/YouCompleteMe'
 Plug 'vim-airline/vim-airline'
-Plug 'lukka5/vim-airline-themes'
 
 " Color schemes
+Plug 'lukka5/vim-airline-themes'
 Plug 'lukka5/vim-valloric-colorscheme'
 
 " Finalize Vundle
