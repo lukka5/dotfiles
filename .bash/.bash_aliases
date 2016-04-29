@@ -10,7 +10,7 @@ alias l='ls -lh'
 alias la='ls -A'
 alias lla='l -A'
 alias t='tree'
-alias ..='cd ..; l'
+alias ..='cd ..'
 alias k='kill'
 alias d='deactivate'  # venv
 
