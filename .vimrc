@@ -213,6 +213,12 @@ nmap <silent><leader>` :nohlsearch<cr>
 " Select all
 nmap <silent><leader>a ggVG
 
+" Add ipdb breackpoint
+nnoremap <leader>b oimport ipdb;ipdb.set_trace()<esc>
+
+" Print current buffer filename
+map <leader>B :echo @%<cr>
+
 " Delete current buffer keeping window layout intact
 nmap <silent><leader>d :bp<bar>sp<bar>bn<bar>bd<cr>
 
@@ -243,9 +249,6 @@ nmap <silent><leader>n :set number!<cr>
 
 " Make current window the only one
 nmap <silent><leader>o :on<cr>
-
-" Add ipdb breackpoint
-nnoremap <leader>b oimport ipdb;ipdb.set_trace()<esc>
 
 " Toggle Quicklist and Locationlist
 nmap <silent><leader>q :call ToggleList("Quickfix List", 'c')<cr>
