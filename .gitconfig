@@ -23,6 +23,8 @@
 
 [core]
     editor = vim
+    excludesfile = /Users/lucas/.gitignore
+    quotepath = false
 
 [color]
     ui = true
