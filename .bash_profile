@@ -3,7 +3,7 @@ export HOMEBREW_GITHUB_API_TOKEN=c4d628d41bb90aa8cdc3783dbdf31c05635c45f6
 export EDITOR='vim'
 
 # For setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
+HISTSIZE=10000
 HISTFILESIZE=2000
 shopt -s histappend  # Append to the history file, don't overwrite it
 export HISTCONTROL=ignoreboth:erasedups  # No duplicates in history
@@ -29,3 +29,8 @@ fi
 if [ -f ~/.bash/.bash_aliases ]; then . ~/.bash/.bash_aliases; fi
 if [ -f ~/.bash/.bash_functions ]; then . ~/.bash/.bash_functions; fi
 if [ -f ~/.bash/.bash_prompt ]; then . ~/.bash/.bash_prompt; fi
+
+# Virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/projects
+source /usr/local/bin/virtualenvwrapper.sh
