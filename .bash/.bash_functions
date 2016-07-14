@@ -56,7 +56,7 @@ function v {
   #   activate the virtualenv named venv
   # usage: v venvname
   #   activate the virtualenv named venvname
-  name=venv
+  name=env
   if [ $1 ] ; then
     name=$1
   fi
@@ -100,4 +100,13 @@ function greadlink {
     RESULT="$DIR/$TARGET"
 
     echo $RESULT
+}
+
+# Change directory and list contents.
+function cd() {
+    new_directory="$*";
+    if [ $# -eq 0 ]; then
+        new_directory=${HOME};
+    fi;
+    builtin cd "${new_directory}" && ls -lh
 }
