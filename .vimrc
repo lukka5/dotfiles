@@ -29,7 +29,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'  " tmux-resurrect vim sessions
 Plug 'tpope/vim-surround'
-Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'vim-airline/vim-airline'
 
 " Color schemes
@@ -65,7 +65,7 @@ set background=dark
 colorscheme valloric
 
 " Highlight characters beyond the 79 column
-hi OverLength ctermbg=239
+hi OverLength ctermbg=238
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -388,9 +388,9 @@ augroup END
 augroup mycolor
   au!
   au VimEnter,ColorScheme *
-        \ hi OverLength ctermbg=236 |
-        \ hi SyntasticError ctermbg=236 |
-        \ hi SyntasticWarning ctermbg=236 |
+        \ hi OverLength ctermbg=238 |
+        \ hi SyntasticError ctermbg=238 |
+        \ hi SyntasticWarning ctermbg=238 |
         \ hi SyntasticErrorSign ctermfg=245 |
         \ hi SyntasticWarningSign ctermfg=245
   au Syntax * hi CursorLine ctermbg=none
@@ -440,7 +440,7 @@ function! ToogleOverLength()
     hi OverLength ctermbg=None
     let g:overlengthon = 0
   else
-    hi OverLength ctermbg=236
+    hi OverLength ctermbg=238
     let g:overlengthon = 1
   endif
 endfunction
