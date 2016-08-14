@@ -11,4 +11,7 @@ set smartcase
 set gdefault
 
 " Use the system pasteboard
-set pasteboard
+set clipboard=unnamed
+
+map <c-i> :pj<cr>
+map <c-o> :nj<cr>
