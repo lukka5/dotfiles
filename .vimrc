@@ -265,7 +265,7 @@ nmap <leader>R :%s/\<<C-r><C-w>\>//gc<left><left><left>
 nmap <silent><leader>s :split<cr><c-w><c-k>
 
 " Sort selected lines (visual mode)
-vmap <silent><leader>s :sort<cr>
+vmap <silent><leader>s :sort i<cr>
 
 " Toggle spell checking
 nmap <silent><leader>S :setlocal spell!<cr>
