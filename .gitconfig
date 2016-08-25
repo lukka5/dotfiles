@@ -11,8 +11,6 @@
     ch = cherry -v
     last = log -1 -p HEAD
     unstage = reset HEAD --
-    visual = !gitg
-    conflicts = diff --name-only --diff-filter=U
     who = shortlog -s --
     hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)[%an]%Creset' --abbrev-commit --date=relative
     ls = log --graph --pretty=format:'%Cred%h %Cgreen%ad%Creset -%C(yellow)%d %Creset%s%C(bold blue) [%cn]%Creset' --decorate --date=short
