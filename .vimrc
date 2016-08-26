@@ -22,6 +22,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'majutsushi/tagbar'
 Plug 'matze/vim-move'
+Plug 'rizzatti/dash.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
@@ -200,6 +201,8 @@ map ,k <Plug>(easymotion-k)
 let g:EasyMotion_use_upper = 1
 let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
+" Dash.vim
+nmap <silent>,D <Plug>DashSearch
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                 Binds                                   "
@@ -346,10 +349,6 @@ xnoremap [I "vy:<C-u>ilist /<C-r>v<CR>:
 " Same as above but for 'defines'
 nnoremap [D [D:
 xnoremap [D "vy:<C-u>dlist /<C-r>v<CR>:
-
-" Populates the command-line with this stub
-nnoremap ,I :ilist /
-nnoremap ,D :dlist /
 
 " Don't save deleted word when pasting over a word.
 " Allowing multiple paste over word.
