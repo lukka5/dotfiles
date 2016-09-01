@@ -1,4 +1,5 @@
 PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+PATH="/usr/local/sbin:$PATH"
 export HOMEBREW_GITHUB_API_TOKEN=c4d628d41bb90aa8cdc3783dbdf31c05635c45f6
 export EDITOR='vim'
 
