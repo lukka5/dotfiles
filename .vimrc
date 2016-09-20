@@ -16,7 +16,7 @@ call plug#begin('~/.vim/plugged')
 " Utilities
 Plug 'airblade/vim-gitgutter'
 Plug 'danro/rename.vim'
-Plug 'kien/ctrlp.vim'
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'Lokaltog/vim-easymotion'
@@ -105,6 +105,36 @@ set spellfile=$HOME/.vim/spell/en.utf-8.add  " Spell file to use
 "                                Plugins                                  "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" fzf.vim
+
+" Mappings
+nmap <silent><c-p> :Files<cr>
+nmap <silent><c-b> :Buffers<cr>
+
+" Enable per-command history.
+" CTRL-N and CTRL-P will be automatically bound to next-history and
+" previous-history instead of down and up. If you don't like the change,
+" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+let g:fzf_history_dir = '~/.fzf-history'
+
+" [Files] Extra options for fzf
+"         e.g. File preview using CodeRay (http://coderay.rubychan.de/)
+let g:fzf_files_options =
+      \ '--preview "(coderay {} || coderay {}) 2> /dev/null | head -'.&lines.'"'
+
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+
+" [[B]Commits] Customize the options used by 'git log':
+let g:fzf_commits_log_options = '--graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)[%an]%Creset" --abbrev-commit --date=relative'
+
+" [Tags] Command to generate tags file
+let g:fzf_tags_command = 'ctags -R'
+
+" [Commands] --expect expression for directly executing the command
+let g:fzf_commands_expect = 'alt-enter,ctrl-x'
+
+
 " Rainbow Parentheses
 let g:rbpt_colorpairs = [
     \ ['magenta', 'RoyalBlue3'],
@@ -118,17 +148,6 @@ let g:python_fold = 0
 
 " Vim-move
 let g:move_key_modifier = 'S'
-
-" Ctrlp
-let g:ctrlp_max_depth = 400
-let g:ctrlp_max_files = 0  " Speed up execution
-let g:ctrlp_match_window = 'top,order:ttb'  " Show in top
-let g:ctrlp_prompt_mappings = { 'PrtClearCache()': ['<F9>'] }  " Update cache
-let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|mp3)$|[\/]\.(git)|__init__\.py'
-let g:ctrlp_working_path_mode = 0  " Path's root where vim was opened
-let g:ctrlp_open_multiple_files = 'i'
-nmap <silent><c-b> :CtrlPBuffer<cr>
-nmap <silent><c-m> :CtrlPMRUFiles<cr>
 
 " Syntastic
 let g:syntastic_error_symbol='✗'
@@ -480,17 +499,6 @@ function! ToggleList(bufname, pfx)
   if winnr() != winnr
     wincmd p
   endif
-endfunction
-
-
-" Toogle different cursorline color on CtrlP buffer
-let g:ctrlp_buffer_func = { 'enter': 'BrightHighlightOn', 'exit':  'BrightHighlightOff', }
-function BrightHighlightOn()
-  hi CursorLine ctermbg=237
-endfunction
-
-function BrightHighlightOff()
-  hi CursorLine ctermbg=234
 endfunction
 
 
