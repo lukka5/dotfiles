@@ -105,6 +105,14 @@ set spellfile=$HOME/.vim/spell/en.utf-8.add  " Spell file to use
 "                                Plugins                                  "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Rainbow Parentheses
+let g:rbpt_colorpairs = [
+    \ ['magenta', 'RoyalBlue3'],
+    \ ['brown',   'SeaGreen3'],
+    \ ['blue',    'DarkOrchid3'],
+    \ ['red',     'firebrick3'],
+    \ ]
+
 " Python file type plugin
 let g:python_fold = 0
 
