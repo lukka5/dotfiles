@@ -32,6 +32,7 @@ Plug 'tpope/vim-obsession'  " tmux-resurrect vim sessions
 Plug 'tpope/vim-surround'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'vim-airline/vim-airline'
+Plug 'heavenshell/vim-pydocstring'
 
 " Color schemes
 Plug 'lukka5/vim-airline-themes'
