@@ -233,6 +233,10 @@ let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 " Dash.vim
 nmap <silent>,D <Plug>DashSearch
 
+" vim-pydocstring
+nmap <silent> <C-m> <Plug>(pydocstring)
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                 Binds                                   "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
