@@ -355,6 +355,9 @@ vnoremap > >gv
 command! Q q
 command! W w
 
+" Print the current buffer file's fullpath.
+command! Fullpath echo expand('%:p')
+
 " Understand lines as screen lines instead of file lines
 " (useful for long lines)
 nnoremap j gj
