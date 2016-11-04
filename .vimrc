@@ -220,7 +220,9 @@ let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_seed_identifiers_with_syntax = 1
-nmap <silent><leader>G :YcmCompleter GoTo<cr>
+" Maybe I should move this mapping below the `let mapleader` expression
+" or move the mapleader exppression above this mapping.
+nmap <silent>,g :YcmCompleter GoTo<cr>
 
 " Easymotion
 map f <Plug>(easymotion-f)
@@ -231,10 +233,12 @@ let g:EasyMotion_use_upper = 1
 let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 " Dash.vim
+" Maybe I should move this mapping below the `let mapleader` expression
+" or move the mapleader exppression above this mapping.
 nmap <silent>,D <Plug>DashSearch
 
 " vim-pydocstring
-nmap <silent> <C-m> <Plug>(pydocstring)
+nmap <silent><C-m> <Plug>(pydocstring)
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
