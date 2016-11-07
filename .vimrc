@@ -358,6 +358,9 @@ command! W w
 " Print the current buffer file's fullpath.
 command! Fullpath echo expand('%:p')
 
+" Change vim's pwd to the directory of the current buffer's file.
+command! CDFiledir cd %:p:h
+
 " Understand lines as screen lines instead of file lines
 " (useful for long lines)
 nnoremap j gj
