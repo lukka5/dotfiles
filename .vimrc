@@ -211,7 +211,7 @@ let g:airline_symbols.readonly = '🔒'
 let g:airline_symbols.whitespace = '!'
 
 " YouCompleteMe
-let g:ycm_python_binary_path = '/usr/local/bin/python3'
+let g:ycm_python_binary_path = 'python'
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
