@@ -1,4 +1,4 @@
 .vim/plugged
 .vim/autoload/plug.vim
-.bash_extra_local_aliases
 .netrwhist
+.bash_extra_local_conf
