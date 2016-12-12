@@ -14,9 +14,11 @@ set nocompatible
 call plug#begin('~/.vim/plugged')
 
 " Utilities
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'danro/rename.vim'
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+Plug 'heavenshell/vim-pydocstring'
+Plug 'keith/swift.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'Lokaltog/vim-easymotion'
@@ -32,7 +34,6 @@ Plug 'tpope/vim-obsession'  " tmux-resurrect vim sessions
 Plug 'tpope/vim-surround'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'vim-airline/vim-airline'
-Plug 'heavenshell/vim-pydocstring'
 
 " Color schemes
 Plug 'lukka5/vim-airline-themes'
