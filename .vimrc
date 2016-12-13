@@ -224,6 +224,7 @@ let g:ycm_seed_identifiers_with_syntax = 1
 " Maybe I should move this mapping below the `let mapleader` expression
 " or move the mapleader exppression above this mapping.
 nmap <silent>,g :YcmCompleter GoTo<cr>
+nmap <silent>,G :YcmCompleter GetDoc<cr>
 
 " Easymotion
 map f <Plug>(easymotion-f)
