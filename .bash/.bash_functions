@@ -21,6 +21,7 @@ search()     { apt-cache search "$@" | grep --color=auto -i "$1"; }
 pips()       { pip search "*$1*" | grep --color=auto -i "$1"; }
 freeze()     { pip freeze | grep --color=auto -i "$1"; }
 vimgitshow() { git show "$1" | vim - "+set filetype=${1##*.}"; }
+agreplace()  { ag $1 --files-with-matches | xargs -I {} sed -i '.back' -e "s/$1/$2/g" {}; }
 
 # Open file in specific vim server
 vimr() { vim --servername "$1" --remote "${@:2}"; }
