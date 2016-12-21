@@ -8,21 +8,21 @@ htd() { printf "%d\n" "$1";   }
 dth() { printf "0x%x\n" "$1"; }
 
 # Make easy some common commands
-findd()      { find . -iname "*$1*" | grep --color=auto -i "$1"; }
-list()       { dpkg -l | grep --color=auto -i "$1"; }
-pss()        { ps aux | grep --color=auto -i "$1"; }
-install()    { sudo apt-get install "$@"; }
-remove()     { sudo apt-get remove "$@"; }
-update()     { sudo apt-get update; }
-upgrade()    { sudo apt-get upgrade; }
-policy()     { apt-cache policy "$@"; }
-show()       { apt-cache show "$@"; }
-search()     { apt-cache search "$@" | grep --color=auto -i "$1"; }
-pips()       { pip search "*$1*" | grep --color=auto -i "$1"; }
-freeze()     { pip freeze | grep --color=auto -i "$1"; }
-vimgitshow() { git show "$1" | vim - "+set filetype=${1##*.}"; }
-agreplace()  { ag $1 --files-with-matches | xargs -I {} sed -i '.back' -e "s/$1/$2/g" {}; }
-pep8line()   { pep8 --max-line-length=$1 ${@:2}; }
+findd()         { find . -iname "*$1*" | grep --color=auto -i "$1"; }
+list()          { dpkg -l | grep --color=auto -i "$1"; }
+pss()           { ps aux | grep --color=auto -i "$1"; }
+install()       { sudo apt-get install "$@"; }
+remove()        { sudo apt-get remove "$@"; }
+update()        { sudo apt-get update; }
+upgrade()       { sudo apt-get upgrade; }
+policy()        { apt-cache policy "$@"; }
+show()          { apt-cache show "$@"; }
+search()        { apt-cache search "$@" | grep --color=auto -i "$1"; }
+pips()          { pip search "*$1*" | grep --color=auto -i "$1"; }
+freeze()        { pip freeze | grep --color=auto -i "$1"; }
+vimgitshow()    { git show "$1" | vim - "+set filetype=${1##*.}"; }
+agreplace()     { ag $1 --files-with-matches | xargs -I {} sed -i '.back' -e "s/$1/$2/g" {}; }
+pystyleline()   { pycodestyle --max-line-length=$1 ${@:2}; }
 
 # Open file in specific vim server
 vimr() { vim --servername "$1" --remote "${@:2}"; }
