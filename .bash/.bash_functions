@@ -7,10 +7,23 @@ cdl() { cd "$*" && ls -lh; }
 htd() { printf "%d\n" "$1";   }
 dth() { printf "0x%x\n" "$1"; }
 
-# Make easy some common commands
+# Search with and and replace with sed syntax
+agreplace()     { ag $1 --files-with-matches | xargs -I {} sed -i '.back' -e "s/$1/$2/g" {}; }
+
+# Find a file recursively and hightlight the filename
 findd()         { find . -iname "*$1*" | grep --color=auto -i "$1"; }
-list()          { dpkg -l | grep --color=auto -i "$1"; }
+
+# Find process name
 pss()           { ps aux | grep --color=auto -i "$1"; }
+
+# Show git file on vim
+vimgitshow()    { git show "$1" | vim - "+set filetype=${1##*.}"; }
+
+# Open file on specific vim server
+vimr()          { vim --servername "$1" --remote "${@:2}"; }
+
+# Debian like distros
+list()          { dpkg -l | grep --color=auto -i "$1"; }
 install()       { sudo apt-get install "$@"; }
 remove()        { sudo apt-get remove "$@"; }
 update()        { sudo apt-get update; }
@@ -18,14 +31,13 @@ upgrade()       { sudo apt-get upgrade; }
 policy()        { apt-cache policy "$@"; }
 show()          { apt-cache show "$@"; }
 search()        { apt-cache search "$@" | grep --color=auto -i "$1"; }
-pips()          { pip search "*$1*" | grep --color=auto -i "$1"; }
-freeze()        { pip freeze | grep --color=auto -i "$1"; }
-vimgitshow()    { git show "$1" | vim - "+set filetype=${1##*.}"; }
-agreplace()     { ag $1 --files-with-matches | xargs -I {} sed -i '.back' -e "s/$1/$2/g" {}; }
-pystyleline()   { pycodestyle --max-line-length=$1 ${@:2}; }
 
-# Open file in specific vim server
-vimr() { vim --servername "$1" --remote "${@:2}"; }
+# Python
+pips()          { pip search "*$1*" | grep --color=auto -i "$1"; }
+shell()         { python manage.py shell_plus "$@"; }
+freeze()        { pip freeze | grep --color=auto -i "$1"; }
+runserver()     { python manage.py runserver_plus "$@"; }
+pystyleline()   { pycodestyle --max-line-length=$1 ${@:2}; }
 
 # Make a directory and cd to it
 mkcd() {
