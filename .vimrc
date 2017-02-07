@@ -281,9 +281,6 @@ nmap <silent><leader>H :echo "hi<" .
       \ synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"
       \ <cr>
 
-" Open current buffer on iceweasel
-nmap <silent><leader>i :!iceweasel %<cr>
-
 " Join next line to current one without spaces between.
 nnoremap <leader>J :call JoinSpaceless()<cr>
 
