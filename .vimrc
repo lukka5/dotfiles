@@ -256,6 +256,9 @@ nmap <silent><leader>` :nohlsearch<cr>
 " Select all
 nmap <silent><leader>a ggVG
 
+" Search inner word with the silver searcher
+nmap <silent><leader>A :Ag <c-r><c-w><cr>
+
 " Add ipdb breackpoint
 nnoremap <leader>b oimport ipdb;ipdb.set_trace()<esc>
 
