@@ -128,5 +128,5 @@ function cd() {
 
 # Convert gif to mp4. Usefull for sharing on Whatsapp desktop.
 function gif2mp4 {
-    ffmpeg -i $1 -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" $2
+    ffmpeg -i "$1" -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" "${1%.gif}.mp4"
 }
