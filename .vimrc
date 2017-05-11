@@ -265,6 +265,9 @@ nnoremap <leader>b oimport ipdb;ipdb.set_trace()<esc>
 " Print current buffer filename
 map <leader>B :echo @%<cr>
 
+" Add celery rdb breackpoint
+nnoremap <leader>c ofrom celery.contrib import rdb;rdb.set_trace()<esc>
+
 " Delete current buffer keeping window layout intact
 nmap <silent><leader>d :bp<bar>sp<bar>bn<bar>bd<cr>
 
