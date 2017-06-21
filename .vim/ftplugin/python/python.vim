@@ -11,6 +11,12 @@ if g:python_fold
     set foldtext=PythonFoldText()
 endif
 
+" Add ipdb breackpoint
+nnoremap <leader>b oimport ipdb;ipdb.set_trace()<esc>
+
+" Add if __name__ == '__main__' conditional
+nnoremap <leader>m oif __name__ == '__main__':<cr>
+
 " Run python on the current buffer
 nmap <silent><leader>z :w<cr>:!python3 %<cr>
 
