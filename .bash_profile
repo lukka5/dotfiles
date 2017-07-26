@@ -1,5 +1,7 @@
+LOCALSBIN="/usr/local/sbin"
 POSTGRESPATH="/Applications/Postgres.app/Contents/Versions/latest/bin"
 [[ -d $POSTGRESPATH ]] && [[ ":$PATH:" != *":$POSTGRESPATH:"* ]] && PATH="$POSTGRESPATH:${PATH}"
+[[ -d $LOCALSBIN ]] && [[ ":$PATH:" != *":$LOCALSBIN:"* ]] && PATH="$LOCALSBIN:${PATH}"
 
 export HOMEBREW_GITHUB_API_TOKEN=c4d628d41bb90aa8cdc3783dbdf31c05635c45f6
 export EDITOR='vim'
