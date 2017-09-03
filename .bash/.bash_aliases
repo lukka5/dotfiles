@@ -12,7 +12,7 @@ alias lla='l -A'
 alias t='tree'
 alias ..='cd ..'
 alias k='kill'
-alias d='deactivate'  # venv
+alias d='deactivate 2> /dev/null || source deactivate'  # venv
 
 alias dfh='df -h'
 alias duh='du -sh'
