@@ -293,6 +293,9 @@ nmap <silent><leader>n :set number!<cr>
 " Make current window the only one
 nmap <silent><leader>o :on<cr>
 
+" Open current buffer (mac only)
+nmap <silent><leader>O :!open %<cr>
+
 " Toggle Quicklist and Locationlist
 nmap <silent><leader>q :call ToggleList("Quickfix List", 'c')<cr>
 nmap <silent><leader>Q :call ToggleList("Location List", 'l')<cr>
