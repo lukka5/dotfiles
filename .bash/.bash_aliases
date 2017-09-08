@@ -35,7 +35,7 @@ alias extraconf='vim ~/.bash/.bash_extra_local_conf'
 alias more='less'
 alias so='source ~/.bash_profile'
 alias grep='grep --color=auto'
-alias clean_pycs="find . -name '*.pyc' -exec rm '{}' ';'"
+alias ppath="echo $PATH | tr -s ':' '\n'"
 
 if [[ $(which colordiff) ]]; then
     alias diff='colordiff'
@@ -49,3 +49,4 @@ alias ppjson="python -m json.tool"  # Pretty print json (i.e. $ echo '{"foo": "b
 alias pymodule="python -c 'from imp import find_module;from sys import argv;print(find_module(argv[1])[1])'"  # Find path to python module.
 alias pydoc="python -m pydoc"  # Show doc entry for python keyword.
 alias pystyle="pycodestyle"
+alias clean_pycs="find . -name '*.pyc' -exec rm '{}' ';'"
