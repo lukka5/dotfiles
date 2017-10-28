@@ -17,6 +17,7 @@ call plug#begin('~/.vim/plugged')
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'danro/rename.vim'
+Plug 'derekwyatt/vim-scala'
 Plug 'heavenshell/vim-pydocstring'
 Plug 'keith/swift.vim'
 Plug 'kien/rainbow_parentheses.vim'
