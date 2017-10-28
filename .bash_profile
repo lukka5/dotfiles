@@ -1,7 +1,9 @@
 LOCALSBIN="/usr/local/sbin"
 POSTGRESPATH="/Applications/Postgres.app/Contents/Versions/latest/bin"
+SCALAPATH="/usr/local/Cellar/scala@2.11/2.11.11/bin"
 [[ -d $POSTGRESPATH ]] && [[ ":$PATH:" != *":$POSTGRESPATH:"* ]] && PATH="$POSTGRESPATH:${PATH}"
 [[ -d $LOCALSBIN ]] && [[ ":$PATH:" != *":$LOCALSBIN:"* ]] && PATH="$LOCALSBIN:${PATH}"
+[[ -d $SCALAPATH ]] && [[ ":$PATH:" != *":$SCALAPATH:"* ]] && PATH="$SCALAPATH:${PATH}"
 
 export HOMEBREW_GITHUB_API_TOKEN=c4d628d41bb90aa8cdc3783dbdf31c05635c45f6
 export EDITOR='vim'
