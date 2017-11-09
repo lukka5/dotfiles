@@ -130,3 +130,29 @@ function cd() {
 function gif2mp4 {
     ffmpeg -i "$1" -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" "${1%.gif}.mp4"
 }
+
+#
+# Anaconda/Conda
+#
+# Useful functions for avoid messing with the system and brew python.
+#
+
+export ANACONDA_PATH="/usr/local/anaconda3/"
+
+function conda {
+    OLDPATH="$PATH"
+    PATH="$ANACONDA_PATH"bin:"$PATH"
+    command conda "$@"
+    PATH="$OLDPATH"
+    unset OLDPATH
+}
+
+function source {
+    if [ "$1" == "activate" ] || [ "$1" == "deactivate" ]; then
+        [ $# -eq 1 ] && ENV=root || ENV=$2
+        command source "$ANACONDA_PATH"bin/"$1" "$ENV" 2> /dev/null \
+            || echo "Anaconda not installed."
+    else
+        command source "$@"
+    fi
+}

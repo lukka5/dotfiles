@@ -42,5 +42,7 @@ export PROJECT_HOME=$HOME/projects
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 source /usr/local/bin/virtualenvwrapper.sh
 
-# Miniconda
-export PATH=/usr/local/miniconda3/bin:"$PATH"
+# Anaconda
+# Instead of doing export PATH=/usr/local/anaconda3/bin:"$PATH" and
+# messing the system and brew pythons I use a custom functions
+# (see ~/.bash/.bash_functions) `conda` and `source`.
