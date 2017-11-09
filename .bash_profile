@@ -1,7 +1,5 @@
 LOCALSBIN="/usr/local/sbin"
-POSTGRESPATH="/Applications/Postgres.app/Contents/Versions/latest/bin"
 SCALAPATH="/usr/local/Cellar/scala@2.11/2.11.11/bin"
-[[ -d $POSTGRESPATH ]] && [[ ":$PATH:" != *":$POSTGRESPATH:"* ]] && PATH="$POSTGRESPATH:${PATH}"
 [[ -d $LOCALSBIN ]] && [[ ":$PATH:" != *":$LOCALSBIN:"* ]] && PATH="$LOCALSBIN:${PATH}"
 [[ -d $SCALAPATH ]] && [[ ":$PATH:" != *":$SCALAPATH:"* ]] && PATH="$SCALAPATH:${PATH}"
 
@@ -41,6 +39,7 @@ if [ -f ~/.fzf.bash ]; then . ~/.fzf.bash; fi
 # Virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/projects
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 source /usr/local/bin/virtualenvwrapper.sh
 
 # Miniconda
