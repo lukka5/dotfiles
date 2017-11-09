@@ -213,7 +213,7 @@ let g:airline_symbols.readonly = '🔒'
 let g:airline_symbols.whitespace = '!'
 
 " YouCompleteMe
-let g:ycm_python_binary_path = 'python'
+let g:ycm_python_binary_path = 'python3'
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
@@ -455,7 +455,7 @@ augroup END
 
 " Add the virtualenv's site-packages to vim path to enable completion
 " inside virtualenvs. (i.e. django, etc)
-py << EOF
+py3 << EOF
 import os.path
 import sys
 import vim
