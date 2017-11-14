@@ -1,3 +1,4 @@
+# Manual paths.
 LOCALSBIN="/usr/local/sbin"
 SCALAPATH="/usr/local/Cellar/scala@2.11/2.11.11/bin"
 [[ -d $LOCALSBIN ]] && [[ ":$PATH:" != *":$LOCALSBIN:"* ]] && PATH="$LOCALSBIN:${PATH}"
@@ -5,6 +6,10 @@ SCALAPATH="/usr/local/Cellar/scala@2.11/2.11.11/bin"
 
 export HOMEBREW_GITHUB_API_TOKEN=c4d628d41bb90aa8cdc3783dbdf31c05635c45f6
 export EDITOR='vim'
+
+# Fixes python3 locale.getlocale() (Used by pipenv and maybe others)
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # For setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=10000
