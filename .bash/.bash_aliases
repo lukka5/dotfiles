@@ -48,5 +48,5 @@ alias famaf='ssh ldg0112@mail.famaf.unc.edu.ar'
 alias ppjson="python -m json.tool"  # Pretty print json (i.e. $ echo '{"foo": "bar"}' | ppjson).
 alias pymodule="python -c 'from imp import find_module;from sys import argv;print(find_module(argv[1])[1])'"  # Find path to python module.
 alias pydoc="python -m pydoc"  # Show doc entry for python keyword.
-alias pystyle="pycodestyle"
 alias clean_pycs="find . -name '*.pyc' -exec rm '{}' ';'"
+alias cookiedjango="cookiecutter https://github.com/pydanny/cookiecutter-django"
