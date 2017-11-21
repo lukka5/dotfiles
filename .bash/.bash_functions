@@ -138,18 +138,26 @@ function gif2mp4 {
 #
 
 export ANACONDA_PATH="/usr/local/anaconda3/"
+export OLDPATH="$PATH"
 
 function conda {
-    OLDPATH="$PATH"
-    PATH="$ANACONDA_PATH"bin:"$PATH"
-    command conda "$@"
-    PATH="$OLDPATH"
-    unset OLDPATH
+    if [ -n "$CONDA_PREFIX" ]; then
+        # We are in a conda env. Run normally.
+        command conda "$@"
+    else
+        PATH="$ANACONDA_PATH"bin:"$PATH"
+        command conda "$@"
+        PATH="$OLDPATH"
+    fi
 }
 
 function source {
     if [ "$1" == "activate" ] || [ "$1" == "deactivate" ]; then
         [ $# -eq 1 ] && ENV=root || ENV=$2
+        # Prefix path when activating env.
+        [ "$1" == "activate" ] \
+            && export PATH="$ANACONDA_PATH"bin:"$PATH" \
+            || export PATH="$OLDPATH"
         command source "$ANACONDA_PATH"bin/"$1" "$ENV" 2> /dev/null \
             || echo "Anaconda not installed."
     else
