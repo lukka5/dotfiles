@@ -34,9 +34,11 @@ search()        { apt-cache search "$@" | grep --color=auto -i "$1"; }
 
 # Python
 pips()          { pip search "*$1*" | grep --color=auto -i "$1"; }
-shell()         { python manage.py shell_plus "$@"; }
+shell()         { ./manage.py shell_plus "$@" ||
+                  ./manager.py shell "$@"; }
 freeze()        { pip freeze | grep --color=auto -i "$1"; }
-runserver()     { python manage.py runserver_plus "$@"; }
+runserver()     { ./manage.py runserver_plus "$@" ||
+                  ./manage.py runserver "$@"; }
 pystyleline()   { pycodestyle --max-line-length=$1 ${@:2}; }
 
 # Make a directory and cd to it
