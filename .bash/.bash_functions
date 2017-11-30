@@ -33,7 +33,7 @@ show()          { apt-cache show "$@"; }
 search()        { apt-cache search "$@" | grep --color=auto -i "$1"; }
 
 # Python
-pips()          { pip search "*$1*" | grep --color=auto -i "$1"; }
+pips()          { pip search "$1" | grep --color=auto -i "$1"; }
 shell()         { ./manage.py shell_plus "$@" ||
                   ./manager.py shell "$@"; }
 freeze()        { pip freeze | grep --color=auto -i "$1"; }
