@@ -50,3 +50,4 @@ alias pymodule="python -c 'from imp import find_module;from sys import argv;prin
 alias pydoc="python -m pydoc"  # Show doc entry for python keyword.
 alias clean_pycs="find . -name '*.pyc' -exec rm '{}' ';'"
 alias cookiedjango="cookiecutter https://github.com/pydanny/cookiecutter-django"
+alias pshell="pipenv shell"
