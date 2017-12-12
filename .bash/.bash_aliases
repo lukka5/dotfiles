@@ -51,3 +51,4 @@ alias pydoc="python -m pydoc"  # Show doc entry for python keyword.
 alias clean_pycs="find . -name '*.pyc' -exec rm '{}' ';'"
 alias cookiedjango="cookiecutter https://github.com/pydanny/cookiecutter-django"
 alias pshell="pipenv shell"
+alias secret="python3 -c \"import random; print(''.join(random.SystemRandom().choice('abcdefghijklmnopqrstuvwxyz0123456789\!@#$%^&*(-_=+)') for i in range(50)))\""
