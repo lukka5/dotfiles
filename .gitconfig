@@ -8,17 +8,13 @@
     br = branch
     co = checkout
     s = stash
-    ch = cherry -v
+    who = shortlog -s --
     last = log -1 -p HEAD
     unstage = reset HEAD --
-    who = shortlog -s --
+    aliases = "!git config -l | grep alias | cut -c 7-"
     hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)[%an]%Creset' --abbrev-commit --date=relative
-    ls = log --graph --pretty=format:'%Cred%h %Cgreen%ad%Creset -%C(yellow)%d %Creset%s%C(bold blue) [%cn]%Creset' --decorate --date=short
-    ll = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)[%an]%Creset' --decorate --numstat
-    la = "!git config -l | grep alias | cut -c 7-" # list aliases
-    lss = log --graph --pretty=format:'%Cred%h %Cgreen%ad%Creset -%C(yellow)%d %Creset%<(35,trunc)%s%C(bold blue) [%cn]%Creset' --decorate --date=short
-    hists = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %<(30,trunc)%s %Cgreen(%cr) %C(bold blue)[%an]%Creset' --abbrev-commit --date=relative
-    undo = "!f() { git reset --hard $(git rev-parse --abbrev-ref HEAD)@{${1-1}}; }; f"
+    shorthist = log --graph --pretty=format:'%Cred%h %Cgreen%ad%Creset -%C(yellow)%d %Creset%<(35,trunc)%s%C(bold blue) [%cn]%Creset' --decorate --date=short
+    logfiles = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)[%an]%Creset' --decorate --numstat
 
 [core]
     editor = vim
@@ -39,11 +35,3 @@
 
 [url "https://"]
     insteadOf = git://
-
-[difftool "sourcetree"]
-    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-    path = 
-
-[mergetool "sourcetree"]
-    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-    trustExitCode = true
