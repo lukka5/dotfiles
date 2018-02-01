@@ -43,6 +43,7 @@ if [ -f ~/.bash/.bash_extra_local_conf ]; then . ~/.bash/.bash_extra_local_conf;
 # FZF
 if [ -f ~/.fzf.bash ]; then . ~/.fzf.bash; fi
 export FZF_TMUX=1
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 # Virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
