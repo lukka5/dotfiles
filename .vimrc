@@ -331,6 +331,10 @@ nmap <silent><leader>W :%s/\s\+$//<cr>:let @/=''<cr>
 nmap <silent><c-o> :bnext<cr>
 nmap <silent><c-i> :bprevious<cr>
 
+" Jump list
+nnoremap <silent><leader>i <c-o>
+nnoremap <silent><leader>o <c-i>
+
 " Easily move around windows
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
