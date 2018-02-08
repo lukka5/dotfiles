@@ -1,8 +1,5 @@
 # vim: set ft=sh:
 
-# cd and list
-cdl() { cd "$*" && ls -lh; }
-
 # Convert hex to decimal and vice versa
 htd() { printf "%d\n" "$1";   }
 dth() { printf "0x%x\n" "$1"; }
@@ -39,7 +36,6 @@ shell()         { ./manage.py shell_plus "$@" ||
 freeze()        { pip freeze | grep --color=auto -i "$1"; }
 runserver()     { ./manage.py runserver_plus "$@" ||
                   ./manage.py runserver "$@"; }
-pystyleline()   { pycodestyle --max-line-length=$1 ${@:2}; }
 
 # Make a directory and cd to it
 mkcd() {
@@ -131,38 +127,4 @@ function cd() {
 # Convert gif to mp4. Usefull for sharing on Whatsapp desktop.
 function gif2mp4 {
     ffmpeg -i "$1" -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" "${1%.gif}.mp4"
-}
-
-#
-# Anaconda/Conda
-#
-# Useful functions for avoid messing with the system and brew python.
-#
-
-export ANACONDA_PATH="/usr/local/anaconda3/"
-export OLDPATH="$PATH"
-
-function conda {
-    if [ -n "$CONDA_PREFIX" ]; then
-        # We are in a conda env. Run normally.
-        command conda "$@"
-    else
-        PATH="$ANACONDA_PATH"bin:"$PATH"
-        command conda "$@"
-        PATH="$OLDPATH"
-    fi
-}
-
-function source {
-    if [ "$1" == "activate" ] || [ "$1" == "deactivate" ]; then
-        [ $# -eq 1 ] && ENV=root || ENV=$2
-        # Prefix path when activating env.
-        [ "$1" == "activate" ] \
-            && export PATH="$ANACONDA_PATH"bin:"$PATH" \
-            || export PATH="$OLDPATH"
-        command source "$ANACONDA_PATH"bin/"$1" "$ENV" 2> /dev/null \
-            || echo "Anaconda not installed."
-    else
-        command source "$@"
-    fi
 }
