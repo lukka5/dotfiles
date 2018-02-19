@@ -157,6 +157,7 @@ let g:move_key_modifier = 'S'
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_stl_format = 's[%F](%t)'  " Abbrev msg on statusline
+let g:syntastic_python_checkers = ["python", "flake8", "pyflakes"]
 
 " Tagbar
 let g:tagbar_sort = 0
