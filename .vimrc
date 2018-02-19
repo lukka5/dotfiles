@@ -441,7 +441,7 @@ augroup END
 augroup mycolor
   au!
   au VimEnter,ColorScheme *
-        \ hi OverLength ctermbg=238 |
+        \ hi OverLength ctermbg=None |
         \ hi SyntasticError ctermbg=238 |
         \ hi SyntasticWarning ctermbg=238 |
         \ hi SyntasticErrorSign ctermfg=245 |
@@ -487,7 +487,7 @@ function! RainbowBraces()
 endfunction
 
 " Toggle OverLenght highlight group
-let g:overlengthon = 1
+let g:overlengthon = 0
 function! ToogleOverLength()
   if g:overlengthon
     hi OverLength ctermbg=None
