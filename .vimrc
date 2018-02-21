@@ -94,7 +94,7 @@ set timeout                " Timeout on maps and key codes
 set ttimeoutlen=50         " Milliseconds waited for sequence to complete
 set pastetoggle=<F2>       " Key to use for toggling paste mode
 set wildmode=list:longest  " Bash like command line completion
-set textwidth=72           " Useful for reformatting text/comments
+set textwidth=79           " Useful for reformatting text/comments
 set formatoptions=roqnj    " See :h formatoptions
 set updatetime=500        " (default 4000) for quick tagbar update of tag
                            " highlighting in tagbar window
