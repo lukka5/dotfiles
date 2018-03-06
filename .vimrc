@@ -160,6 +160,7 @@ let g:syntastic_stl_format = 's[%F](%t)'  " Abbrev msg on statusline
 let g:syntastic_python_checkers = ["flake8"]
 
 " Tagbar
+let g:tagbar_autoclose = 1
 let g:tagbar_autoshowtag = 2
 let g:tagbar_foldlevel = 0
 let g:tagbar_map_help = "?"
