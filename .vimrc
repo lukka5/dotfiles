@@ -113,7 +113,6 @@ set spellfile=$HOME/.vim/spell/en.utf-8.add  " Spell file to use
 
 " Mappings
 nmap <silent><c-p> :Files<cr>
-nmap <silent><c-b> :Buffers<cr>
 
 " Enable per-command history.
 " CTRL-N and CTRL-P will be automatically bound to next-history and
@@ -121,10 +120,24 @@ nmap <silent><c-b> :Buffers<cr>
 " explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
 let g:fzf_history_dir = '~/.fzf-history'
 
-" [Files] Extra options for fzf
-"         e.g. File preview using CodeRay (http://coderay.rubychan.de/)
-let g:fzf_files_options =
-      \ '--preview "(coderay {} || coderay {}) 2> /dev/null | head -'.&lines.'"'
+" Augmenting Ag command using fzf#vim#with_preview function
+"   * fzf#vim#with_preview([[options], preview window, [toggle keys...]])
+"     * For syntax-highlighting, Ruby and any of the following tools are required:
+"       - Highlight: http://www.andre-simon.de/doku/highlight/en/highlight.php
+"       - CodeRay: http://coderay.rubychan.de/
+"       - Rouge: https://github.com/jneen/rouge
+"
+"   :Ag  - Start fzf with hidden preview window that can be enabled with "?" key
+"   :Ag! - Start fzf in fullscreen and display the preview window above
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>,
+  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \                 <bang>0)
+
+" Likewise, Files command with preview window
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview('right:50%:hidden', '?'), <bang>0)
 
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
@@ -137,6 +150,9 @@ let g:fzf_tags_command = 'ctags -R'
 
 " [Commands] --expect expression for directly executing the command
 let g:fzf_commands_expect = 'alt-enter,ctrl-x'
+
+" [Layout]
+let g:fzf_layout = { 'up': '~40%' }
 
 
 " Rainbow Parentheses
@@ -172,8 +188,7 @@ nmap <silent><c-t> :TagbarToggle<cr>
 let NERDTreeWinSize = 28
 let NERDTreeShowBookmarks = 1
 let NERDTreeIgnore = ['\.pyc$', '\~$', '\.o$']
-nmap <silent><c-f> :NERDTreeToggle<cr>
-nmap <silent><c-y> :NERDTree<cr><c-w>p:NERDTreeFind<cr>
+nmap <silent><c-y> :NERDTreeToggle<cr>
 
 " Vim-airline
 let g:airline_theme = 'murmur'
