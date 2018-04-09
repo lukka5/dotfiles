@@ -11,8 +11,9 @@ if g:python_fold
     set foldtext=PythonFoldText()
 endif
 
-" Add ipdb breackpoint
+" Add ipdb or rdb breackpoint
 nnoremap <leader>b oimport ipdb;ipdb.set_trace()<esc>
+nnoremap <leader>r ofrom celery.contrib import rdb;rdb.set_trace()<esc>
 
 " Add if __name__ == '__main__' conditional
 nnoremap <leader>m oif __name__ == '__main__':<cr>
