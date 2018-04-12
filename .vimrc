@@ -286,6 +286,9 @@ map <leader>B :echo @%<cr>
 " Add celery rdb breackpoint
 nnoremap <leader>c ofrom celery.contrib import rdb;rdb.set_trace()<esc>
 
+" Search with Ag for class under the cursor
+nmap <leader>C :Ag class\ <C-r><C-w><cr>
+
 " Delete current buffer keeping window layout intact
 nmap <silent><leader>d :bp<bar>sp<bar>bn<bar>bd<cr>
 
