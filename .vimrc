@@ -278,7 +278,7 @@ nmap <silent><leader>` :nohlsearch<cr>
 nmap <silent><leader>a ggVG
 
 " Search inner word with the silver searcher
-nmap <silent><leader>A :Ag <c-r><c-w><cr>
+nmap <silent><leader>A :Ag! <c-r><c-w><cr>
 
 " Print current buffer filename
 map <leader>B :echo @%<cr>
