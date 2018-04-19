@@ -16,13 +16,11 @@ call plug#begin('~/.vim/plugged')
 " Utilities
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'AndrewRadev/linediff.vim'
 Plug 'danro/rename.vim'
-Plug 'derekwyatt/vim-scala'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'heavenshell/vim-pydocstring'
-Plug 'keith/swift.vim'
 Plug 'kien/rainbow_parentheses.vim'
-Plug 'leafgarland/typescript-vim'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'majutsushi/tagbar'
 Plug 'matze/vim-move'
@@ -32,7 +30,6 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-obsession'  " tmux-resurrect vim sessions
 Plug 'tpope/vim-surround'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }  " Install cmake first
 Plug 'vim-airline/vim-airline'
