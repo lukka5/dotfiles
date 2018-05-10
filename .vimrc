@@ -110,6 +110,7 @@ set spellfile=$HOME/.vim/spell/en.utf-8.add  " Spell file to use
 
 " Mappings
 nmap <silent><c-p> :Files<cr>
+nmap <silent>b :Buffers<cr>
 
 " Enable per-command history.
 " CTRL-N and CTRL-P will be automatically bound to next-history and
