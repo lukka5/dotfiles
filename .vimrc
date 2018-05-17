@@ -27,12 +27,12 @@ Plug 'matze/vim-move'
 Plug 'rizzatti/dash.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'scrooloose/syntastic'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }  " Install cmake first
 Plug 'vim-airline/vim-airline'
+Plug 'w0rp/ale'
 
 " Color schemes
 Plug 'lukka5/vim-airline-themes'
@@ -166,11 +166,10 @@ let g:python_fold = 0
 " Vim-move
 let g:move_key_modifier = 'S'
 
-" Syntastic
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_stl_format = 's[%F](%t)'  " Abbrev msg on statusline
-let g:syntastic_python_checkers = ["flake8"]
+" Ale
+let g:ale_linters = {
+\   'python': ['isort', 'flake8'],
+\}
 
 " Tagbar
 let g:tagbar_autoclose = 1
@@ -461,10 +460,6 @@ augroup mycolor
   au!
   au VimEnter,ColorScheme *
         \ hi OverLength ctermbg=None |
-        \ hi SyntasticError ctermbg=238 |
-        \ hi SyntasticWarning ctermbg=238 |
-        \ hi SyntasticErrorSign ctermfg=245 |
-        \ hi SyntasticWarningSign ctermfg=245
   au Syntax * hi CursorLine ctermbg=none
   au VimEnter * RainbowParenthesesToggle
   au Syntax * RainbowParenthesesLoadRound
