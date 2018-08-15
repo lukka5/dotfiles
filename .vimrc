@@ -102,6 +102,7 @@ set clipboard=unnamedplus,unnamed  " Use X11 default clipboard :D
 set spelllang=en
 set spellfile=$HOME/.vim/spell/en.utf-8.add  " Spell file to use
 
+let g:python3_host_prog = '/usr/local/bin/python3'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Plugins                                  "
