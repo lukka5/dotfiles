@@ -1,0 +1,5 @@
+# Ignore everything in this directory since this is mostly for exta completions
+# files I want to add manually.
+*
+# Except this file
+!.gitignore
