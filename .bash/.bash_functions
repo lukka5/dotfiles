@@ -32,7 +32,7 @@ search()        { apt-cache search "$@" | grep --color=auto -i "$1"; }
 # Python
 pips()          { pip search "$1" | grep --color=auto -i "$1"; }
 shell()         { ./manage.py shell_plus "$@" ||
-                  ./manager.py shell "$@"; }
+                  ./manage.py shell "$@"; }
 freeze()        { pip freeze | grep --color=auto -i "$1"; }
 runserver()     { ./manage.py runserver_plus "$@" ||
                   ./manage.py runserver "$@"; }

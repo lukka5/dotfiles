@@ -27,12 +27,12 @@ Plug 'matze/vim-move'
 Plug 'rizzatti/dash.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'scrooloose/syntastic'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }  " Install cmake first
 Plug 'vim-airline/vim-airline'
+Plug 'w0rp/ale'
 
 " Color schemes
 Plug 'lukka5/vim-airline-themes'
@@ -79,6 +79,7 @@ set number                 " Enable line number gutter
 set ruler                  " Show current cursor position in status bar
 set hidden                 " Allow hidden buffers (even modified ones)
 set incsearch              " Highlight as I am searching
+set nohlsearch
 set smartcase              " But make it sensitive when it matters
 set ignorecase             " Case insensitive searching
 set noshowmode             " Don't show mode in status bar
@@ -101,6 +102,7 @@ set clipboard=unnamedplus,unnamed  " Use X11 default clipboard :D
 set spelllang=en
 set spellfile=$HOME/.vim/spell/en.utf-8.add  " Spell file to use
 
+let g:python3_host_prog = '/usr/local/bin/python3'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Plugins                                  "
@@ -167,11 +169,10 @@ let g:python_fold = 0
 " Vim-move
 let g:move_key_modifier = 'S'
 
-" Syntastic
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_stl_format = 's[%F](%t)'  " Abbrev msg on statusline
-let g:syntastic_python_checkers = ["flake8"]
+" Ale
+let g:ale_linters = {
+\   'python': ['isort', 'flake8'],
+\}
 
 " Tagbar
 let g:tagbar_autoclose = 1
@@ -462,10 +463,6 @@ augroup mycolor
   au!
   au VimEnter,ColorScheme *
         \ hi OverLength ctermbg=None |
-        \ hi SyntasticError ctermbg=238 |
-        \ hi SyntasticWarning ctermbg=238 |
-        \ hi SyntasticErrorSign ctermfg=245 |
-        \ hi SyntasticWarningSign ctermfg=245
   au Syntax * hi CursorLine ctermbg=none
   au VimEnter * RainbowParenthesesToggle
   au Syntax * RainbowParenthesesLoadRound
