@@ -171,11 +171,13 @@ let g:move_key_modifier = 'S'
 
 " Ale
 let g:ale_linters = {
-\   'python': ['isort', 'flake8'],
+\   'python': ['flake8', 'isort'],
 \}
 
+command! Isort execute "ALEFix isort"
+
 " Tagbar
-let g:tagbar_autoclose = 1
+let g:tagbar_autoclose = 0
 let g:tagbar_autoshowtag = 2
 let g:tagbar_foldlevel = 0
 let g:tagbar_map_help = "?"
