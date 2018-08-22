@@ -39,7 +39,7 @@ if [ -f ~/.bash/.bash_aliases ]; then . ~/.bash/.bash_aliases; fi
 if [ -f ~/.bash/.bash_functions ]; then . ~/.bash/.bash_functions; fi
 if [ -f ~/.bash/.bash_prompt ]; then . ~/.bash/.bash_prompt; fi
 if [ -f ~/.bash/.bash_extra_local_conf ]; then . ~/.bash/.bash_extra_local_conf; fi
-if [ -d ~/.bash/.bash_extra_completions ]; then
+if [ -d ~/.bash/.bash_extra_completions ] && [ -n "$(ls ~/.bash/.bash_extra_completions)" ]; then
   for f in ~/.bash/.bash_extra_completions/*; do . $f; done
 fi
 
