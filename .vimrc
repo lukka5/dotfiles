@@ -79,7 +79,6 @@ set number                 " Enable line number gutter
 set ruler                  " Show current cursor position in status bar
 set hidden                 " Allow hidden buffers (even modified ones)
 set incsearch              " Highlight as I am searching
-set nohlsearch
 set smartcase              " But make it sensitive when it matters
 set ignorecase             " Case insensitive searching
 set noshowmode             " Don't show mode in status bar
