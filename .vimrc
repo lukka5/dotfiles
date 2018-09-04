@@ -283,9 +283,6 @@ nmap <silent><leader>A :Ag! <c-r><c-w><cr>
 " Print current buffer filename
 map <leader>B :echo @%<cr>
 
-" Add celery rdb breackpoint
-nnoremap <leader>c ofrom celery.contrib import rdb;rdb.set_trace()<esc>
-
 " Search with Ag for class under the cursor
 nmap <leader>C :Ag class\ <C-r><C-w><cr>
 
@@ -294,6 +291,9 @@ nmap <silent><leader>d :bp<bar>sp<bar>bn<bar>bd<cr>
 
 " Close current window
 nmap <silent><leader>e :hid<cr>
+
+" Search with Ag for function under the cursor
+nmap <leader>F :Ag def\ <C-r><C-w><cr>
 
 " Toggle OverLength highlight group
 nmap <silent><leader>h :call ToogleOverLength()<cr>
@@ -324,8 +324,8 @@ nmap <silent><leader>O :!open %<cr>
 nmap <silent><leader>q :call ToggleList("Quickfix List", 'c')<cr>
 nmap <silent><leader>Q :call ToggleList("Location List", 'l')<cr>
 
-" Close preview window
-nmap <silent><leader>r :pclose<cr>
+" Add celery rdb breackpoint
+nnoremap <leader>r ofrom celery.contrib import rdb;rdb.set_trace()<esc>
 
 " Search and replace current word
 nmap <leader>R :%s/\<<C-r><C-w>\>//gc<left><left><left>
