@@ -75,6 +75,7 @@ hi OverLength ctermbg=238
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set completeopt-=preview
+set mouse=a
 set number                 " Enable line number gutter
 set ruler                  " Show current cursor position in status bar
 set hidden                 " Allow hidden buffers (even modified ones)
