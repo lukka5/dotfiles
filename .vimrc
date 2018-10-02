@@ -23,7 +23,6 @@ Plug 'heavenshell/vim-pydocstring'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'majutsushi/tagbar'
-Plug 'matze/vim-move'
 Plug 'rizzatti/dash.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -165,9 +164,6 @@ let g:rbpt_colorpairs = [
 
 " Python file type plugin
 let g:python_fold = 0
-
-" Vim-move
-let g:move_key_modifier = 'S'
 
 " Ale
 let g:ale_linters = {
