@@ -23,6 +23,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     alias vim='vim'
 fi
+alias vim='nvim || vim'
 alias vimrc='vim ~/.vimrc'
 alias bashrc='vim ~/.bashrc'
 alias profile='vim ~/.bash_profile'
