@@ -17,6 +17,7 @@ alias d='deactivate 2> /dev/null || source deactivate'  # venv
 alias dfh='df -h'
 alias duh='du -sh'
 alias freeh='free -h'
+alias ip='ipconfig getifaddr en0'
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     alias vim='vim --servername VIM'
