@@ -4,6 +4,12 @@
 htd() { printf "%d\n" "$1";   }
 dth() { printf "0x%x\n" "$1"; }
 
+# Output a CSV file headers one per line.
+csvheaders()    { head -n 1 "$1" | sed $'s/,/\\\n/g'; }
+
+# Convert tabs to spaces
+tabs2spaces()   { find . -name "$1" ! -type d -exec bash -c 'expand -t 4 "$0" > /tmp/e && mv /tmp/e "$0"' {} \;; }
+
 # Search with and and replace with sed syntax
 agreplace()     { ag $1 --files-with-matches | xargs -I {} sed -i '.back' -e "s/$1/$2/g" {}; }
 
@@ -107,7 +113,7 @@ function greadlink {
         TARGET=$(basename "$TARGET")
     done
 
-    # Compute the canonicalized name by finding the physical path 
+    # Compute the canonicalized name by finding the physical path
     # for the directory we're in and appending the target file.
     DIR=`pwd -P`
     RESULT="$DIR/$TARGET"
