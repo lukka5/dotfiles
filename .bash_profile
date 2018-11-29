@@ -49,15 +49,12 @@ export FZF_TMUX=1
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 # Virtualenvwrapper
-#export WORKON_HOME=$HOME/.virtualenvs
+export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/projects
-#export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-#source /usr/local/bin/virtualenvwrapper.sh
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+source /usr/local/bin/virtualenvwrapper.sh
 
 # Anaconda
 # Instead of doing export PATH=/usr/local/anaconda3/bin:"$PATH" and
 # messing the system and brew pythons I use a custom functions
 # (see ~/.bash/.bash_functions) `conda` and `source`.
-
-# added by Snowflake SnowSQL installer v1.0
-export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
