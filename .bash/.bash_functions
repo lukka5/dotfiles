@@ -4,6 +4,9 @@
 htd() { printf "%d\n" "$1";   }
 dth() { printf "0x%x\n" "$1"; }
 
+# Prints the fullpath of a file
+realpath() { [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"; }
+
 # Output a CSV file headers one per line.
 csvheaders()    { head -n 1 "$1" | sed $'s/,/\\\n/g'; }
 
