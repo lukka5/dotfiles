@@ -3,3 +3,5 @@
 .vim/autoload/plug.vim.old
 .netrwhist
 .bash_extra_local_conf
+.ipython
+*.spl
