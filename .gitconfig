@@ -18,7 +18,7 @@
     logfiles = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)[%an]%Creset' --decorate --numstat
 
 [core]
-    editor = vim
+    editor = nvim
     excludesfile = /Users/lucas/.gitignore
     quotepath = false
 
