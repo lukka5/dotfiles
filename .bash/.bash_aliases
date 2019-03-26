@@ -19,11 +19,7 @@ alias duh='du -sh'
 alias freeh='free -h'
 alias ip='ipconfig getifaddr en0'
 
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    alias vim='vim --servername VIM'
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-    alias vim='vim'
-fi
+alias vim='nvim'
 alias vimrc='vim ~/.vimrc'
 alias bashrc='vim ~/.bashrc'
 alias profile='vim ~/.bash_profile'
