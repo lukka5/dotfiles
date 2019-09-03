@@ -31,16 +31,15 @@ if which tmux > /dev/null && test -z "$TMUX"; then
   exec tmux attach -t default
 fi
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
+if which brew > /dev/null && [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
 
-if [ -f ~/.bash/.bash_aliases ]; then . ~/.bash/.bash_aliases; fi
-if [ -f ~/.bash/.bash_functions ]; then . ~/.bash/.bash_functions; fi
-if [ -f ~/.bash/.bash_prompt ]; then . ~/.bash/.bash_prompt; fi
-if [ -f ~/.bash/.bash_extra_local_conf ]; then . ~/.bash/.bash_extra_local_conf; fi
-if [ -d ~/.bash/.bash_extra_completions ] && [ -n "$(ls ~/.bash/.bash_extra_completions)" ]; then
-  for f in ~/.bash/.bash_extra_completions/*; do . $f; done
+if [ -f ~/.bash/aliases ]; then . ~/.bash/aliases; fi
+if [ -f ~/.bash/functions ]; then . ~/.bash/functions; fi
+if [ -f ~/.bash/prompt ]; then . ~/.bash/prompt; fi
+if [ -d ~/.bash/extra ]; then
+  for f in ~/.bash/extra/!(*.md); do . $f; done
 fi
 
 # FZF
