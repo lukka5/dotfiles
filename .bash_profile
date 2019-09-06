@@ -50,8 +50,13 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 # Virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/projects
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-source /usr/local/bin/virtualenvwrapper.sh
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+  export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+  source /usr/share/virtualenvwrapper/virtualenvwrapper_lazy.sh
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+  source /usr/local/bin/virtualenvwrapper.sh
+fi
 
 # Anaconda
 # Instead of doing export PATH=/usr/local/anaconda3/bin:"$PATH" and
