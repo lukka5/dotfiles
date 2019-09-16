@@ -30,6 +30,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'majutsushi/tagbar'
+Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'mxw/vim-jsx'  " Requires pangloss/vim-javascript
 Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdcommenter'
