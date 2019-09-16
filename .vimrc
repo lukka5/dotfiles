@@ -110,15 +110,13 @@ set clipboard=unnamedplus,unnamed  " Use X11 default clipboard :D
 set spelllang=en
 set spellfile=$HOME/.vim/spell/en.utf-8.add  " Spell file to use
 
-" Hardcode Python binary path so that Neovim always uses that one instead
-" of the current on in each virtualenv.
-if has('unix')
-  let g:python_host_prog = '/usr/bin/python2'
-  let g:python3_host_prog = '/usr/bin/python3'
-elseif has('mac')
-  let g:python_host_prog = '/usr/local/bin/python2'
-  let g:python3_host_prog = '/usr/local/bin/python3'
-endif
+" Hardcode Python binary path so that Neovim always uses that one instead of
+" the current on in each virtualenv.  For Linux machines remove the `local`
+" directory from path. Another solution is to call `uname` and conditionally
+" set the paths based on the current OS but I opted for this way to make
+" loading faster.
+let g:python_host_prog = '/usr/local/bin/python2'
+let g:python3_host_prog = '/usr/local/bin/python3'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
