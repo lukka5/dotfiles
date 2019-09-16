@@ -468,9 +468,7 @@ augroup ft
   au FileType *
         \ let g:filetype = &filetype |
         \ call RainbowBraces()
-  au FileType vim setlocal sts=2 sw=2 ts=2
-  au FileType html setlocal sts=4 sw=4 ts=4
-  au FileType htmldjango setlocal sts=4 sw=4 ts=4
+  au FileType css,html,htmldjango,javascript,javascript,json,vim setlocal sts=2 sw=2 ts=2
   au BufRead,BufNewFile *.less setlocal ft=css
 augroup END
 
