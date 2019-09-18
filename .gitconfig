@@ -16,6 +16,7 @@
     hist = log --graph --pretty=format:'%Cred%h %Cgreen%ad%Creset -%C(yellow)%d %Creset%s%C(bold blue) [%cn]%Creset' --decorate --date=short
     shorthist = log --graph --pretty=format:'%Cred%h %Cgreen%ad%Creset -%C(yellow)%d %Creset%<(35,trunc)%s%C(bold blue) [%cn]%Creset' --decorate --date=short
     logfiles = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)[%an]%Creset' --decorate --numstat
+    fetchbranches = "!for remote in `git branch -r | grep -v /HEAD`; do git checkout --track $remote ; done"
 
 [core]
     editor = nvim
