@@ -185,7 +185,7 @@ let g:python_fold = 0
 
 " Ale
 let g:ale_linters = {
-\   'python': ['flake8', 'isort'],
+\   'python': ['flake8', 'isort', 'pylint'],
 \}
 
 command! Isort execute "ALEFix isort"
