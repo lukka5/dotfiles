@@ -199,6 +199,9 @@ let g:tagbar_sort = 0
 let g:tagbar_width = 28
 nmap <silent><c-t> :TagbarToggle<cr>
 
+" NERDCommenter
+let NERDDefaultAlign = 'left'
+
 " NERDTree
 let NERDTreeWinSize = 28
 let NERDTreeShowBookmarks = 1
