@@ -7,7 +7,6 @@ SCALAPATH="/usr/local/Cellar/scala@2.11/2.11.11/bin"
 # Silence MacOS Catalina warning about new default zsh shell.
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-export HOMEBREW_GITHUB_API_TOKEN=c4d628d41bb90aa8cdc3783dbdf31c05635c45f6
 export EDITOR='vim'
 
 # Fixes python3 locale.getlocale() (Used by pipenv and maybe others)
