@@ -18,6 +18,7 @@ alias dfh='df -h'
 alias duh='du -sh'
 alias freeh='free -h'
 alias ip='ipconfig getifaddr en0'
+alias cat='bat'
 
 alias vim='nvim'
 alias vimrc='vim ~/.vimrc'
