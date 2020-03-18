@@ -50,3 +50,4 @@ alias clean_pycs="find . -type f -name '*.py[co]' -delete -o -type d -name __pyc
 alias cookiedjango="cookiecutter https://github.com/pydanny/cookiecutter-django"
 alias pshell="pipenv shell"
 alias secret="python3 -c \"import random; print(''.join(random.SystemRandom().choice('abcdefghijklmnopqrstuvwxyz0123456789\!@#$%^&*(-_=+)') for i in range(50)))\""
+alias cleanvenv="python -m pip freeze | cut -f 1 -d = | xargs -o python -m pip uninstall -y"
