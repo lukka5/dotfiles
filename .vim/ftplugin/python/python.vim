@@ -13,6 +13,7 @@ endif
 
 " Add ipdb or rdb breackpoint
 nnoremap <leader>b oimport ipdb;ipdb.set_trace()<esc>
+nnoremap <leader>B oimport ripdb;ripdb.set_trace()<esc>
 nnoremap <leader>r ofrom celery.contrib import rdb;rdb.set_trace()<esc>
 
 " Add if __name__ == '__main__' conditional
