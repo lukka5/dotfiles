@@ -21,7 +21,7 @@
 
 [core]
     editor = nvim
-    excludesfile = /Users/lucas/.gitignore
+    excludesfile = ~/.gitignore
     quotepath = false
 
 [color]
