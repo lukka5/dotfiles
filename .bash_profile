@@ -44,23 +44,21 @@ if [ -d ~/.bash/extra ]; then
   for f in ~/.bash/extra/!(*.md); do . $f; done
 fi
 
-# FZF
+# fzf
 if [ -f ~/.fzf.bash ]; then . ~/.fzf.bash; fi
 export FZF_TMUX=1
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
-# Virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
+# virtualenvwrapper
 export PROJECT_HOME=$HOME/projects
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-  export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
-  source /usr/share/virtualenvwrapper/virtualenvwrapper_lazy.sh
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-  export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-  source /usr/local/bin/virtualenvwrapper.sh
+export WORKON_HOME=$HOME/.virtualenvs
+export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+
+# pyenv
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+  pyenv virtualenvwrapper_lazy
 fi
 
-# Anaconda
-# Instead of doing export PATH=/usr/local/anaconda3/bin:"$PATH" and
-# messing the system and brew pythons I use a custom functions
-# (see ~/.bash/.bash_functions) `conda` and `source`.
+# pipx
+export PATH="$PATH:~/.local/bin"
