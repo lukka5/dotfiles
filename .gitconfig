@@ -1,6 +1,5 @@
-[user]
-    name = Lucas Godoy
-    email = 2lucasg@gmail.com
+[advice]
+    statusHints = false
 
 [alias]
     st = status
@@ -18,16 +17,28 @@
     logfiles = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)[%an]%Creset' --decorate --numstat
     fetchbranches = "!for remote in `git branch -r | grep -v /HEAD`; do git checkout --track $remote ; done"
 
+[color]
+    ui = true
+
 [core]
     editor = nvim
     excludesfile = ~/.gitignore
     quotepath = false
 
-[color]
-    ui = true
-
 [credential]
     helper = cache --timeout=7200
+
+[diff]
+    tool = vimdiff
+
+[difftool]
+    prompt = false
+
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    process = git-lfs filter-process
+    required = true
+    smudge = git-lfs smudge -- %f
 
 [merge]
     tool = vimdiff
@@ -38,20 +49,12 @@
 [mergetool "vimdiff"]
     cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 
-[difftool]
-    prompt = false
-
-[diff]
-    tool = vimdiff
-
 [push]
     default = matching
 
 [url "https://"]
     insteadOf = git://
 
-[filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+[user]
+    name = Lucas Godoy
+    email = 2lucasg@gmail.com
