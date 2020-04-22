@@ -118,8 +118,7 @@ set spellfile=$HOME/.vim/spell/en.utf-8.add  " Spell file to use
 " directory from path. Another solution is to call `uname` and conditionally
 " set the paths based on the current OS but I opted for this way to make
 " loading faster.
-let g:python_host_prog = '/usr/local/bin/python2'
-let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python3_host_prog = '~/.pyenv/shims/python3.7'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
