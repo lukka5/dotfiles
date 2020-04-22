@@ -34,7 +34,7 @@ Plug 'majutsushi/tagbar'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'mxw/vim-jsx'  " Requires pangloss/vim-javascript
 Plug 'pangloss/vim-javascript'
-Plug 'psf/black'
+Plug 'psf/black', { 'tag': '19.10b0' }  " https://github.com/psf/black/issues/1304
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
