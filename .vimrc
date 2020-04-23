@@ -310,6 +310,9 @@ nmap <silent><leader>d :bp<bar>sp<bar>bn<bar>bd<cr>
 " Close current window
 nmap <silent><leader>e :hid<cr>
 
+" Show file's fullpath and add to clipboard
+nmap <leader>f :Fullpath<cr>
+
 " Search with Ag for function under the cursor
 nmap <leader>F :Ag def\ <C-r><C-w><cr>
 
@@ -406,8 +409,8 @@ vnoremap > >gv
 command! Q q
 command! W w
 
-" Print the current buffer file's fullpath.
-command! Fullpath echo expand('%:p')
+" Print the current buffer file's fullpath and append to clipboard.
+command! Fullpath :redir @* | echon expand('%:p') | redir END
 
 " Change vim's pwd to the directory of the current buffer's file.
 command! CDFiledir cd %:p:h
