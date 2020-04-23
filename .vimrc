@@ -24,6 +24,7 @@ call plug#begin('~/.vim/plugged')
 " Utilities
 Plug 'airblade/vim-gitgutter'
 Plug 'danro/rename.vim'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'heavenshell/vim-pydocstring'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -281,6 +282,13 @@ nmap <silent>,D <Plug>DashSearch
 " vim-pydocstring
 nmap <silent><C-m> <Plug>(pydocstring)
 
+" vim-tmux-navigator
+let g:tmux_navigator_no_mappings = 1
+let g:tmux_navigator_disable_when_zoomed = 1
+"nnoremap <silent><C-a>h :TmuxNavigateLeft<cr>
+"nnoremap <silent><C-a>l :TmuxNavigateRight<cr>
+nnoremap <silent><C-a>j :TmuxNavigateDown<cr>
+nnoremap <silent><C-a>k :TmuxNavigateUp<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                 Binds                                   "
@@ -352,7 +360,7 @@ nnoremap <leader>r ofrom celery.contrib import rdb;rdb.set_trace()<esc>
 nmap <leader>R :%s/\<<C-r><C-w>\>//gc<left><left><left>
 
 " Make new horizontal split and focus cursor on it
-nmap <silent><leader>s :split<cr><c-w><c-k>
+nmap <silent><leader>s :split<cr><c-w><c-j>
 
 " Sort selected lines (visual mode)
 vmap <silent><leader>s :sort i<cr>
@@ -381,8 +389,8 @@ nnoremap <silent><leader>o <c-i>
 " Easily move around windows
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
+"nnoremap <c-j> <c-w>j
+"nnoremap <c-k> <c-w>k
 
 " Easily move through the command line (bash-like shortcuts)
 cnoremap <c-f> <right>
