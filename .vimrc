@@ -352,7 +352,7 @@ nnoremap <leader>r ofrom celery.contrib import rdb;rdb.set_trace()<esc>
 nmap <leader>R :%s/\<<C-r><C-w>\>//gc<left><left><left>
 
 " Make new horizontal split and focus cursor on it
-nmap <silent><leader>s :split<cr><c-w><c-k>
+nmap <silent><leader>s :split<cr><c-w><c-j>
 
 " Sort selected lines (visual mode)
 vmap <silent><leader>s :sort i<cr>
