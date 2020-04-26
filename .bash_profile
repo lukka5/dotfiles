@@ -28,22 +28,6 @@ export LESS_TERMCAP_so=$'\E[38;5;246m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[04;38;5;146m'
 
-if which tmux > /dev/null && test -z "$TMUX"; then
-  tmux new -d -s default
-  exec tmux attach -t default
-fi
-
-if which brew > /dev/null && [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
-fi
-
-if [ -f ~/.bash/aliases ]; then . ~/.bash/aliases; fi
-if [ -f ~/.bash/functions ]; then . ~/.bash/functions; fi
-if [ -f ~/.bash/prompt ]; then . ~/.bash/prompt; fi
-if [ -d ~/.bash/extra ]; then
-  for f in ~/.bash/extra/!(*.md); do . $f; done
-fi
-
 # fzf
 if [ -f ~/.fzf.bash ]; then . ~/.fzf.bash; fi
 export FZF_TMUX=1
@@ -62,3 +46,21 @@ fi
 
 # pipx
 export PATH="$PATH:~/.local/bin"
+
+# tmux
+if which tmux > /dev/null && test -z "$TMUX"; then
+  tmux new -d -s default
+  exec tmux attach -t default
+fi
+
+# bash extra
+if which brew > /dev/null && [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
+
+if [ -f ~/.bash/aliases ]; then . ~/.bash/aliases; fi
+if [ -f ~/.bash/functions ]; then . ~/.bash/functions; fi
+if [ -f ~/.bash/prompt ]; then . ~/.bash/prompt; fi
+if [ -d ~/.bash/extra ]; then
+  for f in ~/.bash/extra/!(*.md); do . $f; done
+fi
