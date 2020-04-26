@@ -34,6 +34,7 @@ alias more='less'
 alias so='source ~/.bash_profile'
 alias grep='grep --color=auto'
 alias ppath="echo $PATH | tr -s ':' '\n'"
+alias xargs="xargs -o "
 
 if [[ $(which colordiff) ]]; then
     alias diff='colordiff'
