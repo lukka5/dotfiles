@@ -8,6 +8,7 @@ SCALAPATH="/usr/local/Cellar/scala@2.11/2.11.11/bin"
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 export EDITOR='vim'
+export PYTHONBREAKPOINT=ipdb.set_trace
 
 # Fixes python3 locale.getlocale() (Used by pipenv and maybe others)
 export LC_ALL=en_US.UTF-8

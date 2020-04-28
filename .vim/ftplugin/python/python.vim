@@ -12,7 +12,7 @@ if g:python_fold
 endif
 
 " Add ipdb or rdb breackpoint
-nnoremap <leader>b oimport ipdb;ipdb.set_trace()<esc>
+nnoremap <leader>b obreakpoint()<esc>
 nnoremap <leader>B oimport ripdb;ripdb.set_trace()<esc>
 nnoremap <leader>r ofrom celery.contrib import rdb;rdb.set_trace()<esc>
 
