@@ -8,6 +8,7 @@
     co = checkout
     s = stash
     who = shortlog -s --
+    diffc = diff --cached
     unstage = reset HEAD --
     aliases = "!git config -l | grep alias | cut -c 7-"
     conflicts = "!git ls-files -u | cut -f 2 | sort -u | xargs -o $EDITOR"
