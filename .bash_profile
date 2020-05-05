@@ -49,9 +49,9 @@ fi
 export PATH="$PATH:~/.local/bin"
 
 # tmux
-if which tmux > /dev/null && test -z "$TMUX"; then
-  tmux new -d -s default
-  exec tmux attach -t default
+if test -z "$TMUX"; then
+  tmux new-session -d -s default
+  exec tmux attach-session -t default
 fi
 
 # bash extra
