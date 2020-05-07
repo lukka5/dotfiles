@@ -61,4 +61,4 @@
     email = 2lucasg@gmail.com
 
 [includeIf "gitdir:~/projects/work/"]
-    path = ~/dotfiles/.gitconfig-work
+    path = ~/projects/dotfiles/.gitconfig-work
