@@ -35,6 +35,8 @@ alias so='source ~/.bash_profile'
 alias grep='grep --color=auto'
 alias ppath="echo $PATH | tr -s ':' '\n'"
 alias xargs="xargs -o "
+alias uuid="uuidgen | tee /dev/tty | tr -d '\n' | pbcopy"
+alias uuidlower="uuidgen | tr '[:upper:]' '[:lower:]' | tee /dev/tty | tr -d '\n' | pbcopy"
 
 if [[ $(which colordiff) ]]; then
     alias diff='colordiff'
