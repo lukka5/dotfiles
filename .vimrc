@@ -26,6 +26,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'danro/rename.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'heavenshell/vim-pydocstring'
+Plug 'jparise/vim-graphql'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'kien/rainbow_parentheses.vim'
