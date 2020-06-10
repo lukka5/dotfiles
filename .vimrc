@@ -334,7 +334,7 @@ nnoremap <leader>J :call JoinSpaceless()<cr>
 nmap <silent><leader>l :set list!<cr>
 
 " Toggle line number gutter
-nmap <silent><leader>n :set number!<cr>
+nmap <silent><leader>n :noh<cr>
 
 " Make current window the only one
 nmap <silent><leader>o :on<cr>
