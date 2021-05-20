@@ -114,12 +114,10 @@ set clipboard=unnamedplus,unnamed  " Use X11 default clipboard :D
 set spelllang=en
 set spellfile=$HOME/.vim/spell/en.utf-8.add  " Spell file to use
 
-" Hardcode Python binary path so that Neovim always uses that one instead of
-" the current on in each virtualenv.  For Linux machines remove the `local`
-" directory from path. Another solution is to call `uname` and conditionally
-" set the paths based on the current OS but I opted for this way to make
-" loading faster.
-let g:python3_host_prog = '~/.pyenv/shims/python3.7'
+" Command to start Python 3 (executable, not directory). Setting this makes
+" startup faster. Useful for working with virtualenvs. Must be set before any
+" check for has("python3").
+let g:python3_host_prog = '~/.pyenv/shims/python3'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
