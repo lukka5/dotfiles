@@ -1,9 +1,3 @@
-# Manual paths.
-LOCALSBIN="/usr/local/sbin"
-SCALAPATH="/usr/local/Cellar/scala@2.11/2.11.11/bin"
-[[ -d $LOCALSBIN ]] && [[ ":$PATH:" != *":$LOCALSBIN:"* ]] && PATH="$LOCALSBIN:${PATH}"
-[[ -d $SCALAPATH ]] && [[ ":$PATH:" != *":$SCALAPATH:"* ]] && PATH="$SCALAPATH:${PATH}"
-
 # Silence MacOS Catalina warning about new default zsh shell.
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
@@ -41,6 +35,8 @@ export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 
 # pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/shims:$PATH"
   eval "$(pyenv init -)"
   pyenv virtualenvwrapper_lazy
 fi
