@@ -28,11 +28,6 @@ if [ -f ~/.fzf.bash ]; then . ~/.fzf.bash; fi
 export FZF_TMUX=1
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
-# virtualenvwrapper
-export PROJECT_HOME=$HOME/projects
-export WORKON_HOME=$HOME/.virtualenvs
-export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
-
 # pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
   export PYENV_ROOT="$HOME/.pyenv"
@@ -40,6 +35,11 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
   pyenv virtualenvwrapper_lazy
 fi
+
+# virtualenvwrapper
+export PROJECT_HOME=$HOME/projects
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_VIRTUALENV=virtualenv
 
 # pipx
 export PATH="$PATH:~/.local/bin"
