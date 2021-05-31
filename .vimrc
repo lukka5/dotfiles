@@ -79,9 +79,6 @@ set t_Co=256  " Support for 256 color terminals
 set background=dark
 colorscheme valloric
 
-" Highlight characters beyond the 79 column
-hi OverLength ctermbg=238
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Extras                                   "
@@ -319,9 +316,6 @@ nmap <leader>f :Fullpath<cr>
 " Search with Ag for function under the cursor
 nmap <leader>F :Ag def\ <C-r><C-w><cr>
 
-" Toggle OverLength highlight group
-nmap <silent><leader>h :call ToogleOverLength()<cr>
-
 " Get highlight group under cursor.
 nmap <silent><leader>H :echo "hi<" .
       \ synIDattr(synID(line("."),col("."),1),"name") . '> trans<' .
@@ -343,10 +337,6 @@ nmap <silent><leader>o :on<cr>
 
 " Open current buffer (mac only)
 nmap <silent><leader>O :!open %<cr>
-
-" Toggle Quicklist and Locationlist
-nmap <silent><leader>q :call ToggleList("Quickfix List", 'c')<cr>
-nmap <silent><leader>Q :call ToggleList("Location List", 'l')<cr>
 
 " Add celery rdb breackpoint
 nnoremap <leader>r ofrom celery.contrib import rdb;rdb.set_trace()<esc>
@@ -461,8 +451,6 @@ xnoremap p pgvy
 
 augroup vimrc
   au!
-  " Refresh beyond 79 column highlighting
-  au BufWinEnter,WinEnter * match OverLength '\%>79v.\+'
   " Don't move cursor when buffer switching
   if v:version >= 700
     au BufWinLeave * let b:winview = winsaveview()
@@ -485,8 +473,6 @@ augroup END
 
 augroup mycolor
   au!
-  au VimEnter,ColorScheme *
-        \ hi OverLength ctermbg=None |
   au Syntax * hi CursorLine ctermbg=none
   au VimEnter * RainbowParenthesesToggle
   au Syntax * RainbowParenthesesLoadRound
@@ -526,48 +512,6 @@ function! RainbowBraces()
     set ft=htmldjango
   endif
 endfunction
-
-" Toggle OverLenght highlight group
-let g:overlengthon = 0
-function! ToogleOverLength()
-  if g:overlengthon
-    hi OverLength ctermbg=None
-    let g:overlengthon = 0
-  else
-    hi OverLength ctermbg=238
-    let g:overlengthon = 1
-  endif
-endfunction
-
-" Toggle Quickfix or Location list windows
-function! GetBufferList()
-  redir =>buflist
-  silent! ls
-  redir END
-  return buflist
-endfunction
-
-function! ToggleList(bufname, pfx)
-  let buflist = GetBufferList()
-  for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'),
-        \ 'str2nr(matchstr(v:val, "\\d\\+"))')
-    if bufwinnr(bufnum) != -1
-      exec(a:pfx.'close')
-      return
-    endif
-  endfor
-  if a:pfx == 'l' && len(getloclist(0)) == 0
-    echohl ErrorMsg
-    echo "Location List is Empty."
-    return
-  endif
-  let winnr = winnr()
-  exec(a:pfx.'open')
-  if winnr() != winnr
-    wincmd p
-  endif
-endfunction
-
 
 " Like gJ, but always remove spaces
 fun! JoinSpaceless()
