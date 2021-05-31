@@ -25,8 +25,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'a-vrma/black-nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'airblade/vim-gitgutter'
 Plug 'danro/rename.vim'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'heavenshell/vim-pydocstring'
 Plug 'jparise/vim-graphql'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -273,14 +271,6 @@ map ,k <Plug>(easymotion-k)
 let g:EasyMotion_use_upper = 1
 let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
-" Dash.vim
-" Maybe I should move this mapping below the `let mapleader` expression
-" or move the mapleader exppression above this mapping.
-nmap <silent>,D <Plug>DashSearch
-
-" vim-pydocstring
-nmap <silent><C-m> <Plug>(pydocstring)
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                 Binds                                   "
@@ -298,11 +288,8 @@ nmap <silent><leader>a ggVG
 " Search inner word with the silver searcher
 nmap <silent><leader>A :Ag! <c-r><c-w><cr>
 
-" Print current buffer filename
-map <leader>B :echo @%<cr>
-
 " Search with Ag for class under the cursor
-nmap <leader>C :Ag class\ <C-r><C-w><cr>
+nmap <silent><leader>C :Ag class\ <C-r><C-w><cr>
 
 " Delete current buffer keeping window layout intact
 nmap <silent><leader>d :bp<bar>sp<bar>bn<bar>bd<cr>
@@ -311,10 +298,10 @@ nmap <silent><leader>d :bp<bar>sp<bar>bn<bar>bd<cr>
 nmap <silent><leader>e :hid<cr>
 
 " Show file's fullpath and add to clipboard
-nmap <leader>f :Fullpath<cr>
+nmap <silent><leader>f :Fullpath<cr>
 
 " Search with Ag for function under the cursor
-nmap <leader>F :Ag def\ <C-r><C-w><cr>
+nmap <silent><leader>F :Ag def\ <C-r><C-w><cr>
 
 " Get highlight group under cursor.
 nmap <silent><leader>H :echo "hi<" .
@@ -328,9 +315,6 @@ nnoremap <leader>J :call JoinSpaceless()<cr>
 
 " Toggle highlight of list chars (tab, trail, eol, ...)
 nmap <silent><leader>l :set list!<cr>
-
-" Toggle line number gutter
-nmap <silent><leader>n :noh<cr>
 
 " Make current window the only one
 nmap <silent><leader>o :on<cr>
@@ -353,8 +337,10 @@ vmap <silent><leader>s :sort i<cr>
 " Toggle spell checking
 nmap <silent><leader>S :setlocal spell!<cr>
 
-" Edit/load VIM RC file
-nmap <silent><leader>v :e $HOME/.vimrc<cr>
+" Make new vertical split and focus cursor on it
+nmap <silent><leader>v :vsplit<cr><c-w><c-l>
+
+" Reload VIM RC file
 nmap <silent><leader>V :w<cr>:so $HOME/.vimrc<cr>:echo "vimrc reloaded!"<cr>
 
 " Make new vertical split and focus cursor on it
@@ -401,6 +387,8 @@ vnoremap > >gv
 " Case insensitive :quit and :write command shortcuts
 command! Q q
 command! W w
+command! Wq wq
+command! WQ wq
 
 " Print the current buffer file's fullpath and append to clipboard.
 command! Fullpath :redir @* | echon expand('%:p') | redir END
@@ -430,15 +418,6 @@ vnoremap . :normal .<cr>
 
 " (Shift + 0) `)` == `^` (First column of line)
 noremap ) ^
-
-" Lists lines containing the word under the cursor. Type the line number
-" followed by <CR> to jump to the corresponding line.
-nnoremap [I [I:
-xnoremap [I "vy:<C-u>ilist /<C-r>v<CR>:
-
-" Same as above but for 'defines'
-nnoremap [D [D:
-xnoremap [D "vy:<C-u>dlist /<C-r>v<CR>:
 
 " Don't save deleted word when pasting over a word.
 " Allowing multiple paste over word.
@@ -483,20 +462,6 @@ augroup clipboard
   au!
   autocmd VimLeave * call system("echo -n $'" . escape(getreg(), "'") . "' | xsel -ib")
 augroup END
-
-
-" Add the virtualenv's site-packages to vim path to enable completion
-" inside virtualenvs. (i.e. django, etc)
-py3 << EOF
-import os.path
-import sys
-import vim
-if 'VIRTUAL_ENV' in os.environ:
-    project_base_dir = os.environ['VIRTUAL_ENV']
-    sys.path.insert(0, project_base_dir)
-    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    exec(open(activate_this).read(), dict(__file__=activate_this))
-EOF
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
