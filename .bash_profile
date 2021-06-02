@@ -3,6 +3,7 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 
 export EDITOR=nvim
 export PYTHONBREAKPOINT=ipdb.set_trace
+bind 'set enable-bracketed-paste off'
 
 # Fixes python3 locale.getlocale() (Used by pipenv and maybe others)
 export LC_ALL=en_US.UTF-8
