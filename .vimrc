@@ -260,7 +260,7 @@ let g:ycm_confirm_extra_conf = 0
 let g:ycm_seed_identifiers_with_syntax = 1
 " Maybe I should move this mapping below the `let mapleader` expression
 " or move the mapleader exppression above this mapping.
-nmap <silent>,g :YcmCompleter GoTo<cr>
+nmap <silent>,g :YcmCompleter GoToType<cr>
 nmap <silent>,G :YcmCompleter GetDoc<cr>
 
 " Easymotion
