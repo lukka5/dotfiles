@@ -172,6 +172,17 @@ statusbar = {
         topicbarend = { priority = "100"; alignment = "right"; };
       };
     };
+    window = {
+      items = {
+        barstart = { priority = "100"; };
+        user = { };
+        window = { };
+        window_empty = { };
+        lag = { priority = "-1"; };
+        more = { priority = "-1"; alignment = "right"; };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
   };
 };
 settings = {
@@ -190,6 +201,10 @@ settings = {
   "perl/core/scripts" = {
     awl_shared_sbar = "OFF";
     nicklist_color = "yes";
+    awl_viewer = "yes";
+    fancy_abbrev = "head";
+    awl_block = "16";
+    nicklist_pane_width = "17";
   };
 };
 hilights = ( { text = "lukka5"; nick = "yes"; word = "yes"; } );

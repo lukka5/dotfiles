@@ -1,6 +1,6 @@
 ###########################################################################
 # Contact: stx@chaotic.se
-# for use with irssi 0.8.9 
+# for use with irssi 0.8.9
 # URL: http://www.chaotic.se/irssi/
 #############################################################################
 
@@ -199,7 +199,12 @@ formats = {
 
   };
 
-  "fe-common/core" = { 
+  "fe-common/core" = {
     pubmsg = "{pubmsgnick $2 {pubnick \00312$[0]0}}$1";
+  };
+
+  "Irssi::Script::adv_windowlist" = {
+    awl_display_key_active = "%z3a3a3a$Q${cumode_space}$H$C$S";
+    awl_display_header = "%z005fff%Zcccdcd   $C";
   };
 };

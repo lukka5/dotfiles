@@ -12,6 +12,8 @@ our %IRSSI = (
     license     => 'GNU GPLv2 or later',
    );
 
+$ENV{'AWL_NOTITLE'} = '1';
+
 # UPGRADE NOTE
 # ============
 # for users of 0.7 or earlier series, please note that appearance
