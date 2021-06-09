@@ -38,7 +38,8 @@ channels = (
   { name = "#python"; chatnet = "liberachat"; autojoin = "yes"; },
   { name = "#argentina"; chatnet = "liberachat"; autojoin = "yes"; },
   { name = "#vim"; chatnet = "liberachat"; autojoin = "yes"; },
-  { name = "#irssi"; chatnet = "liberachat"; autojoin = "yes"; }
+  { name = "#irssi"; chatnet = "liberachat"; autojoin = "yes"; },
+  { name = "##aws"; chatnet = "liberachat"; autojoin = "yes"; }
 );
 
 aliases = {
@@ -186,12 +187,16 @@ settings = {
     beep_msg_level = "MSGS HILIGHT DCCMSGS";
     show_names_on_join = "no";
   };
-  "perl/core/scripts" = { awl_shared_sbar = "OFF"; };
+  "perl/core/scripts" = {
+    awl_shared_sbar = "OFF";
+    nicklist_color = "yes";
+  };
 };
 hilights = ( { text = "lukka5"; nick = "yes"; word = "yes"; } );
 keyboard = (
   { key = "^R"; id = "command"; data = "history_search "; },
   { key = "^P"; id = "backward_history"; data = ""; },
-  { key = "^N"; id = "forward_history"; data = ""; }
+  { key = "^N"; id = "forward_history"; data = ""; },
+  { key = "meta-[M"; id = "command"; data = "mouse_xterm "; }
 );
 ignores = ( { level = "JOINS PARTS QUITS"; } );
