@@ -446,6 +446,7 @@ augroup ft
         \ call RainbowBraces()
   au FileType css,html,htmldjango,javascript,javascript,json,vim setlocal sts=2 sw=2 ts=2
   au BufRead,BufNewFile *.less setlocal ft=css
+  au BufRead,BufNewFile config setlocal ft=config
   au BufWritePre *.py call Black()
 augroup END
 
