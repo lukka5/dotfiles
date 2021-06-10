@@ -22,7 +22,6 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Utilities
-Plug 'a-vrma/black-nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'airblade/vim-gitgutter'
 Plug 'danro/rename.vim'
 Plug 'jparise/vim-graphql'
@@ -34,6 +33,7 @@ Plug 'majutsushi/tagbar'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'mxw/vim-jsx'  " Requires pangloss/vim-javascript
 Plug 'pangloss/vim-javascript'
+Plug 'psf/black', { 'tag': '19.10b0' }  " https://github.com/psf/black/issues/1304
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -165,11 +165,6 @@ let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 
 " [Layout]
 let g:fzf_layout = { 'up': '~40%' }
-
-" black-nvim
-let g:black#settings = {
-    \ 'fast': 1,
-\}
 
 " Rainbow Parentheses
 let g:rbpt_colorpairs = [
@@ -447,7 +442,7 @@ augroup ft
   au FileType css,html,htmldjango,javascript,javascript,json,vim setlocal sts=2 sw=2 ts=2
   au BufRead,BufNewFile *.less setlocal ft=css
   au BufRead,BufNewFile config setlocal ft=config
-  au BufWritePre *.py call Black()
+  au BufWritePre *.py execute ':Black'
 augroup END
 
 
