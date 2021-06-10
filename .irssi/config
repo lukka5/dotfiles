@@ -116,6 +116,7 @@ statusbar = {
 
     prompt = "{prompt $[.15]itemname}";
     prompt_empty = "{prompt $winname}";
+    prompt_symbol = "> ";
 
     topic = " $topic";
     topic_empty = " Irssi v$J - https://irssi.org";
@@ -151,11 +152,7 @@ statusbar = {
       position = "100";
       visible = "always";
 
-      items = {
-        prompt = { priority = "-1"; };
-        prompt_empty = { priority = "-1"; };
-        input = { priority = "10"; };
-      };
+      items = { prompt_symbol = { }; input = { priority = "10"; }; };
     };
 
     topic = {
