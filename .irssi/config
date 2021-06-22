@@ -36,9 +36,6 @@ chatnets = {
 
 channels = (
   { name = "#python"; chatnet = "liberachat"; autojoin = "yes"; },
-  { name = "#argentina"; chatnet = "liberachat"; autojoin = "yes"; },
-  { name = "#vim"; chatnet = "liberachat"; autojoin = "yes"; },
-  { name = "#irssi"; chatnet = "liberachat"; autojoin = "yes"; },
   { name = "##aws"; chatnet = "liberachat"; autojoin = "yes"; },
   { name = "#pyar"; chatnet = "liberachat"; autojoin = "yes"; }
 );
