@@ -56,7 +56,7 @@
     cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 
 [push]
-    default = matching
+    default = current
 
 [url "https://"]
     insteadOf = git://
