@@ -33,14 +33,15 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 if command -v pyenv 1>/dev/null 2>&1; then
   export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$PYENV_ROOT/shims:$PATH"
+  export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
   eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
   pyenv virtualenvwrapper_lazy
 fi
 
 # virtualenvwrapper
 export PROJECT_HOME=$HOME/projects
 export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_VIRTUALENV=virtualenv
 
 # pipx
 export PATH="$PATH:~/.local/bin"
