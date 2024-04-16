@@ -22,6 +22,9 @@ nnoremap <leader>m oif __name__ == '__main__':<cr>
 " Run python on the current buffer
 nmap <silent><leader>z :w<cr>:!python3 %<cr>
 
+" Jump to next method or class
+nnoremap [[ ?^class\\|^\s*def<CR>
+nnoremap ]] /^class\\|^\s*def<CR>
 
 function! PythonFoldText()
 
