@@ -61,6 +61,6 @@ fi
 if [ -f ~/.bash/aliases ]; then . ~/.bash/aliases; fi
 if [ -f ~/.bash/functions ]; then . ~/.bash/functions; fi
 if [ -f ~/.bash/prompt ]; then . ~/.bash/prompt; fi
-if [ -d ~/.bash/extra ]; then
-  . ~/.bash/extra/local_conf
+if [ -f ~/.bash_local ]; then
+  source ~/.bash_local
 fi
