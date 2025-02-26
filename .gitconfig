@@ -31,6 +31,7 @@
     editor = nvim
     excludesfile = ~/.gitignore
     quotepath = false
+    sshCommand = "ssh -i ~/.ssh/personal"
 
 [credential]
     helper = cache --timeout=7200
@@ -66,5 +67,5 @@
     name = Lucas Godoy
     email = 2lucasg@gmail.com
 
-[includeIf "gitdir:~/projects/work/"]
-    path = ~/projects/dotfiles/.gitconfig-work
+[includeIf "gitdir:~/projects/"]
+    path = ~/.gitconfig-work
