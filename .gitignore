@@ -6,3 +6,4 @@
 .ipython
 *.spl
 .vim/black/
+.DS_Store
