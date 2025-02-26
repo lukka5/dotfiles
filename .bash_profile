@@ -24,6 +24,12 @@ export LESS_TERMCAP_so=$'\E[38;5;246m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[04;38;5;146m'
 
+# brew
+eval $(/opt/homebrew/bin/brew shellenv)
+if which brew > /dev/null && [ -f $(brew --prefix)/completions/bash/brew ]; then
+  . $(brew --prefix)/completions/bash/brew
+fi
+
 # fzf
 if [ -f ~/.fzf.bash ]; then . ~/.fzf.bash; fi
 export FZF_TMUX=1
@@ -52,14 +58,9 @@ if test -z "$TMUX"; then
   exec tmux attach-session -t default
 fi
 
-# bash extra
-if which brew > /dev/null && [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
-fi
-
 if [ -f ~/.bash/aliases ]; then . ~/.bash/aliases; fi
 if [ -f ~/.bash/functions ]; then . ~/.bash/functions; fi
 if [ -f ~/.bash/prompt ]; then . ~/.bash/prompt; fi
 if [ -d ~/.bash/extra ]; then
-  for f in ~/.bash/extra/!(*.md); do . $f; done
+  . ~/.bash/extra/local_conf
 fi
