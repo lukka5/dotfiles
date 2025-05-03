@@ -52,6 +52,12 @@ export WORKON_HOME=$HOME/.virtualenvs
 # pipx
 export PATH="$PATH:~/.local/bin"
 
+# bash extra
+eval "$(/opt/homebrew/bin/brew shellenv)"
+if which brew > /dev/null && [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
+
 # tmux
 if test -z "$TMUX"; then
   tmux new-session -d -s default
