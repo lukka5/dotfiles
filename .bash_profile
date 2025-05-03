@@ -31,7 +31,7 @@ if which brew > /dev/null && [ -f $(brew --prefix)/completions/bash/brew ]; then
 fi
 
 # fzf
-if [ -f ~/.fzf.bash ]; then . ~/.fzf.bash; fi
+eval "$(fzf --bash)"
 export FZF_TMUX=1
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
