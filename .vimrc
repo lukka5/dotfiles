@@ -40,7 +40,6 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tweekmonster/startuptime.vim'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }  " Install cmake first
 Plug 'vim-airline/vim-airline'
 Plug 'w0rp/ale'
 
