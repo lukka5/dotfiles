@@ -20,6 +20,7 @@ alias freeh='free -h'
 alias ip='ipconfig getifaddr en0'
 alias cat='bat'
 
+alias c='cursor'
 alias vim='nvim'
 alias vimrc='vim ~/.vimrc'
 alias bashrc='vim ~/.bashrc'
