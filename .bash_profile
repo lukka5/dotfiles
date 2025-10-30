@@ -31,9 +31,12 @@ if which brew > /dev/null && [ -f $(brew --prefix)/completions/bash/brew ]; then
 fi
 
 # fzf
-eval "$(fzf --bash)"
-export FZF_TMUX=1
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+if which fzf > /dev/null; then
+  eval "$(fzf --bash)"
+  export FZF_TMUX=1
+  export FZF_DEFAULT_OPTS="--tmux"
+  export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+fi
 
 # pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
