@@ -63,8 +63,17 @@ fi
 
 # tmux
 if test -z "$TMUX"; then
-  tmux new-session -d -s default
-  exec tmux attach-session -t default
+  if test -n "$VSCODE_WORKSPACE"; then
+    exec tmux new-session -A -s "$VSCODE_WORKSPACE"
+  else
+    if test -n "$VSCODE_RESOLVING_ENVIRONMENT"; then
+        # "Do nothing. VSCode is resolving the environment."
+        # "We will start a tmux sesssion when $VSCODE_WORKSPACE is set"
+        :
+    else
+        exec tmux new-session -A -s default
+    fi
+  fi
 fi
 
 if [ -f ~/.bash/aliases ]; then . ~/.bash/aliases; fi
