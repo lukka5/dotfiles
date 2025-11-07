@@ -1,0 +1,22 @@
+set clipboard^=ideaput
+
+" Stop highlighted search
+nmap <silent><leader>` :nohlsearch<cr>
+
+" Join next line to current one without spaces between.
+nnoremap <leader>J :call JoinSpaceless()<cr>
+
+" Sort selected lines (visual mode)
+vmap <silent><leader>s :sort i<cr>
+
+" Easily indent selected block of code in visual mode
+vnoremap < <gv
+vnoremap > >gv
+
+" Create new lines up/down without moving the cursor
+nnoremap T O<esc>j
+nnoremap t o<esc>k
+
+" Create new lines up/down without moving the cursor
+nmap <c-o> <Action>(NextTab)
+nmap <c-i> <Action>(PreviousTab)
